@@ -265,7 +265,7 @@ async def log_message(message, type, before=None, attachments_old=None):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
 
-    if data[str(message.guild.id)]['msg_id'][0] is not None:
+    if data[str(message.guild.id)]['msg_id']is not None:
         message_log_id = data[str(message.guild.id)]['msg_id'][0]
     else:
         pass
@@ -485,7 +485,7 @@ class Help(disnake.ui.View):
 @_bot.slash_command(description="Check your taxes")
 async def tax(ctx):
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Tax command", value="This command is used to check your taxes, you have to pay taxes in 30 days 20% nerd coins of your balance must be taken in 30 days, if you don't pay in 30 days and you have money in your account then tax will be paid automatically. If not having money, your inventory will be cleared. you can /pay_tax.")
+    embed.add_field(name="Tax command", value="This command is used to check your taxes. Your tax will only be visible and payable on 30th day, till then earn money. You have to pay tax on 30th day, if you don't pay and you have money in your account then tax will be paid automatically. If not having money, your inventory will be cleared. you can /pay_tax.")
     await send_first_time_message(ctx, "tax", embed)  
     await taxes(ctx)
     with open('account.json', 'r', encoding='utf-8') as file:
@@ -496,7 +496,8 @@ async def tax(ctx):
 
     
     if data[str(ctx.author.id)]['Bank'] != 0:
-        embed = disnake.embed(color=random.choice(colors))
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.set_footer(text="Tax will only be updated on 30th day")
         embed.add_field(name="Tax amount", value=data2[str(ctx.author.id)]['Tax'])
         await ctx.send(embed=embed)
     
@@ -510,19 +511,32 @@ async def taxes(ctx):
     with open('taxes.json', 'r', encoding='utf-8') as file2:
         data2 = json.load(file2)  
 
-    if str(ctx.author.id) in data:
+    if str(ctx.author.id) in data2:
         return False
     else:
         data2[str(ctx.author.id)] = {}
-        data2[str(ctx.author.id)]['Tax'] = 20/100 * data[str(ctx.author.id)]['Bank']
+        data2[str(ctx.author.id)]['Tax'] = 0	
     
-    with open('taxes.json', 'w') as file2:
+    with open('taxes.json', 'w', encoding='utf-8') as file2:
         json.dump(data2, file2)
     
     return True
 
+async def tex(ctx):
+    with open('account.json', 'r', encoding='utf-8') as file1:
+        data = json.load(file1)  
+
+    with open('taxes.json', 'r', encoding='utf-8') as file2:
+        data2 = json.load(file2)  
+                
+    tax = (20/100) * data[str(ctx.author.id)]['Bank']
+    data2[str(ctx.author.id)]['Tax'] += tax
+    
+    with open('taxes.json', 'w') as file2:
+        json.dump(data2, file2)       	
+
 async def tax_payment_process(ctx):
-    asyncio.sleep(2592000)
+    await asyncio.sleep(2592000)
     
     with open('account.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
@@ -555,20 +569,23 @@ async def pay_tax(ctx):
     with open('taxes.json', 'r', encoding='utf-8') as file2:
         data2 = json.load(file2)  
 
-    if data2[str(ctx.author.id)]['Tax'] <= data[str(ctx.author.id)]['Bank']:
-        data2[str(ctx.author.id)]['Tax'] *= 0
-        data[str(ctx.author.id)]['Bank'] -= data2[str(ctx.author.id)]['Tax']
+    if data2[str(ctx.author.id)]['Tax'] != 0:
+    	if data2[str(ctx.author.id)]['Tax'] <= data[str(ctx.author.id)]['Bank']:
+        	data2[str(ctx.author.id)]['Tax'] *= 0
+        	data[str(ctx.author.id)]['Bank'] -= data2[str(ctx.author.id)]['Tax']
 
-        with open('taxes.json', 'w') as file2:
-            json.dump(data2, file2)
+        	with open('taxes.json', 'w') as file2:
+            		json.dump(data2, file2)
 
-        with open('account.json', 'w') as file:
-            json.dump(data, file)
+        	with open('account.json', 'w') as file:
+            		json.dump(data, file)
         
-        await ctx.send("You have paid all your taxes of 30 days.")
+        	await ctx.send("You have paid all your taxes of 30 days.")
     
+    	else:
+        	await ctx.send("You don't have enough money to pay taxes.")
     else:
-        await ctx.send("You don't have enough money to pay taxes.")
+    	await ctx.send("Tax is not updated yet")
 
         
 
@@ -907,8 +924,7 @@ async def find(ctx):
     await send_first_time_message(ctx, "find", embed)   
     places = ["Laboratory", "Factory", "Garbage", "Construction site", "Power plant", "Fields", "Abondened house", "Library", "Electronics workshop", "Cyber cafe", "Engineer's desk", "Scrapyard"]
     place = random.choice(places)
-    weights = [1]*6 + [10]*20
-    thing = random.choices(component_list, weights=weights, k=1)[0]
+    thing = random.choice(components_list)
 
     with open('account.json', 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -3611,7 +3627,7 @@ async def open_account(user):
         data[str(user.id)]['Job'] = []
         data[str(user.id)]['XP'] = 0
         data[str(user.id)]['Level'] = 0
-        data[str(user.id)]['Inventory'] = ["🎒"]
+        data[str(user.id)]['Inventory'] = []
         data[str(user.id)]['Crypto'] = 0
     
     with open('account.json', 'w') as f:
@@ -4310,7 +4326,7 @@ async def loan_payment(user):
         json.dump(data, f)
     
     return True
-
+@_bot.event
 async def loan_payment_process(ctx):
     with open('loan.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
@@ -4793,6 +4809,11 @@ async def send(ctx, member: disnake.Member, amount: int):
         view = SendConfirmView(ctx, amount, ctx.author, member)
         await ctx.send(view=view)
 
+async def run_tas(ctx):
+    await asyncio.sleep(2592000)
+    await tex(ctx)
+
+
 @_bot.event
 async def on_message(message):
     with open('spam.json', 'r', encoding='utf-8') as file:
@@ -4830,7 +4851,10 @@ async def on_message(message):
                 else:
                     if not message.author.bot:
                         await rep(message.author)
+                        await open_account(message.author)
                         await setups(message)
+                        await taxes(message)
+                        await run_tas(message)	
                         await markett(message.author)
                         await open_account(message.author)
                         await xp(message.author, 5)
@@ -4842,13 +4866,14 @@ async def on_message(message):
                         await loan_payment(message.author)
                         await loan_payment_process(message.author)
                         await learning_points(message.author)
-                        await taxes(message)
                         await tax_payment_process(message)       
         else:   
             if not message.author.bot:
                 await rep(message.author)
-                await setups(message)
                 await open_account(message.author)
+                await setups(message)
+                await taxes(message)
+                await run_tas(message)
                 await crypt(message.author)
                 await xp(message.author, 5)
                 await lvl(message)
@@ -4859,7 +4884,6 @@ async def on_message(message):
                 await loan_payment(message.author)
                 await loan_payment_process(message.author)
                 await learning_points(message.author)
-                await taxes(message)
                 await tax_payment_process(message)
             else:
                 pass
@@ -4869,6 +4893,8 @@ async def on_message(message):
                 await setups(message)
                 await rep(message)
                 await open_account(message.author)
+                await taxes(message)
+                await run_tas(message)
                 await crypt(message.author)
                 await xp(message, 5)
                 await lvl(message)
@@ -4879,7 +4905,6 @@ async def on_message(message):
                 await loan_payment(message.author)
                 await loan_payment_process(message.author)
                 await learning_points(message.author)
-                await taxes(message)
                 await tax_payment_process(message)
 
 
