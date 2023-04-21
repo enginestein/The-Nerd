@@ -13,15 +13,6 @@ from disnake.ext import commands, tasks
 import disnake
 import cryptocompare
 
-import config
-
-token = config.DISCORD_TOKEN
-
-
-# https://medium.com/techie-delight/top-algorithms-data-structures-concepts-every-computer-science-student-should-know-e0549c67b4ac#:~:text=Depth%20First%20Search%20(DFS)%20Algorithm,Kruskal's%20Algorithm
-
-
-#https://discord.com/api/oauth2/authorize?client_id=977203203147980881&permissions=1644971949559&scope=bot
 dictionary_check = True
 timer_check = True 
 content_check = True 
@@ -570,23 +561,22 @@ async def pay_tax(ctx):
         data2 = json.load(file2)  
 
     if data2[str(ctx.author.id)]['Tax'] != 0:
-    	if data2[str(ctx.author.id)]['Tax'] <= data[str(ctx.author.id)]['Bank']:
-        	data2[str(ctx.author.id)]['Tax'] *= 0
-        	data[str(ctx.author.id)]['Bank'] -= data2[str(ctx.author.id)]['Tax']
+        if data2[str(ctx.author.id)]['Tax'] <= data[str(ctx.author.id)]['Bank']:
+            data2[str(ctx.author.id)]['Tax'] *= 0
+            data[str(ctx.author.id)]['Bank'] -= data2[str(ctx.author.id)]['Tax']
 
-        	with open('taxes.json', 'w') as file2:
-            		json.dump(data2, file2)
+            with open('taxes.json', 'w') as file2:
+                json.dump(data2, file2)
 
-        	with open('account.json', 'w') as file:
-            		json.dump(data, file)
+            with open('account.json', 'w') as file:
+                json.dump(data, file)
         
-        	await ctx.send("You have paid all your taxes of 30 days.")
+            await ctx.send("You have paid all your taxes of 30 days.")
     
-    	else:
-        	await ctx.send("You don't have enough money to pay taxes.")
+        else:
+            await ctx.send("You don't have enough money to pay taxes.")
     else:
-    	await ctx.send("Tax is not updated yet")
-
+        await ctx.send("Tax is not updated yet")
         
 
 @fun.sub_command(descripton="Get your fortune")
@@ -924,7 +914,7 @@ async def find(ctx):
     await send_first_time_message(ctx, "find", embed)   
     places = ["Laboratory", "Factory", "Garbage", "Construction site", "Power plant", "Fields", "Abondened house", "Library", "Electronics workshop", "Cyber cafe", "Engineer's desk", "Scrapyard"]
     place = random.choice(places)
-    thing = random.choice(components_list)
+    thing = random.choice(component_list)
 
     with open('account.json', 'r', encoding='utf-8') as file:
             data = json.load(file)
