@@ -319,23 +319,44 @@ async def on_ready():
     print(f"Bot logged in as {_bot.user}")
     print("--------------------------------------------------------")
 
+@_bot.slash_command()
+async def util(ctx):
+    pass
 
 class Help(disnake.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
+    @disnake.ui.button(label="Utility commands", style=disnake.ButtonStyle.green)
+    async def fun(self, button: disnake.ui.Button, interaction: disnake.Interaction):
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.set_author(name="Utility commands")
+
+        commands = [("</util:1095935058776428615>", "`The parent command to access all the below commands for ease of phone users..`", False),
+                    ("/serverinfo", "`Get server info`", False),
+                    ("/userinfo <user>", "`Get some information about an user`", False),
+                    ("/avatar <user>", "`Get someone's avatar.`", False),
+                    ("/poll <question> <options>", "`Create and vote on polls.`", False),
+                    ("/ping", "`Get bot's latency`", False),
+                    ("/report", "`Report a bug or give any suggestion.`", False),
+                    ("/verify", "`Verify yourself to get verified role.`", False)]
+
+        for name, value, inline in commands:
+            embed.add_field(name=name, value=value, inline=inline)
+    
+        await interaction.response.send_message(embed=embed)
+
     @disnake.ui.button(label="Fun commands", style=disnake.ButtonStyle.green)
     async def fun(self, button: disnake.ui.Button, interaction: disnake.Interaction):
         embed = disnake.Embed(color=random.choice(colors))
-        embed.set_author(name="Games an fun commands")
+        embed.set_author(name="Fun commands")
 
-        commands = [("/hug <user>", "`Hug someone`", False),
+        commands = [("</fun:1095935058776428615>", "`The parent command to access all the below commands for ease of phone users..`", False)
+              ("/hug <user>", "`Hug someone`", False),
               ("/meme", "`Get an meme`", False),
               ("/pmeme", "`Get an programming meme`", False),
               ("/fact", "`Get an fact`", False),
-              ("/serverinfo", "`Get server info`", False),
               ("/magic8ball <context>", "`Ask an magic8ball question`", False),
-              ("/userinfo <user>", "`Get some information about an user`", False),
               ("/pic", "`Get an cool picture`", False),
               ("/truth", "`Get an random truth question`", False),
               ("/compliment", "`Get an compliment`", False),
@@ -343,18 +364,13 @@ class Help(disnake.ui.View):
               ("/topic", "`Get an topic to chat on`", False),
               ("/coinflip", "`Flip a coin`", False),
               ("/rolldice <num_dice> <num_side>", "`Rolls a specified number of dice with a specified number of sides.`", False),
-              ("/avatar <user>", "`Get someone's avatar.`", False),
               ("/image <query>", "`Searches for and displays images based on user input.`", False),
-              ("/poll <question> <options>", "`Create and vote on polls.`", False),
               ("/cat", "`Get an random cat image`", False),
               ("/dog", "`Get an random dog image`", False),
               ("/quote", "`Get a quote`", False),
-              ("/ping", "`Get bot's latency`", False),
               ("/joke", "`Get a joke`", False),
               ("/trivia", "`Get trivia question`", False),
-              ("/fortune", "`Get your fortune`", False),
-              ("/report", "`Report a bug or give any suggestion.`", False),
-              ("/verify", "`Verify yourself to get verified role.`", False)]
+              ("/fortune", "`Get your fortune`", False)]
 
         for name, value, inline in commands:
             embed.add_field(name=name, value=value, inline=inline)
@@ -366,31 +382,31 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Economy commands")
 
-        commands = [("/bal", "`Get your account balance`", False),
-              ("/inv", "`Check your inventory`", False),
-              ("/shop", "`Open shop`", False),
-              ("/buy <item code>", "`Buy some items`", False),
-              ("/geek_coins", "`Mine some geek_coins currency if you have an laptop`", False),
-              ("/redeem <amount>", "`Redeem all of your geek_coins currency`", False),
-              ("/jobs", "`See the job board`", False),
-              ("/job <job code>", "`Get an job`", False),
-              ("/subjects", "`Subjects to study`", False),
-              ("/learn <subject>", "`Learn any subject`", False),
-              ("/learnpoints", "`Get your points in every subject`", False),
-              ("/top", "`Get global leaderboard of richest person`", False),
-              ("/level", "`See your level`", False),
-              ("/software", "`Make softwares if you have software engineer job`", False),
-              ("/assemble", "`Assemble an computer if you have enough requirements`", False),
-              ("/computer", "`Open your computer, see your programs and os`", False),
-              ("/attack <member>", "`Use your spyware, malware or ransomware to earn money and items`", False),
-              ("/run", "`Run your Discord bot, app or website`", False),
-              ("/daily", "`Get your daily coins`", False),
-              ("/retire", "`Retire from your current job`", False),
-              ("/delete <program name>", "`Delete an program from your computer`", False),
-              ("/loan <amount>", "`Get a loan`", False),
-              ("/pay <amount>", "`Pay for loan`", False),
-              ("/laboratory", "`Start and navigate your laboratory`", False),
-              ("/lend", "`Check how much loan is left`", False)]
+        commands = [("</bal:1095349253242626051>", "`Get your account balance`", False),
+              ("</inv:1095349253464916091>", "`Check your inventory`", False),
+              ("</shop:1095349253464916089>", "`Open shop`", False),
+              ("</buy:1095349253464916090>", "`Buy some items`", False),
+              ("</geek_coins:1095349253242626056>", "`Mine some geek_coins currency if you have an laptop`", False),
+              ("</redeem:1095349253242626057>", "`Redeem all of your geek coins currency`", False),
+              ("</jobs:1095349253242626055>", "`See the job board`", False),
+              ("</job:1095349253242626048>", "`Get an job`", False),
+              ("</subjects:1095349253464916092>", "`Subjects to study`", False),
+              ("</learn:1095349253464916093>", "`Learn any subject`", False),
+              ("</learnpoints:1095349253464916095>", "`Get your points in every subject`", False),
+              ("</top:1095349253464916094>", "`Get global leaderboard of richest person`", False),
+              ("</level:1095349253464916096>", "`See your level`", False),
+              ("</software:1095349252902879428>", "`Make softwares if you have software engineer job`", False),
+              ("</assemble:1095349252902879430>", "`Assemble an computer if you have enough requirements`", False),
+              ("</computer:1095349252902879431>", "`Open your computer, see your programs and os`", False),
+              ("</attack:1095349252902879429>", "`Use your spyware, malware or ransomware to earn money and items`", False),
+              ("</run:1095349252902879427>", "`Run your Discord bot, app or website`", False),
+              ("</daily:1095349253087449291>", "`Get your daily coins`", False),
+              ("</retire:1095349253242626049>", "`Retire from your current job`", False),
+              ("</delete:1095349252902879426>", "`Delete an program from your computer`", False),
+              ("</loan:1095349253804662790>", "`Get a loan`", False),
+              ("</pay:1095349253804662787>", "`Pay for loan`", False),
+              ("</laboratory:1095349253804662791>", "`Start and navigate your laboratory`", False),
+              ("</lend:1095349253804662789>", "`Check how much loan is left`", False)]
         
         for name, value, inline in commands:
             embed.add_field(name=name, value=value, inline=inline)
@@ -402,31 +418,31 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Economy commands part 2")
 
-        commands = [("/send <member> <amount>", "`Send money to someone`", False),
-              ("/input_item <item> <price>", "`Put item on market`", False),
-              ("/remove_item <item>", "`Remove an item from market`", False),
-              ("/stream", "`Do a livestream to earn money.`", False),
-              ("/sell_all", "`Sell your whole inventory.`", False),
-              ("/delete_account", "`Delete your account`", False),
-              ("/call", "`Get a random tip if you have a phone.`", False),
-              ("/find", "`find an item in an random place`", False),
-              ("/market", "`Get global market of items`", False),
-              ("/buy_from_market <seller_id> <item_num>", "`Buy any item from global market, just input the seller ID and item number.`", False),
-              ("/gift <item_code> <member>", "`Gift an item to someone`", False),
-              ("/weekly", "`Get weekly coins`", False),
-              ("/monthly", "`Get monthly coins`", False),
-              ("/rates", "`Get crypto rates`", False),
-              ("/buy_crypto <crypto_code>", "`Buy an crypto coin`", False),
-              ("/redeem_crypto <crypto_code> <amount>", "`Redeem an crypto coin`", False),
-              ("/crypto_bal", "`Get crypto balance`", False),
-              ("/disassemble", "`disassemble an computer, take out it's parts and sell them.`", False),
-              ("/sell <item_code>", "`Sell an item`", False),
-              ("/start_mine", "`Start the mining career`", False),
-              ("/explore", "`Explore new places for mining`", False),
-              ("/explored", "`List all explored places`", False),
-              ("/mine <place_name>", "`Mine in an place`", False),
-              ("/elements", "`Get all found elements`", False),
-              ("/sell_element", "`Sell an element`", False)]
+        commands = [("</send:1095349254018564196>", "`Send money to someone`", False),
+              ("</input_item:1096277615368749257>", "`Put item on market`", False),
+              ("</remove_item:1098187278955860070>", "`Remove an item from market`", False),
+              ("</stream:1098210140437631057>", "`Do a livestream to earn money.`", False),
+              ("</work:1095349253242626050>", "`DDo some work to earn money if you have a job.`", False),
+              ("</sell_all:1098210140437631058>", "`Sell your whole inventory.`", False),
+              ("</call:1098210140437631060>", "`Get a random tip if you have a phone.`", False),
+              ("</find:1098191090881941555>", "`find an item in an random place`", False),
+              ("</market:1096450278494060554>", "`Get global market of items`", False),
+              ("</buy_from_market:1096452643691429950>", "`Buy any item from global market, just input the seller ID and item number.`", False),
+              ("</gift:1096269468822425691>", "`Gift an item to someone`", False),
+              ("</weekly:1096269468822425692>", "`Get weekly coins`", False),
+              ("</monthly:1096269468822425693>", "`Get monthly coins`", False),
+              ("</rates:1095349252747694138>", "`Get crypto rates`", False),
+              ("</buy_crypto:1095349252747694139>", "`Buy an crypto coin`", False),
+              ("</redeem_crypto:1095349252747694140>", "`Redeem an crypto coin`", False),
+              ("</crypto_bal:1095349252902879422:>", "`Get crypto balance`", False),
+              ("</disassemble:1095349252747694136>", "`disassemble an computer, take out it's parts and sell them.`", False),
+              ("</sell:1095349252747694137>", "`Sell an item`", False),
+              ("</start_mine:1095349252747694133>", "`Start the mining career`", False),
+              ("</explore:1095349252747694134>", "`Explore new places for mining`", False),
+              ("</explored:1096720083318997073>", "`List all explored places`", False),
+              ("</mine:1096720083318997074>", "`Mine in an place`", False),
+              ("</elements:1096720083318997076>", "`Get all found elements`", False),
+              ("</sell_element:1096720083318997075>", "`Sell an element`", False)]
         
         for name, value, inline in commands:
             embed.add_field(name=name, value=value, inline=inline)
@@ -438,11 +454,12 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Economy commands part 3")
 
-        commands = [("/robot", "`Build your robot`", False),
-              ("/upgrade", "`Upgrade your robot`", False),
-              ("/fight <opponent> <money>", "`Fight with someone if you have a robot and they have a robot`", False),
-              ("/tax", "`Check how much of your tax is left`", False),
-              ("/pay_tax", "`Pay your taxes`", False)]
+        commands = [("</robot:1096450278494060555>", "`Build your robot`", False),
+              ("</upgrade:1096450278494060556>", "`Upgrade your robot`", False),
+              ("</fight:1096665954408214599>", "`Fight with someone if you have a robot and they have a robot`", False),
+              ("</tax:1098468159679381584>", "`Check how much of your tax is left`", False),
+              ("</pay_tax:1098468159679381585>", "`Pay your taxes`", False),
+              ("</delete_account:1098210140437631059>", "`Delete your account`", False)]
         
         for name, value, inline in commands:
             embed.add_field(name=name, value=value, inline=inline)
@@ -454,7 +471,8 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Moderating commands")
 
-        commands = [("/ban <user>", "`Ban someone`", False),
+        commands = [("</mod:1095937461995180052>", "`Command to access moderator commands for ease of phone users.`", False)
+              ("/ban <user>", "`Ban someone`", False),
               ("/mute <user> <mutetime (optional)>", "`Mute someone`", False),
               ("/unmute <user>", "`Unmute someone`", False),
               ("/kick <user>", "`Kick someone`", False),
@@ -608,7 +626,7 @@ async def rep(ctx):
     
     return True
 
-@_bot.slash_command(description="Report any error or any bug")
+@util.sub_command(description="Report any error or any bug")
 async def report(ctx, message):
     await rep(ctx)
     embed = disnake.Embed(color = random.choice(colors))
@@ -1200,8 +1218,23 @@ class Fighter:
         return self.hp > 0
 
 # credit card holds 10000 
-# antivurs bypasser
-
+# antivirus bypasser
+# adventure command
+# more types of xp boost
+# more types of coin boost
+# more collectible operating system (not available on shop. based on XP too) 
+# more robot upgrades (some from shop)
+# achievements
+# robot maintenance system
+# tax evader 
+# a rare scenario of robot explosion, computer explosion
+# electronics repairing
+# more items in /find that can be used to create machines, to collect, to sell, to use, a sandbox system.
+# booster remover command
+# display badge on profile
+# remove badge from profile
+# view profile command (you or any)
+# slash command system for phone users | 
 
 @_bot.slash_command(description="Fight against another user's robot")
 async def fight(ctx, opponent: disnake.Member, money: int):
@@ -1307,7 +1340,7 @@ async def joke(ctx):
         await ctx.send(f'{setup}\n\n{punchline}')
 
 
-@fun.sub_command(description="Get bot's current latency")
+@util.sub_command(description="Get bot's current latency")
 async def ping(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Ping command", value="When the bot is running slow you can use this command to monitor latency of the bot and use it at the right time.")
@@ -1380,7 +1413,7 @@ async def image(ctx, query: str):
         await ctx.send(f"Sorry, I couldn't find any safe images for {query}")
 
 
-@fun.sub_command(description="Create and vote on polls.")
+@util.sub_command(description="Create and vote on polls.")
 async def poll(ctx, question: str, option1: str, option2: str, option3=None,
                option4=None, option5=None, option6=None, option7=None, option8=None, option9=None, option10=None):
     
@@ -1394,43 +1427,35 @@ async def poll(ctx, question: str, option1: str, option2: str, option3=None,
         if option is not None:
             options.append(option)
 
-    # Create the poll message
     poll_message = f"**{question}**\n\n"
     for i, option in enumerate(options):
         poll_message += f"{i+1}. {option}\n"
 
-    # Send the poll message
     message = await ctx.send(poll_message)
 
-    # Add reaction choices to the poll message
     for i in range(len(options)):
         await message.add_reaction(f"{i+1}\u20e3")
 
-    # Define a check to filter out reactions from the bot and only count user reactions
     def check_reaction(reaction, user):
         return not user.bot and reaction.message == message
 
-    # Wait for reactions and count the votes for each option
     votes = [0] * len(options)
     while True:
         reaction, user = await ctx.bot.wait_for('reaction_add', check=check_reaction)
 
-        # If the user removed their reaction, subtract their vote
         if reaction.emoji in [f"{i+1}\u20e3" for i in range(len(options))]:
             option_index = int(reaction.emoji[:-1]) - 1
             votes[option_index] += 1
         elif reaction.emoji == '❌':
             break
 
-    # Create the results message
     results_message = f"**Poll results for '{question}':**\n\n"
     for i, option in enumerate(options):
         results_message += f"{option}: {votes[i]} vote(s)\n"
 
-    # Send the results message
     await ctx.send(results_message)
 
-@fun.sub_command(description="Show avatar of a user")
+@util.sub_command(description="Show avatar of a user")
 async def avatar(ctx, user: disnake.User = None):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -2088,7 +2113,7 @@ async def topic(ctx):
     embed.add_field(name='Topic', value=random.choice(lines))
     await ctx.send(embed=embed)
 
-@fun.sub_command(description="Get user information")
+@util.sub_command(description="Get user information")
 async def userinfo(ctx, user: disnake.Member):
         embed = disnake.Embed(color=random.choice(colors))
         embed.add_field(name="User information command", value="To get some basic information about any user account including Status, ID and account creation date, PFP. This is a basic utility command.")
@@ -2478,8 +2503,6 @@ class Software(disnake.ui.View):
             embed = disnake.Embed(color=random.choice(colors))
             embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
             await interaction.response.send_message(embed=embed)
-
-#CoolPreTeensAlt#9914   
 
 async def disnakebot(user):
     with open('dbot.json', 'r', encoding='utf-8') as file:
@@ -3426,7 +3449,7 @@ async def unmute(ctx, user: disnake.Member):
         await ctx.channel.set_permissions(user, send_messages=True)
         await ctx.send(f"{user.mention} has been unmuted")
 
-@fun.sub_command(description="Get server information")
+@util.sub_command(description="Get server information")
 async def serverinfo(ctx):
         embed = disnake.Embed(color=random.choice(colors))
         embed.add_field(name="Server information command", value="A utility command can be used to get some basic information about the server command is ran in. It can provide Server name, Server ID, Owner name, Owner ID, Member count, Server region, Roles, Date created and server PFP.")
@@ -4196,7 +4219,7 @@ class VerificationButton(disnake.ui.Button):
         await member.add_roles(verified_role)
         await interaction.response.edit_message(content=f"{member.mention} has been verified!")
 
-@_bot.slash_command(name="verify", description="Verify yourself with a button")
+@util.sub_command(name="verify", description="Verify yourself with a button")
 async def verification_command(ctx):
     await ctx.send("Verifying you...", ephemeral=True)
     verified_role = disnake.utils.get(ctx.guild.roles, name="Verified")
@@ -4900,4 +4923,4 @@ async def on_message(message):
 
     await _bot.process_commands(message)
 
-_bot.run("MTA5NTM0ODc3Mjg4NTc2MjE3OQ.GvjV9V.QQqX29z5VLOMqo-8R8f-KaD7X4Kdf1vrI6p4kw")      
+_bot.run("MTA4Mjk3MTMxNjQ1OTY3NTcyOA.GgP2sx.6vEiQs8apsdibATRP9PDdPfeODgiuX3TxQCev8")      
