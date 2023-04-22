@@ -3977,12 +3977,14 @@ async def learn_error(ctx, error):
             tim = datetime.timedelta(seconds = error.retry_after)
             await ctx.send(f"Wait for **{tim}** before running this command again") 
 
-@_bot.slash_command(description="Get top 10 richest people")
-async def top(ctx,x=10):
+@_bot.slash_command(description="Get top richest people")
+async def top(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Top 10 leaderboard command", value="This command can be used to get top 10 *Global* Leaderboard.")
     await send_first_time_message(ctx, "top", embed)  
+
+    x = 10
 
     await open_account(ctx)
     with open('account.json', 'r', encoding='utf-8') as file:
@@ -4003,8 +4005,7 @@ async def top(ctx,x=10):
     index = 1
     for amt in total:
         id_ = leader_board[amt]
-        print(id_)
-        member = await _bot.fetch_user(id_)
+        member = id_
         embed.add_field(name=f'{index}. {member}', value=f'{amt} <:nerd_coin:992265892756979735>', inline=False)
         if index == x:
             break
