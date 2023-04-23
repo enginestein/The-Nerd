@@ -351,7 +351,7 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Fun commands")
 
-        commands = [("</fun:1095935058776428615>", "`The parent command to access all the below commands for ease of phone users..`", False)
+        commands = [("</fun:1095935058776428615>", "`The parent command to access all the below commands for ease of phone users..`", False),
               ("/hug <user>", "`Hug someone`", False),
               ("/meme", "`Get an meme`", False),
               ("/pmeme", "`Get an programming meme`", False),
@@ -471,7 +471,7 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Moderating commands")
 
-        commands = [("</mod:1095937461995180052>", "`Command to access moderator commands for ease of phone users.`", False)
+        commands = [("</mod:1095937461995180052>", "`Command to access moderator commands for ease of phone users.`", False),
               ("/ban <user>", "`Ban someone`", False),
               ("/mute <user> <mutetime (optional)>", "`Mute someone`", False),
               ("/unmute <user>", "`Unmute someone`", False),
@@ -926,6 +926,7 @@ async def markett(user):
 component_list = ['Screws', 'Fighter exoskeleton', 'Wires', 'Mech gun', 'Exoskeleton armour plate', 'Titanium fighter system', 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190]
 
 @_bot.slash_command(description="Find items to create robot")
+@commands.cooldown(1, 1800, commands.BucketType.user)
 async def find(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Item finding command", value="This command can be used to find items to build a /robot. Some times you get nerd coins instead of items used for robot. you can also /upgrade your robot after collecting necessary items.")
@@ -948,6 +949,14 @@ async def find(ctx):
     with open('account.json', 'w') as file:
         json.dump(data, file)
 
+
+@find.error
+async def find_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        tim = datetime.timedelta(seconds = error.retry_after)
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.add_field(name='Command on cooldown', value=f"Wait for **{tim}** before running this command again")
+        await ctx.send(embed=embed) 
 
 async def robo(user):
     with open('robot.json', 'r', encoding='utf-8') as file:
@@ -1006,6 +1015,7 @@ async def stream_error(ctx, error):
         embed = disnake.Embed(color=random.choice(colors))
         embed.add_field(name='Command on cooldown', value=f"Wait for **{tim}** before running this command again")
         await ctx.send(embed=embed) 
+
 
 @_bot.slash_command(description="Sell all items in your inventory")
 async def sell_all(ctx):
@@ -1185,8 +1195,6 @@ class Upgrade(disnake.ui.View):
         else:
             await interaction.response.send_message("You need an Mech gun for this upgrade")
 
-
-
 @_bot.slash_command(description="Upgrade your robot")
 async def upgrade(ctx):
     embed = disnake.Embed(color=random.choice(colors))
@@ -1195,7 +1203,6 @@ async def upgrade(ctx):
     
     await ctx.send(view=Upgrade())
     
-
 class Fighter:
     def __init__(self, name, hp, armor):
         self.name = name
@@ -1234,7 +1241,46 @@ class Fighter:
 # display badge on profile
 # remove badge from profile
 # view profile command (you or any)
-# slash command system for phone users | 
+# slash command system for phone users (done)
+
+@_bot.slash_command(description="Get current season and updates")
+async def season(ctx):
+    embed = disnake.Embed(color=random.choice(colors))
+    embed.add_field(name="Season 1", value="Bot is newly launched!")
+    embed.set_footer(text="The updates and seasons will be updated here.")
+    await ctx.send(embed=embed)
+
+@_bot.slash_command(description="Vote for The Nerd to get prizes!")
+async def vote(ctx):
+    pass
+
+@_bot.slash_command(description="Remove any booster")
+async def remove_booster(ctx, booster_code):
+    pass
+
+@_bot.slash_command(description="Get your achievements")
+async def achievements(ctx):
+    pass
+
+@_bot.slash_command(description="Repair your electronics item and robots")
+async def repair(ctx, item_code):
+    pass
+
+@_bot.slash_command(description="Display an badge on your profile")
+async def badge(ctx, badge_code):
+    pass
+
+@_bot.slash_command(description="Look at your or any other user's profile")
+async def profile(ctx, user: disnake.Member):
+    pass
+
+@_bot.slash_command(description="Maintain your robot")
+async def maintain(ctx):
+    pass
+
+@_bot.slash_command(description="Start an adventure")
+async def adventure(ctx):
+    pass
 
 @_bot.slash_command(description="Fight against another user's robot")
 async def fight(ctx, opponent: disnake.Member, money: int):
@@ -3298,7 +3344,7 @@ async def daily_error(ctx, error):
         await ctx.send(embed=embed) 
 
 @monthly.error
-async def daily_error(ctx, error):
+async def monthly_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         tim = datetime.timedelta(seconds = error.retry_after)
         embed = disnake.Embed(color=random.choice(colors))
@@ -3306,7 +3352,7 @@ async def daily_error(ctx, error):
         await ctx.send(embed=embed) 
 
 @weekly.error
-async def daily_error(ctx, error):
+async def monthly_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         tim = datetime.timedelta(seconds = error.retry_after)
         embed = disnake.Embed(color=random.choice(colors))
