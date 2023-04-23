@@ -4924,4 +4924,4 @@ async def on_message(message):
 
     await _bot.process_commands(message)
 
-_bot.run("MTA4Mjk3MTMxNjQ1OTY3NTcyOA.GgP2sx.6vEiQs8apsdibATRP9PDdPfeODgiuX3TxQCev8")      
+_bot.run("MTA5NTM0ODc3Mjg4NTc2MjE3OQ.GZ24Xq.PPeSWXgu7b2UOw29wfwyWzVNW6u4_KebYhtkkc")      
