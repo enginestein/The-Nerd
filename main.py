@@ -127,7 +127,7 @@ async def log_reaction(reaction, user, type):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
     
-    if data[str(reaction.message.guild.id)]['msg_id'][0] is not None:
+    if data[str(reaction.message.guild.id)]['msg_id'] != [:
         message_log_id = data[str(reaction.message.guild.id)]['msg_id'][0]
     else:
         pass
