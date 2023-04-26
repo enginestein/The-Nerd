@@ -2772,6 +2772,8 @@ class Attack(disnake.ui.View):
 
         f[str(interaction.user.id)]["Programs"].remove("Ransomware")
 
+        with open('account.json', 'w') as f:
+            json.dump(file, f)
         with open("login.json", 'w', encoding='utf-8') as r:
             json.dump(f, r)
             
@@ -2907,6 +2909,9 @@ class Attack(disnake.ui.View):
             await interaction.response.send_message("You don't have a computer, assemble one, make an program then run it")
 
         f[str(interaction.user.id)]["Programs"].remove("Spyware")
+
+        with open('account.json', 'w') as f:
+            json.dump(data2, f)
 
         with open("login.json", 'w', encoding='utf-8') as r:
             json.dump(f, r)            
