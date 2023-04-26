@@ -2760,8 +2760,8 @@ class Attack(disnake.ui.View):
                         file[str(interaction.user.id)]['Bank'] -= 5000
                         with open('account.json', 'w') as f:
                             json.dump(file, f)
-              else:
-             		await interaction.response.send_message("Victim has no geek coins")    
+                else:
+                    interaction.reponse.send_message("Victim has no geek coins")
             
             else:
                 embed = disnake.Embed(color=random.choice(colors))
@@ -2985,7 +2985,8 @@ class Software(disnake.ui.View):
                     json.dump(d, login)
                    
                 with open('account.json', 'w', encoding='utf-8') as f:
-			json.dump(file, f)
+                    json.dump(file, f)
+            
             else:
                 embed = disnake.Embed(color=random.choice(colors))
                 embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
@@ -3011,8 +3012,9 @@ class Software(disnake.ui.View):
                 with open('login.json', 'w') as login:
                     json.dump(d, login)
                     
-               	with open('account.json', 'w', encoding='utf-8') as f:
-		    json.dump(file, f)
+                with open('account.json', 'w', encoding='utf-8') as f:
+                    json.dump(file, f)
+            
             else:
                 embed = disnake.Embed(color=random.choice(colors))
                 embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
@@ -3038,9 +3040,10 @@ class Software(disnake.ui.View):
                 file[str(interaction.user.id)]["Inventory"].remove("IDE <:VSCode:1100328300292882473>")
                 with open('login.json', 'w') as login:
                     json.dump(d, login)
-                    
+
                 with open('account.json', 'w', encoding='utf-8') as f:
-		    json.dump(file, f)
+                    json.dump(file, f)
+            
             else:
                 embed = disnake.Embed(color=random.choice(colors))
                 embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
