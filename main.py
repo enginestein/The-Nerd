@@ -512,7 +512,7 @@ class Help(disnake.ui.View):
               ("/delete_account", "`Delete your account`", False),
               ("/season", "`Get current season and updates`", False),
               ("/scrap", "`Sell your electrical items collected from /find.`", False),
-              ("/compare", "`Compare yourself with any other user.`", False)
+              ("/compare", "`Compare yourself with any other user.`", False),
               ("/top_xp", "`Get top 10 users with the most XP globally..`", False),
               ("/local_xp", "`Get local XP leaderboard`", False),
               ("/local_money", "`Get local money leaderboard`", False),
@@ -2706,14 +2706,15 @@ class Attack(disnake.ui.View):
                 f = json.load(r)
             
             if "Ransomware" in f[str(interaction.user.id)]["Programs"]:
-                possiblities = ["pc_locked", "pc_locked_not", "reverse_shelled"]
-                geek_coins_amt = random.randrange(file[str(self.member.id)]['Crypto'])
+                if file[str(self.member.id)]['Crypto'] != 0:
+                 possiblities = ["pc_locked", "pc_locked_not", "reverse_shelled"]
+                 geek_coins_amt = random.randrange(file[str(self.member.id)]['Crypto'])
 
-                inv = file[str(interaction.user.id)]['Inventory']
-                inv2 = file[str(self.member.id)]['Inventory']
-                c = random.choice(possiblities)
+                 inv = file[str(interaction.user.id)]['Inventory']
+                 inv2 = file[str(self.member.id)]['Inventory']
+                 c = random.choice(possiblities)
                 
-                if c == "pc_locked":
+                 if c == "pc_locked":
                     if geek_coins_amt != 0:
                         file[str(interaction.user.id)]['Crypto'] += geek_coins_amt
                         file[str(self.member.id)]['Inventory'] -= geek_coins_amt
@@ -2722,7 +2723,7 @@ class Attack(disnake.ui.View):
                         await interaction.response.send_message(embed=embed)
                         embed1 = disnake.Embed(color=random.choice(colors))
                         embed1.add_field(name="Alert", value=f"{interaction.user} attacked on you with ransomware.")
-                        self.member.send(embed=embed1)
+                        await self.member.send(embed=embed1)
                         with open('account.json', 'w') as f:
                             json.dump(file, f)
                         
@@ -2731,27 +2732,27 @@ class Attack(disnake.ui.View):
                         embed.add_field(name="Failed", value="Victim doesnt have any geek coins")
                         await interaction.response.send_message(embed=embed)
 
-                elif c == "pc_locked_not":
+                 elif c == "pc_locked_not":
                     embed = disnake.Embed(color=random.choice(colors))
                     embed.add_field(name="Failed", value="Ransomware was not able to lock programs")
                     await interaction.response.send_message(embed=embed)
 
-                elif "Antivirus <:blurple_shield:1001104190875107429>" in inv2:
+                 elif "Antivirus <:blurple_shield:1001104190875107429>" in inv2:
                     embed = disnake.Embed(color=random.choice(colors))
                     embed.add_field(name="Failed", value="Victim had antivirus")
                     await interaction.response.send_message(embed=embed)
                     embed1 = disnake.Embed(color=random.choice(colors))
                     embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack on you with ransomware.")
-                    self.member.send(embed=embed1)
+                    await self.member.send(embed=embed1)
 
-                elif c == 'reverse_shelled':
+                 elif c == 'reverse_shelled':
                     if "Antivirus <:blurple_shield:1001104190875107429>" in inv:
                         embed = disnake.Embed(color=random.choice(colors))
                         embed.add_field(name="Failed", value="The victim reverse shelled on you but glad you had antivirus")
                         await interaction.response.send_message(embed=embed)
                         embed1 = disnake.Embed(color=random.choice(colors))
                         embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack on you with ransomware.")
-                        self.member.send(embed=embed1)
+                        await self.member.send(embed=embed1)
                     else:
                         embed = disnake.Embed(color=random.choice(colors))
                         embed.add_field(name="Failed", value="victim wasn't a victim, now you are a victim, they reverse shelled on you, you paid them 5000 <:nerd_coin:992265892756979735>")
@@ -2759,7 +2760,9 @@ class Attack(disnake.ui.View):
                         file[str(interaction.user.id)]['Bank'] -= 5000
                         with open('account.json', 'w') as f:
                             json.dump(file, f)
-                
+              else:
+             		await interaction.response.send_message("Victim has no geek coins")    
+            
             else:
                 embed = disnake.Embed(color=random.choice(colors))
                 embed.add_field(name="Failed", value="You don't have an ransomware, create it using /software")
@@ -2807,7 +2810,7 @@ class Attack(disnake.ui.View):
 
                                 embed1 = disnake.Embed(color=random.choice(colors))
                                 embed1.add_field(name="Alert", value=f"{interaction.user} has attacked you with spyware.")
-                                self.member.send(embed=embed1)
+                                await self.member.send(embed=embed1)
                             else:
                                 embed = disnake.Embed(color=random.choice(colors))
                                 embed.add_field(name="Failed", value='Victim has no money')
@@ -2815,7 +2818,7 @@ class Attack(disnake.ui.View):
 
                                 embed1 = disnake.Embed(color=random.choice(colors))
                                 embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
-                                self.member.send(embed=embed1)
+                                await self.member.send(embed=embed1)
 
                         else:
                             embed = disnake.Embed(color=random.choice(colors))
@@ -2825,7 +2828,7 @@ class Attack(disnake.ui.View):
                             
                             embed1 = disnake.Embed(color=random.choice(colors))
                             embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
-                            self.member.send(embed=embed1)
+                            await self.member.send(embed=embed1)
 
                     else:
                         embed = disnake.Embed(color=random.choice(colors))
@@ -2835,7 +2838,7 @@ class Attack(disnake.ui.View):
                         
                         embed1 = disnake.Embed(color=random.choice(colors))
                         embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
-                        self.member.send(embed=embed1)
+                        await self.member.send(embed=embed1)
                 else:
                     embed = disnake.Embed(color=random.choice(colors))
                     embed.add_field(name="Failed", value="You don't have an spyware, create it using /software")
@@ -2864,7 +2867,7 @@ class Attack(disnake.ui.View):
                                 
                                 embed1 = disnake.Embed(color=random.choice(colors))
                                 embed1.add_field(name="Alert", value=f"{interaction.user} has attacked you with spyware.")
-                                self.member.send(embed=embed1)
+                                await self.member.send(embed=embed1)
                             else:
                                 embed = disnake.Embed(color=random.choice(colors))
                                 embed.add_field(name="Failed", value='Victim has no money')
@@ -2873,7 +2876,7 @@ class Attack(disnake.ui.View):
                                 
                                 embed1 = disnake.Embed(color=random.choice(colors))
                                 embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
-                                self.member.send(embed=embed1)
+                                await self.member.send(embed=embed1)
 
                         else:
                             embed = disnake.Embed(color=random.choice(colors))
@@ -2883,7 +2886,7 @@ class Attack(disnake.ui.View):
                             
                             embed1 = disnake.Embed(color=random.choice(colors))
                             embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
-                            self.member.send(embed=embed1)
+                            await self.member.send(embed=embed1)
                     else:
                         embed = disnake.Embed(color=random.choice(colors))
                         embed.add_field(name="Failed", value="Victim had an antivirus")
@@ -2892,7 +2895,7 @@ class Attack(disnake.ui.View):
                         
                         embed1 = disnake.Embed(color=random.choice(colors))
                         embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
-                        self.member.send(embed=embed1)
+                        await self.member.send(embed=embed1)
                 else:
                     embed = disnake.Embed(color=random.choice(colors))
                     embed.add_field(name="Failed", value="You don't have an spyware, create it using /software")
@@ -2926,7 +2929,7 @@ class Attack(disnake.ui.View):
                     
                     embed1 = disnake.Embed(color=random.choice(colors))
                     embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with malware.")
-                    self.member.send(embed=embed1)
+                    await self.member.send(embed=embed1)
                 
                 else:
 
@@ -2941,7 +2944,7 @@ class Attack(disnake.ui.View):
 
                         embed1 = disnake.Embed(color=random.choice(colors))
                         embed1.add_field(name="Alert", value=f"{interaction.user} attacked you with malware.")
-                        self.member.send(embed=embed1)
+                        await self.member.send(embed=embed1)
 
                         with open('account.json', 'w') as f:
                             json.dump(file, f)
@@ -2980,6 +2983,9 @@ class Software(disnake.ui.View):
                 file[str(interaction.user.id)]["Inventory"].remove("IDE <:VSCode:1100328300292882473>")
                 with open('login.json', 'w') as login:
                     json.dump(d, login)
+                   
+                with open('account.json', 'w', encoding='utf-8') as f:
+			json.dump(file, f)
             else:
                 embed = disnake.Embed(color=random.choice(colors))
                 embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
@@ -3004,6 +3010,9 @@ class Software(disnake.ui.View):
                 file[str(interaction.user.id)]["Inventory"].remove("IDE <:VSCode:1100328300292882473>")
                 with open('login.json', 'w') as login:
                     json.dump(d, login)
+                    
+               	with open('account.json', 'w', encoding='utf-8') as f:
+		    json.dump(file, f)
             else:
                 embed = disnake.Embed(color=random.choice(colors))
                 embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
@@ -3029,6 +3038,9 @@ class Software(disnake.ui.View):
                 file[str(interaction.user.id)]["Inventory"].remove("IDE <:VSCode:1100328300292882473>")
                 with open('login.json', 'w') as login:
                     json.dump(d, login)
+                    
+                with open('account.json', 'w', encoding='utf-8') as f:
+		    json.dump(file, f)
             else:
                 embed = disnake.Embed(color=random.choice(colors))
                 embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
@@ -3619,17 +3631,15 @@ async def xp_boost(message):
 
 @computing.sub_command(description="Make softwares which will be added")
 async def software(ctx):
-    with open('account.json', 'r', encoding='utf-8') as file:
-        data = json.load(file)
-    
-    if "IDE <:VSCode:1100328300292882473>" in data[str(ctx.author.id)]["Inventory"]:
+        with open('account.json', 'r', encoding='utf-8') as file:
+             data = json.load(file)
+
         embed = disnake.Embed(color=random.choice(colors))
         embed.add_field(name="Software creation command", value="You can create softwares using this command which can be used to earn <:nerd_coin:992265892756979735> or steal <:nerd_coin:992265892756979735> from someone.")
         await send_first_time_message(ctx, "software", embed)  
     
         await ctx.send(view=Software())
-    else:
-        await ctx.send("You don't have an IDE")
+  
 
 @computing.sub_command(description="Use your spyware, ransomware and malware to gain items and earn money")
 async def attack(ctx, member: disnake.Member):
