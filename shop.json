@@ -83,7 +83,7 @@
         "description": "An fast, efficient, smooth mechanical keyboard"
     },
 
-    "Mehcanical Gaming Keyboard <:gamer_keyboard:987622731614945330>": {
+    "Mechanical Gaming Keyboard <:gamer_keyboard:987622731614945330>": {
         "price": 50000,
         "code": "mgk",
         "description": "The best keyboard"
@@ -129,6 +129,31 @@
         "price": 17000,
         "code": "kali",
         "description": "Faster than windows 10, more storage, more fast"
-    }
+    },
 
-}
+    "Tax Evader <:pound_with_wings_v2:1100047030467973230>": {
+        "price": 20000,
+        "code": "kali",
+        "description": "Faster than windows 10, more storage, more fast"
+    },
+
+    "Antivirus Bypasser <:taxevader:1100046708982947993>": {
+        "price": 30000,
+        "code": "kali",
+        "description": "Faster than windows 10, more storage, more fast"
+    },
+
+
+    "Fuel ⛽": {
+        "price": 30000,
+        "code": "fuel",
+        "description": "Fuel for robot"
+    },
+
+
+    "IDE <:VSCode:1100328300292882473>": {
+        "price": 10000,
+        "code": "ide",
+        "description": "You need this to create some softwares"
+    }
+} 

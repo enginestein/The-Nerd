@@ -1,17 +1,16 @@
 from urllib.request import urlopen
 from arrays import hug_links
-import os
 import random
 import json
 import aiohttp
 import asyncio
-from colorama import Fore, Style
 import datetime
 import traceback
 from easy_pil import Editor, load_image_async, Font
-from disnake.ext import commands, tasks
+from disnake.ext import commands
 import disnake
 import cryptocompare
+import requests
 
 dictionary_check = True
 timer_check = True 
@@ -35,11 +34,67 @@ deleted_color = 0xF04747
 colors = [1752220, 1146986, 3066993, 2067276, 3447003, 2123412, 10181046, 7419530, 15277667, 15844367, 11342935, 12745742, 15105570, 11027200, 15158332, 10038562, 9807270, 9936031, 8359053, 12370112, 3426654, 2899536, 16776960]
 
 @_bot.slash_command()
+async def economy(ctx):
+    pass
+
+@_bot.slash_command()
 async def fun(ctx):
     pass
 
 @_bot.slash_command()
 async def mod(ctx):
+    pass
+
+@_bot.slash_command()
+async def util(ctx):
+    pass
+
+@_bot.slash_command()
+async def engineering(ctx):
+    pass
+
+@_bot.slash_command()
+async def shopping(ctx):
+    pass
+
+@_bot.slash_command()
+async def working(ctx):
+    pass
+
+@_bot.slash_command()
+async def geek(ctx):
+    pass
+
+@_bot.slash_command()
+async def computing(ctx):
+    pass
+
+@_bot.slash_command()
+async def taxing(ctx):
+    pass
+
+@_bot.slash_command()
+async def loaning(ctx):
+    pass
+
+@_bot.slash_command()
+async def learning(ctx):
+    pass
+
+@_bot.slash_command()
+async def miner(ctx):
+    pass
+
+@_bot.slash_command()
+async def leaderboard(ctx):
+    pass
+
+@_bot.slash_command()
+async def marketing(ctx):
+    pass
+
+@_bot.slash_command()
+async def crypto(ctx):
     pass
 
 async def send_first_time_message(ctx: disnake.ApplicationCommandInteraction, command_name: str, embed: disnake.Embed) -> bool:
@@ -192,7 +247,7 @@ async def weleave(ctx, channel_id, welcome_message, leaving_message):
         await ctx.send(embed=embed)
 
 @_bot.event
-async def on_member_join(member: disnake.Member):
+async def on_member_join(member):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
     
@@ -204,7 +259,7 @@ async def on_member_join(member: disnake.Member):
     await channel.send(embed=embed)
 
 @_bot.event
-async def on_member_remove(member: disnake.Member):
+async def on_member_remove(member):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
     
@@ -319,9 +374,7 @@ async def on_ready():
     print(f"Bot logged in as {_bot.user}")
     print("--------------------------------------------------------")
 
-@_bot.slash_command()
-async def util(ctx):
-    pass
+
 
 class Help(disnake.ui.View):
     def __init__(self):
@@ -332,7 +385,7 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Utility commands")
 
-        commands = [("</util:1095935058776428615>", "`The parent command to access all the below commands for ease of phone users..`", False),
+        commands = [("/util", "`The parent command to access all the below commands for ease of phone users..`", False),
                     ("/serverinfo", "`Get server info`", False),
                     ("/userinfo <user>", "`Get some information about an user`", False),
                     ("/avatar <user>", "`Get someone's avatar.`", False),
@@ -351,7 +404,7 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Fun commands")
 
-        commands = [("</fun:1095935058776428615>", "`The parent command to access all the below commands for ease of phone users..`", False),
+        commands = [("/fun", "`The parent command to access all the below commands for ease of phone users..`", False),
               ("/hug <user>", "`Hug someone`", False),
               ("/meme", "`Get an meme`", False),
               ("/pmeme", "`Get an programming meme`", False),
@@ -382,31 +435,31 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Economy commands")
 
-        commands = [("</bal:1095349253242626051>", "`Get your account balance`", False),
-              ("</inv:1095349253464916091>", "`Check your inventory`", False),
-              ("</shop:1095349253464916089>", "`Open shop`", False),
-              ("</buy:1095349253464916090>", "`Buy some items`", False),
-              ("</geek_coins:1095349253242626056>", "`Mine some geek_coins currency if you have an laptop`", False),
-              ("</redeem:1095349253242626057>", "`Redeem all of your geek coins currency`", False),
-              ("</jobs:1095349253242626055>", "`See the job board`", False),
-              ("</job:1095349253242626048>", "`Get an job`", False),
-              ("</subjects:1095349253464916092>", "`Subjects to study`", False),
-              ("</learn:1095349253464916093>", "`Learn any subject`", False),
-              ("</learnpoints:1095349253464916095>", "`Get your points in every subject`", False),
-              ("</top:1095349253464916094>", "`Get global leaderboard of richest person`", False),
-              ("</level:1095349253464916096>", "`See your level`", False),
-              ("</software:1095349252902879428>", "`Make softwares if you have software engineer job`", False),
-              ("</assemble:1095349252902879430>", "`Assemble an computer if you have enough requirements`", False),
-              ("</computer:1095349252902879431>", "`Open your computer, see your programs and os`", False),
-              ("</attack:1095349252902879429>", "`Use your spyware, malware or ransomware to earn money and items`", False),
-              ("</run:1095349252902879427>", "`Run your Discord bot, app or website`", False),
-              ("</daily:1095349253087449291>", "`Get your daily coins`", False),
-              ("</retire:1095349253242626049>", "`Retire from your current job`", False),
-              ("</delete:1095349252902879426>", "`Delete an program from your computer`", False),
-              ("</loan:1095349253804662790>", "`Get a loan`", False),
-              ("</pay:1095349253804662787>", "`Pay for loan`", False),
-              ("</laboratory:1095349253804662791>", "`Start and navigate your laboratory`", False),
-              ("</lend:1095349253804662789>", "`Check how much loan is left`", False)]
+        commands = [("/bal", "`Get your account balance`", False),
+              ("/inv", "`Check your inventory`", False),
+              ("/shop", "`Open shop`", False),
+              ("/buy", "`Buy some items`", False),
+              ("/geek_coins", "`Mine some geek_coins currency if you have an laptop`", False),
+              ("/redeem", "`Redeem all of your geek coins currency`", False),
+              ("/jobs", "`See the job board`", False),
+              ("/job", "`Get an job`", False),
+              ("/subjects", "`Subjects to study`", False),
+              ("/learn", "`Learn any subject`", False),
+              ("/learnpoints", "`Get your points in every subject`", False),
+              ("/gloal_top", "`Get global leaderboard of richest person`", False),
+              ("/level", "`See your level`", False),
+              ("/software", "`Make softwares if you have software engineer job`", False),
+              ("/assemble", "`Assemble an computer if you have enough requirements`", False),
+              ("/computer", "`Open your computer, see your programs and OS`", False),
+              ("/attack", "`Use your spyware, malware or ransomware to earn money and items`", False),
+              ("/run", "`Run your Discord bot, app or website`", False),
+              ("/daily", "`Get your daily coins`", False),
+              ("/retire", "`Retire from your current job`", False),
+              ("/delete", "`Delete an program from your computer`", False),
+              ("/loan", "`Get a loan`", False),
+              ("/pay", "`Pay for loan`", False),
+              ("/laboratory", "`Start and navigate your laboratory`", False),
+              ("/check_loan", "`Check how much loan is left`", False)]
         
         for name, value, inline in commands:
             embed.add_field(name=name, value=value, inline=inline)
@@ -418,31 +471,31 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Economy commands part 2")
 
-        commands = [("</send:1095349254018564196>", "`Send money to someone`", False),
-              ("</input_item:1096277615368749257>", "`Put item on market`", False),
-              ("</remove_item:1098187278955860070>", "`Remove an item from market`", False),
-              ("</stream:1098210140437631057>", "`Do a livestream to earn money.`", False),
-              ("</work:1095349253242626050>", "`DDo some work to earn money if you have a job.`", False),
-              ("</sell_all:1098210140437631058>", "`Sell your whole inventory.`", False),
-              ("</call:1098210140437631060>", "`Get a random tip if you have a phone.`", False),
-              ("</find:1098191090881941555>", "`find an item in an random place`", False),
-              ("</market:1096450278494060554>", "`Get global market of items`", False),
-              ("</buy_from_market:1096452643691429950>", "`Buy any item from global market, just input the seller ID and item number.`", False),
-              ("</gift:1096269468822425691>", "`Gift an item to someone`", False),
-              ("</weekly:1096269468822425692>", "`Get weekly coins`", False),
-              ("</monthly:1096269468822425693>", "`Get monthly coins`", False),
-              ("</rates:1095349252747694138>", "`Get crypto rates`", False),
-              ("</buy_crypto:1095349252747694139>", "`Buy an crypto coin`", False),
-              ("</redeem_crypto:1095349252747694140>", "`Redeem an crypto coin`", False),
-              ("</crypto_bal:1095349252902879422:>", "`Get crypto balance`", False),
-              ("</disassemble:1095349252747694136>", "`disassemble an computer, take out it's parts and sell them.`", False),
-              ("</sell:1095349252747694137>", "`Sell an item`", False),
-              ("</start_mine:1095349252747694133>", "`Start the mining career`", False),
-              ("</explore:1095349252747694134>", "`Explore new places for mining`", False),
-              ("</explored:1096720083318997073>", "`List all explored places`", False),
-              ("</mine:1096720083318997074>", "`Mine in an place`", False),
-              ("</elements:1096720083318997076>", "`Get all found elements`", False),
-              ("</sell_element:1096720083318997075>", "`Sell an element`", False)]
+        commands = [("/send", "`Send money to someone`", False),
+              ("/input_item", "`Put item on market`", False),
+              ("/remove_item", "`Remove an item from market`", False),
+              ("/stream", "`Do a livestream to earn money.`", False),
+              ("/work", "`Do some work to earn money if you have a job.`", False),
+              ("/sell_all", "`Sell your whole inventory.`", False),
+              ("/call", "`Get a random tip if you have a phone.`", False),
+              ("/find", "`find an item in an random place`", False),
+              ("/market", "`Get global market of items`", False),
+              ("/buy_from_market", "`Buy any item from global market, just input the seller ID and item number.`", False),
+              ("/gift", "`Gift an item to someone`", False),
+              ("/weekly", "`Get weekly coins`", False),
+              ("/monthly", "`Get monthly coins`", False),
+              ("/rates", "`Get crypto rates`", False),
+              ("/buy_crypto", "`Buy an crypto coin`", False),
+              ("/redeem_crypto", "`Redeem an crypto coin`", False),
+              ("/crypto_bal", "`Get crypto balance`", False),
+              ("/disassemble", "`disassemble an computer, take out it's parts and sell them.`", False),
+              ("/sell", "`Sell an item`", False),
+              ("/start_mine", "`Start the mining career`", False),
+              ("/explore", "`Explore new places for mining`", False),
+              ("/explored", "`List all explored places`", False),
+              ("/mine", "`Mine in an place`", False),
+              ("/elements", "`Get all found elements`", False),
+              ("/sell_element", "`Sell an element`", False)]
         
         for name, value, inline in commands:
             embed.add_field(name=name, value=value, inline=inline)
@@ -454,12 +507,16 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Economy commands part 3")
 
-        commands = [("</robot:1096450278494060555>", "`Build your robot`", False),
-              ("</upgrade:1096450278494060556>", "`Upgrade your robot`", False),
-              ("</fight:1096665954408214599>", "`Fight with someone if you have a robot and they have a robot`", False),
-              ("</tax:1098468159679381584>", "`Check how much of your tax is left`", False),
-              ("</pay_tax:1098468159679381585>", "`Pay your taxes`", False),
-              ("</delete_account:1098210140437631059>", "`Delete your account`", False)]
+        commands = [("/tax", "`Check how much of your tax is left`", False),
+              ("/pay_tax", "`Pay your taxes`", False),
+              ("/delete_account", "`Delete your account`", False),
+              ("/season", "`Get current season and updates`", False),
+              ("/scrap", "`Sell your electrical items collected from /find.`", False),
+              ("/compare", "`Compare yourself with any other user.`", False)
+              ("/top_xp", "`Get top 10 users with the most XP globally..`", False),
+              ("/local_xp", "`Get local XP leaderboard`", False),
+              ("/local_money", "`Get local money leaderboard`", False),
+              ("/buy_robot", "`Get local money leaderboard`", False)]
         
         for name, value, inline in commands:
             embed.add_field(name=name, value=value, inline=inline)
@@ -471,7 +528,7 @@ class Help(disnake.ui.View):
         embed = disnake.Embed(color=random.choice(colors))
         embed.set_author(name="Moderating commands")
 
-        commands = [("</mod:1095937461995180052>", "`Command to access moderator commands for ease of phone users.`", False),
+        commands = [("/mod", "`Command to access moderator commands for ease of phone users.`", False),
               ("/ban <user>", "`Ban someone`", False),
               ("/mute <user> <mutetime (optional)>", "`Mute someone`", False),
               ("/unmute <user>", "`Unmute someone`", False),
@@ -491,7 +548,7 @@ class Help(disnake.ui.View):
         await interaction.response.send_message(embed=embed)
 
 
-@_bot.slash_command(description="Check your taxes")
+@taxing.sub_command(description="Check your taxes")
 async def tax(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Tax command", value="This command is used to check your taxes. Your tax will only be visible and payable on 30th day, till then earn money. You have to pay tax on 30th day, if you don't pay and you have money in your account then tax will be paid automatically. If not having money, your inventory will be cleared. you can /pay_tax.")
@@ -544,8 +601,12 @@ async def tex(ctx):
     with open('taxes.json', 'w') as file2:
         json.dump(data2, file2)       	
 
-async def tax_payment_process(ctx):
+async def tax_alert(ctx):
     await asyncio.sleep(2592000)
+    await ctx.author.send("Remember to pay your tax in next 24 hours.")
+
+async def tax_payment_process(ctx):
+    await asyncio.sleep(2678400)
     
     with open('account.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
@@ -553,20 +614,30 @@ async def tax_payment_process(ctx):
     with open('taxes.json', 'r', encoding='utf-8') as file2:
         data2 = json.load(file2)  
 
-    if data2[str(ctx.author.id)]['Tax'] != 0:
-        if data[str(ctx.author.id)]['Bank'] != 0:
-            data[str(ctx.author.id)]['Bank'] -= data2[str(ctx.author.id)]['Tax']
-            data2[str(ctx.author.id)]['Tax'] *= 0
+    if "Tax Evader <:pound_with_wings_v2:1100047030467973230>" not in data[str(ctx.author.id)]["Inventory"]:
+        if data2[str(ctx.author.id)]['Tax'] != 0:
+            if data[str(ctx.author.id)]['Bank'] != 0:
+                data[str(ctx.author.id)]['Bank'] -= data2[str(ctx.author.id)]['Tax']
+                data2[str(ctx.author.id)]['Tax'] *= 0
 
-            await ctx.send("You didn't pay taxes in a month, your tax is automatically taken from your account.")
+                await ctx.author.send("You didn't pay taxes in a month, your tax is automatically taken from your account.")
+            else:
+                data[str(ctx.author.id)]['Inventory'].clear()
+                data2[str(ctx.author.id)]['Tax'] *= 0
+                await ctx.author.send("You didn't pay taxes in a month, your inventory is cleared.")   
         else:
-            data[str(ctx.author.id)]['Inventory'].clear()
-            data2[str(ctx.author.id)]['Tax'] *= 0
-            await ctx.send("You didn't pay taxes in a month, your inventory is cleared.")   
+            pass      
     else:
-        pass                   
-        
-@_bot.slash_command(description="Pay your taxes")
+        pass             
+        data[str(ctx.author.id)]['Inventory'].remove("Tax Evader <:pound_with_wings_v2:1100047030467973230>")
+
+    with open('taxes.json', 'w') as file2:
+        json.dump(data2, file2)
+
+    with open('account.json', 'w') as file:
+        json.dump(data, file)
+
+@taxing.sub_command(description="Pay your taxes")
 async def pay_tax(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Tax payment command", value="This command can be used to pay tax, you can check your taxes using /tax.")
@@ -657,29 +728,34 @@ async def trivia(ctx, category: int = 0, difficulty: str = 'easy'):
 
     await ctx.send(embed=embed)
 
-@_bot.slash_command(description="Display items in market")
+@marketing.sub_command(description="Display items in market")
 async def market(ctx):
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Market command", value="This command is used to display global market, global market is a place where users from all the server around discord who use this bot are selling their items at their own price. You can buy items from here too. To put your own items you can use /input_item, to buy an item you can use /buy_from_market.")
-    await send_first_time_message(ctx, "market", embed)   
+    embed1 = disnake.Embed(color=random.choice(colors))
+    embed1.add_field(name="Market command", value="This command is used to display global market, global market is a place where users from all the server around discord who use this bot are selling their items at their own price. You can buy items from here too. To put your own items you can use /input_item, to buy an item you can use /buy_from_market.")
+    await send_first_time_message(ctx, "market", embed1)   
     
     with open("market.json", "r", encoding="utf-8") as file:
         data = json.load(file)
 
+    embed=disnake.Embed(color = random.choice(colors))
+
     items = []
-    for seller in data:
+    for seller_id in data:
+        seller = await _bot.fetch_user(int(seller_id))
         for i in range(1, 5):
-            item = data[seller]["Item{}".format(i)]
-            price = data[seller]["Item{}p".format(i)]
+            item = data[seller_id]["Item{}".format(i)]
+            price = data[seller_id]["Item{}p".format(i)]
             if item:
-                items.append(f"Item: {item}, Price: {price}, Seller ID: {seller}")
+                items.append(f"• **Item:** {item}\n  **Price:** {price}\n  **Seller:** {seller.name}#{seller.discriminator} ({seller_id})\n")
 
     if items:
-        await ctx.send("Here are the items currently available in the market:\n" + "\n".join(items))
+        embed.add_field(name="Items in the Market", value="\n".join(items))
+        await ctx.send(embed=embed)
     else:
-        await ctx.send("There are currently no items available in the market.")
+        embed.add_field(name="No items in the market", value="There are currently no items available in the market.")
+        await ctx.send(embed=embed)
 
-@_bot.slash_command(description="Buy an item from the market")
+@marketing.sub_command(description="Buy an item from the market")
 async def buy_from_market(ctx, seller_id: str, item_num: int):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -708,22 +784,25 @@ async def buy_from_market(ctx, seller_id: str, item_num: int):
         item = i
 
     if item in item_name:
-        account_data[str(ctx.author.id)]["Inventory"].append(item)
-        market_data[seller_id][item_key].clear()
-        market_data[seller_id][item_price_key] *= 0
-        account_data[str(ctx.author.id)]["Bank"] -= item_price
-        account_data[str(seller_id)]["Bank"] += item_price
+        if len(account_data[str(ctx.author.id)]["Inventory"]) < 20:
+            account_data[str(ctx.author.id)]["Inventory"].append(item)
+            market_data[seller_id][item_key].clear()
+            market_data[seller_id][item_price_key] *= 0
+            account_data[str(ctx.author.id)]["Bank"] -= item_price
+            account_data[str(seller_id)]["Bank"] += item_price
 
-        with open("market.json", "w", encoding="utf-8") as file:
-            json.dump(market_data, file)
+            with open("market.json", "w", encoding="utf-8") as file:
+                json.dump(market_data, file)
             
-        with open("account.json", "w", encoding="utf-8") as file:
-            json.dump(account_data, file)
+            with open("account.json", "w", encoding="utf-8") as file:
+                json.dump(account_data, file)
 
-        embed = disnake.Embed(color = random.choice(colors))
-        embed.add_field(name="Transaction successful", value=f"You have successfuly bought {item} from @<{seller_id}>")
+            embed = disnake.Embed(color = random.choice(colors))
+            embed.add_field(name="Transaction successful", value=f"You have successfuly bought {item} from @<{seller_id}>")
 
-        await ctx.send(embed=embed)
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("You don't have enough space in your inventory.")
         
     else:
         await ctx.send("That item is not available")
@@ -745,14 +824,17 @@ class GiftConfirmView(disnake.ui.View):
         with open("account.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
 
-        data[str(self.receiver.id)]["Inventory"].append(self.item_name)
-        with open("account.json", 'w') as file:
-            json.dump(data, file)
+        if len(data[str(self.receiver.id)]["Inventory"]) < 20:
+            data[str(self.receiver.id)]["Inventory"].append(self.item_name)
+            with open("account.json", 'w') as file:
+                json.dump(data, file)
 
-        color = random.choice(colors)
-        embed = disnake.Embed(color=color)
-        embed.add_field(name="Success", value=f"{self.receiver.mention} has accepted your gift of {self.item_name.title()}!")
-        await self.ctx.send(embed=embed, view=None)
+            color = random.choice(colors)
+            embed = disnake.Embed(color=color)
+            embed.add_field(name="Success", value=f"{self.receiver.mention} has accepted your gift of {self.item_name.title()}!")
+            await self.ctx.send(embed=embed, view=None)
+        else:
+            await self.ctx.send(f"{self.reciever} does not have enough space in their inventory.")
 
     @disnake.ui.button(label="Decline Gift", style=disnake.ButtonStyle.red)
     async def decline_gift(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
@@ -761,7 +843,7 @@ class GiftConfirmView(disnake.ui.View):
         embed.add_field(name="Gift Declined", value=f"{self.receiver.mention} has declined your gift of {self.item_name.title()}.")
         await self.ctx.send(embed=embed, view=None)
 
-@_bot.slash_command(description="Gift someone an item")
+@economy.sub_command(description="Gift someone an item")
 async def gift(ctx, item_code, member: disnake.User):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -792,18 +874,13 @@ async def gift(ctx, item_code, member: disnake.User):
         else:
             pass
 
-@_bot.slash_command(description="Display items in market")
+@marketing.sub_command(description="Display items in market")
 async def input_item(ctx, item: str, price: int):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Inputting item into market command", value="You can use the exact item name to input an item into market. The item should be in your inventory. You can put any price you want. You can access market using /market")
     await send_first_time_message(ctx, "input_item", embed)   
-
-    await markett(ctx)
     with open("account.json", 'r', encoding='utf-8') as file:
         data = json.load(file)
-
-    with open("shop.json", 'r', encoding='utf-8') as file2:
-        data2 = json.load(file2)
 
     with open("market.json", 'r', encoding='utf-8') as file3:
         data3 = json.load(file3)
@@ -867,69 +944,76 @@ async def input_item(ctx, item: str, price: int):
     else:
         await ctx.send("You don't have that item")
 
-@_bot.slash_command(descripton="Remove an item from market")
+@marketing.sub_command(descripton="Remove an item from market")
 async def remove_item(ctx, item):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Removing item from market command", value="You can use this command to remove any item from market.")
     await send_first_time_message(ctx, "remove_item", embed)   
 
-    await markett(ctx)
+    with open('account.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    
     with open("market.json", 'r', encoding='utf-8') as file3:
-        data3 = json.load(file3)
+        file3.seek(0)
+        data3 = json.loads(file3.read())
 
     if item in data3[str(ctx.author.id)]['Item1']:
         data3[str(ctx.author.id)]['Item1'].clear()
         data3[str(ctx.author.id)]['Item1p'] * 0
+        data[str(ctx.author.id)]["Inventory"].append(item)
 
-        await ctx.send(f"You have remove {item} from market")
+        await ctx.send(f"You have removed {item} from market")
     
-    elif item in data3[str(ctx.author.id)]['Item2']:
+    if item in data3[str(ctx.author.id)]['Item2']:
         data3[str(ctx.author.id)]['Item2'].clear()
-        data3[str(ctx.author.id)]['Item2p'] * 0    
-        await ctx.send(f"You have remove {item} from market")      
+        data3[str(ctx.author.id)]['Item2p'] * 0   
+        data[str(ctx.author.id)]["Inventory"].append(item) 
+        await ctx.send(f"You have removed {item} from market")      
     
-    elif item in data3[str(ctx.author.id)]['Item3']:
+    if item in data3[str(ctx.author.id)]['Item3']:
         data3[str(ctx.author.id)]['Item3'].clear()
-        data3[str(ctx.author.id)]['Item3p'] * 0      
-        await ctx.send(f"You have remove {item} from market")
-    elif item in data3[str(ctx.author.id)]['Item4']:
-        data3[str(ctx.author.id)]['Item4'].clear()
-        data3[str(ctx.author.id)]['Item4p'] * 0    
-        await ctx.send(f"You have remove {item} from market")
+        data3[str(ctx.author.id)]['Item3p'] * 0   
+        data[str(ctx.author.id)]["Inventory"].append(item)   
+        await ctx.send(f"You have removed {item} from market")
     
-    with open('market.json', 'w') as data3:
+    if item in data3[str(ctx.author.id)]['Item4']:
+        data3[str(ctx.author.id)]['Item4'].clear()
+        data3[str(ctx.author.id)]['Item4p'] * 0   
+        data[str(ctx.author.id)]["Inventory"].append(item) 
+        await ctx.send(f"You have removed {item} from market")
+    
+    with open('market.json', 'w', encoding='utf-8') as file3:
         json.dump(data3, file3)
            
 async def markett(user):
     with open('market.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
 
-    if str(user.id) in data:
+    if str(user.author.id) in data:
         return False
     else:
-        data[str(user.id)] = {}
-        data[str(user.id)]['Item1'] = []
-        data[str(user.id)]['Item2'] = []
-        data[str(user.id)]['Item3'] = []
-        data[str(user.id)]['Item4'] = []
-        data[str(user.id)]['Item1p'] = 0
-        data[str(user.id)]['Item2p'] = 0
-        data[str(user.id)]['Item3p'] = 0
-        data[str(user.id)]['Item4p'] = 0
+        data[str(user.author.id)] = {}
+        data[str(user.author.id)]['Item1'] = []
+        data[str(user.author.id)]['Item2'] = []
+        data[str(user.author.id)]['Item3'] = []
+        data[str(user.author.id)]['Item4'] = []
+        data[str(user.author.id)]['Item1p'] = 0
+        data[str(user.author.id)]['Item2p'] = 0
+        data[str(user.author.id)]['Item3p'] = 0
+        data[str(user.author.id)]['Item4p'] = 0
 
     with open('market.json', 'w') as f:
         json.dump(data, f)
     
     return True
 
+component_list = ['Screws', 'Wires', "Metal plates", "Test tubes", "DNA", "Drafter", "Research papers", 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190]
 
-component_list = ['Screws', 'Fighter exoskeleton', 'Wires', 'Mech gun', 'Exoskeleton armour plate', 'Titanium fighter system', 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190]
-
-@_bot.slash_command(description="Find items to create robot")
-@commands.cooldown(1, 1800, commands.BucketType.user)
+@economy.sub_command(description="Find items to create robot")
+@commands.cooldown(1, 10, commands.BucketType.user)
 async def find(ctx):
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Item finding command", value="This command can be used to find items to build a /robot. Some times you get nerd coins instead of items used for robot. you can also /upgrade your robot after collecting necessary items.")
+    embed.add_field(name="Item finding command", value="This command can be used to find items to build a /robot. Some times you get <:nerd_coin:992265892756979735> instead of items used for robot. you can also /upgrade your robot after collecting necessary items.")
     await send_first_time_message(ctx, "find", embed)   
     places = ["Laboratory", "Factory", "Garbage", "Construction site", "Power plant", "Fields", "Abondened house", "Library", "Electronics workshop", "Cyber cafe", "Engineer's desk", "Scrapyard"]
     place = random.choice(places)
@@ -939,16 +1023,20 @@ async def find(ctx):
             data = json.load(file)
 
     if type(thing) == int:
-        await ctx.send(f"You found {thing} <:nerd_coin:992265892756979735> in {place}")
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.add_field(name="-----", value=f"You found {thing} <:nerd_coin:992265892756979735> in {place}")
+        await ctx.send(embed=embed)
         data[str(ctx.author.id)]["Bank"] += thing
 
     else:
-        await ctx.send(f"You found {thing} in {place}")
-        data[str(ctx.author.id)]["Inventory"].append(thing)
+        if len(data[str(ctx.author.id)]["Inventory"]) < 20:
+            data[str(ctx.author.id)]["Inventory"].append(thing)
+            await ctx.send(f"You found {thing} in {place}")
+        else:
+            await ctx.send("You don't have enough space in your inventory.")
 
     with open('account.json', 'w') as file:
         json.dump(data, file)
-
 
 @find.error
 async def find_error(ctx, error):
@@ -962,13 +1050,16 @@ async def robo(user):
     with open('robot.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
 
-    if str(user.id) in data:
+    if str(user.author.id) in data:
         return False
     else:
-        data[str(user.id)] = {}
-        data[str(user.id)]['Health'] = 100
-        data[str(user.id)]['Armour'] = 0
-        data[str(user.id)]['Gun'] = 0
+        data[str(user.author.id)] = {}
+        data[str(user.author.id)]['Health'] = 100
+        data[str(user.author.id)]['Armour'] = 0
+        data[str(user.author.id)]['Gun'] = 0
+        data[str(user.author.id)]['Name'] = []
+        data[str(user.author.id)]['Maintain'] = 0
+        data[str(user.author.id)]['Fuel'] = 0
 
     
     with open('robot.json', 'w') as f:
@@ -976,7 +1067,7 @@ async def robo(user):
     
     return True
 
-@_bot.slash_command(description="Do a livestream to earn money if you have necessary items")
+@computing.sub_command(description="Do a livestream to earn money if you have necessary items")
 @commands.cooldown(1, 1800, commands.BucketType.user)
 async def stream(ctx):
     embed = disnake.Embed(color=random.choice(colors))
@@ -986,20 +1077,20 @@ async def stream(ctx):
     with open("account.json", 'r', encoding='utf-8') as file:
         data = json.load(file)
 
-    computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
-    money = random.choice(5000)
+    computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
 
     if any(computer in data[str(ctx.user.id)]['Inventory'] for computer in computers):
         if "Headphones 🎧" in data[str(ctx.user.id)]['Inventory']:
             if "Microphone 🎙️" in data[str(ctx.user.id)]['Inventory']:
-                embed = disnake.Embed(color = random.choice(colors))
-                embed.add_field(name="Livestream", value=f"You have done an livestream and have earned {money} <:nerd_coin:992265892756979735>")
+                money = 5000
+                embed1 = disnake.Embed(color = random.choice(colors))
+                embed1.add_field(name="Livestream", value=f"You have done an livestream and have earned {money} <:nerd_coin:992265892756979735>")
                 data[str(ctx.user.id)]['Bank'] += money
 
                 with open("account.json", 'w', encoding='utf-8') as file:
                     json.dump(data, file)
 
-                await ctx.send(embed)
+                await ctx.send(embed=embed1)
             
             else:
                 await ctx.send("You need microphone for livestream.")
@@ -1017,7 +1108,7 @@ async def stream_error(ctx, error):
         await ctx.send(embed=embed) 
 
 
-@_bot.slash_command(description="Sell all items in your inventory")
+@economy.sub_command(description="Sell all items in your inventory")
 async def sell_all(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Sell inventory command", value="With this command you can sell all items in your inventory.")
@@ -1071,7 +1162,7 @@ async def delete_account(ctx):
 
     await ctx.send("You have removed your account")
 
-@_bot.slash_command(description="Use your phone to call, this gives you a random tip.")
+@economy.sub_command(description="Use your phone to call, this gives you a random tip.")
 async def call(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Tip command", value="You can use this command to get a random tip of using this bot, only if you have a phone.")
@@ -1079,7 +1170,7 @@ async def call(ctx):
     with open("account.json" , 'r', encoding='utf-8') as file:
         data = json.load(file)
 
-    tips = ["Use AI software to double your XP earnings.", "Use antivirus to protect yourself from malware, spyware and ransomware attacks.", "Try running /find command in an interval of one hour to get better items.", "Keep tracking /rates for the best amount of crypto currecy and the best time to sell them and earn money.", "Spamming won't help in increasing your level.", "Never put all your money in /fight.", "Keep monitoring your /computer.", "Sometimes /attack can backfire on you and you can lose your money.", "/explore in an interval of approximately two hours to find great places to /mine.", "/pay your /loan in three days or else it may result in losing everything, if you cant pay your loan in three days and you know that, then try getting a smaller amount of loan.", "Never forget to collect your /monthly, /daily, /weekly nerd coins.", "/computer has many ways to earn money, you can make apps, websites and even discord bot to earn money. you can stream as well.", "A laptop is used to collect geek coins, you can redeem them to nerd coins.", "Never think of inputting something offensive in /report.", "The items you have in your inventory, and you /assemble your computer with them, those items are in your /computer.", "buy windows 10 to protect your pc better.", "Buy kali linux to create awesome softwares that have less chances of failing.", "Never forget to /pay_tax in every 30 days or else it may result in losing money or losing items in inventory. 20 percent of your balance is your 30 day tax."]
+    tips = ["Use AI software to double your XP earnings.", "Use antivirus to protect yourself from malware, spyware and ransomware attacks.", "Try running /find command in an interval of one hour to get better items.", "Keep tracking /rates for the best amount of crypto currecy and the best time to sell them and earn money.", "Spamming won't help in increasing your level.", "Never put all your money in /fight.", "Keep monitoring your /computer.", "Sometimes /attack can backfire on you and you can lose your money.", "/explore in an interval of approximately two hours to find great places to /mine.", "/pay your /loan in three days or else it may result in losing everything, if you cant pay your loan in three days and you know that, then try getting a smaller amount of loan.", "Never forget to collect your /monthly, /daily, /weekly <:nerd_coin:992265892756979735>.", "/computer has many ways to earn money, you can make apps, websites and even discord bot to earn money. you can stream as well.", "A laptop is used to collect geek coins, you can redeem them to <:nerd_coin:992265892756979735>.", "Never think of inputting something offensive in /report.", "The items you have in your inventory, and you /assemble your computer with them, those items are in your /computer.", "buy windows 10 to protect your pc better.", "Buy kali linux to create awesome softwares that have less chances of failing.", "Never forget to /pay_tax in every 30 days or else it may result in losing money or losing items in inventory. 20 percent of your balance is your 30 day tax."]
     tip = random.choice(tips)
     if "Iphone X <:IphoneX:987624956353462312>" or "Smartphone 📱" in data[str(ctx.author.id)]["Inventory"]:
         embed = disnake.Embed(color = random.choice(colors))
@@ -1088,294 +1179,627 @@ async def call(ctx):
     else:
         await ctx.send("You need a phone to call.")
 
+@engineering.sub_command(description="Buy a robot")
+async def buy_robot(ctx, code, name):
+   
+    with open('robot.json', 'r', encoding='utf-8') as file3:
+        items1 = json.load(file3)
 
-@_bot.slash_command(description="Build your robot")
-async def robot(ctx):
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Robot building command", value="You can use this command to build your own robot and then /fight with other user's robot. To build a robot you need three necessary items, which are wires, screws, fighter exoskeleton. These items appear in the server randomly. You need to keep track in order to obtain them. To fight other users, they need to have a robot too. To upgrade your robot you need to use /upgrade.")
-    await send_first_time_message(ctx, "robot", embed)   
+    with open('robots.json', 'r', encoding='utf-8') as file:
+        items = json.load(file)
 
-    with open('account.json', 'r', encoding='utf-8') as file:
-        data = json.load(file)
+    await robo(ctx)
+    await open_account(ctx)
+    
+    with open('account.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
 
-    if "Fighter Robot 🤖" not in data[str(ctx.author.id)]["Inventory"]:
-        if "Wires" in data[str(ctx.author.id)]["Inventory"]:
-            if "Screws" in data[str(ctx.author.id)]["Inventory"]:
-                if "Fighter exoskeleton" in data[str(ctx.author.id)]["Inventory"]:
-                    embed = disnake.Embed(color = random.choice(colors))
-                    data[str(ctx.author.id)]["Inventory"].append("Fighter Robot 🤖")
-                    await robo(ctx)
+    
+    for item in items:
+        if item not in data[str(ctx.user.id)]['Inventory']:
+            if code == items[item]['code']:
+                if data[str(ctx.user.id)]['Bank'] <= items[item]['price']:
+                    embed=disnake.Embed(color=random.choice(colors))
+                    embed.add_field(name="Error", value=f"You don't have enough money to buy {item}")
+                    await ctx.send(embed=embed)
+                else:
+                    embed=disnake.Embed(color=random.choice(colors))
+                    embed.add_field(name="Success", value=f"You have bought {item}!")
+                    await ctx.send(embed=embed)
+            
+                    inv = data[str(ctx.user.id)]['Inventory']
+                    data[str(ctx.user.id)]['Bank'] -= items[item]['price']
+                    items1[str(ctx.author.id)]["Name"].append(name)
+
+                    if len(data[str(ctx.user.id)]['Inventory']) < 20:
+                        inv.append(item)
+                    else:
+                        await ctx.send("You don't have enough place in your inventory. Sell some items.")
+
                     with open('account.json', 'w') as file:
                         json.dump(data, file)
 
+                    with open('robot.json', 'w', encoding='utf-8') as file3:
+                        json.dump(items1, file3)
 
-                    embed.add_field(name="Congrats! you have created a robot now you can /fight with someone who also has robot.")
-                    await ctx.send(embed = embed)
-                else:
-                    await ctx.send("You need fighter exoskeleton")
-            
+        else:   
+            pass
+
+@engineering.sub_command(description="View your robot")
+async def robots(ctx):
+    with open('robots.json', 'r', encoding='utf-8') as file:
+        items = json.load(file)
+
+    embed = disnake.Embed(title="Robots Shop")
+
+    for item in items:
+        embed.add_field(name=f"{item.title()}:", value=f"{items[item]['description']}\n**Price** - {items[item]['price']}\n**code** - {items[item]['code']}")
+
+    await ctx.send(embed=embed)
+
+@engineering.sub_command(description="View your robot")
+async def robot(ctx):
+    with open('robot.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    if str(ctx.author.id) in data:
+        embed=disnake.Embed(color=random.choice(colors))
+        embed.add_field(name=f"Name", value=data[str(ctx.author.id)]['Name'][0])
+        embed.add_field(name=f"Health", value=data[str(ctx.author.id)]['Health'])
+        embed.add_field(name=f"Armour", value=data[str(ctx.author.id)]['Armour'])
+        embed.add_field(name=f"Maintainance", value=f"{data[str(ctx.author.id)]['Maintain']}%")
+        embed.add_field(name=f"Fuel", value=f"{data[str(ctx.author.id)]['Fuel']}%")
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send("You don't have a robot")
+
+@engineering.sub_command(description="Maintain your robot")
+@commands.cooldown(1, 1800, commands.BucketType.user)
+async def maintain(ctx):
+    with open('robot.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    
+    if str(ctx.author.id) in data:
+        data[str(ctx.author.id)]['Maintain'] += 10
+        data[str(ctx.author.id)]['Fuel'] -= 10
+
+        await ctx.send("Great! your robot looks better now")
+
+        with open('robot.json', 'w', encoding='utf-8') as file:
+            json.dump(data, file)
+    else:
+        await ctx.send("You don't have a robot")
+
+@engineering.sub_command(description="Build your robot")
+async def refuel(ctx):
+    with open('robot.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+
+    with open('account.json', 'r', encoding='utf-8') as file2:
+        data2 = json.load(file2)  
+
+    if str(ctx.author.id) in data:
+        if 'Fuel ⛽' in data2[str(ctx.author.id)]["Inventory"]:
+            if data[str(ctx.author.id)]['Fuel'] <= 0:
+                data[str(ctx.author.id)]['Fuel'] += 100
+                data2[str(ctx.author.id)]['Inventory'].remove("Fuel ⛽")
+                with open('robot.json', 'w', encoding='utf-8') as file:
+                    json.dump(data, file)
+
+                with open('account.json', 'w', encoding='utf-8') as file2:
+                    json.dump(data2, file2)  
+                
+                await ctx.send("You have refueled your robot!")
+    
             else:
-                await ctx.send("You need screws")
-
+                await ctx.send("You have some fuel left")
         else:
-            await ctx.send("You need wires")
+            await ctx.send("You don't have fuel")
+    else:
+        await ctx.send("You don't have a robot")
+
+async def antivirus_expire(ctx):
+    asyncio.sleep(259200)
+    with open('account.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    
+    data[str(ctx.author.id)]["Inventory"].remove("Antivirus <:blurple_shield:1001104190875107429>")
+    embed = disnake.Embed(color=random.choice(colors))
+    embed.add_field(name="Antivirus expired", value="Your antivirus has expired")
+    await ctx.send(embed=embed)
+
+
+# fix attack command 🗸
+# alerts 🗸
+# antivirus bypasser 🗸
+# robot maintenance system 🗸
+# tax evader 🗸
+# comparing command 🗸
+# tutorial
+# fix computers, assemble and disassemble 🗸
+# fix /find items 🗸
+# fix inventory 🗸
+# fix antivirus 🗸
+# add new items 🗸
+# local XP leaderboard 🗸
+# global XP leaderboard 🗸
+# local money leaderboard 🗸
+# fix all into sub commands 🗸
+
+@leaderboard.sub_command(description="Get global XP leaderboard")
+async def global_xp(ctx):
+    embed = disnake.Embed(color=random.choice(colors))
+    embed.add_field(name="Top 10 leaderboard command", value="This command can be used to get top 10 *Global* XPLeaderboard.")
+    await send_first_time_message(ctx, "top_xp", embed)  
+
+    x = 10
+
+    await open_account(ctx)
+    with open('account.json', 'r', encoding='utf-8') as file:
+        users = json.load(file)
+
+    leader_board = {}
+    total = []
+
+    for user in users:
+        name = int(user)    
+        total_amtt = users[user]['XP']
+        leader_board[total_amtt] = name 
+        total.append(total_amtt)
+
+    total = sorted(total,reverse=True)
+
+    embed = disnake.Embed(title=f'Top {x} Leaderboard', description='People with most XP')
+    index = 1
+    for amt in total:
+        id_ = leader_board[amt]
+        member = id_
+        embed.add_field(name=f'{index}. {member}', value=f'{amt} XP', inline=False)
+        if index == x:
+            break
+        else:
+            index +=1
+    await ctx.send(embed=embed)
+
+@leaderboard.sub_command(description="Get local money leaderboard")
+async def local_money(ctx):
+    embed = disnake.Embed(color=random.choice(colors))
+    embed.add_field(name="Server Top 10 leaderboard command", value="This command can be used to get top 10 *Local Server* money Leaderboard.")
+    await send_first_time_message(ctx, "local_money", embed)  
+
+    x = 10
+
+    await open_account(ctx.author)
+    with open('account.json', 'r', encoding='utf-8') as file:
+        users = json.load(file)
+
+    leader_board = {}
+    total = []
+
+    for user in users:
+            name = int(user)    
+            total_amtt = users[user]['Bank']
+            leader_board[total_amtt] = name 
+            total.append(total_amtt)
+
+    total = sorted(total,reverse=True)
+
+    embed = disnake.Embed(title=f'{ctx.guild.name} Top {x} Leaderboard', description='People with most money in this server')
+    index = 1
+    for amt in total:
+        id_ = leader_board[amt]
+        member = ctx.guild.get_member(id_)
+        embed.add_field(name=f'{index}. {member}', value=f'{amt} <:nerd_coin:992265892756979735>', inline=False)
+        if index == x:
+            break
+        else:
+            index +=1
+    await ctx.send(embed=embed)
+
+@leaderboard.sub_command(description="Get local XP leaderboard")
+async def local_xp(ctx):
+    embed = disnake.Embed(color=random.choice(colors))
+    embed.add_field(name="Server Top 10 leaderboard command", value="This command can be used to get top 10 *Local Server* XP Leaderboard.")
+    await send_first_time_message(ctx, "local_xp", embed)  
+
+    x = 10
+
+    await open_account(ctx.author)
+    with open('account.json', 'r', encoding='utf-8') as file:
+        users = json.load(file)
+
+    leader_board = {}
+    total = []
+
+    for user in users:
+            name = int(user)    
+            total_amtt = users[user]['XP']
+            leader_board[total_amtt] = name 
+            total.append(total_amtt)
+
+    total = sorted(total,reverse=True)
+
+    embed = disnake.Embed(title=f'{ctx.guild.name} Top {x} Leaderboard', description='People with most XP in this server')
+    index = 1
+    for amt in total:
+        id_ = leader_board[amt]
+        member = ctx.guild.get_member(id_)
+        embed.add_field(name=f'{index}. {member}', value=f'{amt} XP', inline=False)
+        if index == x:
+            break
+        else:
+            index +=1
+    await ctx.send(embed=embed)
+
+@engineering.sub_command(description="Sell electrical items collected from /find like wires.")
+async def scrap(ctx, item_name):
+    embed=disnake.Embed(color=random.choice(colors))
+    money = random.randrange(500)
+    with open('account.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    
+    if item_name in component_list:
+        if str(item_name) in data[str(ctx.author.id)]["Inventory"]:
+            data[str(ctx.author.id)]["Bank"] += money
+            data[str(ctx.author.id)]["Inventory"].remove(item_name)
+            
+            with open('account.json', 'w', encoding='utf-8') as file:
+                json.dump(data, file)
+
+            embed.add_field(name="Item sold", value=f"You have sold {item_name} for {money} <:nerd_coin:992265892756979735>")
+            await ctx.send(embed=embed)
+        
+        else:
+            await ctx.send(f"**{item_name}** is not in your inventory.")
+    else:
+        await ctx.send(f"**{item_name}** is not a valid electrical item.")
+
+@economy.sub_command(description="Compare yourself with another user")
+async def compare(ctx, user: disnake.Member):
+    with open("account.json", 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    
+    bank = data[str(ctx.author.id)]["Bank"]
+    xp = data[str(ctx.author.id)]["XP"]
+    crypt = data[str(ctx.author.id)]["Crypto"]
+    banko = data[str(user.id)]["Bank"]
+    xpo = data[str(user.id)]["XP"]
+    crypto = data[str(user.id)]["Crypto"]
+
+    embed = disnake.Embed(color = random.choice(colors))
+    if bank > banko:
+        embed.add_field(name="Balance", value=f"{ctx.author} is richer than {user}")
+    
+    elif bank < banko:
+        embed.add_field(name="Balance", value=f"{user} is richer than {ctx.author}")    
+
+    elif bank == banko:
+        embed.add_field(name="Balance", value=f"{ctx.author} and {user} have same amount of money")   
+
+    elif xp > xpo:
+        embed.add_field(name="XP", value=f"{ctx.author} has more XP than {user}")
+    
+    elif xp < xpo:
+        embed.add_field(name="XP", value=f"{user} has more XP than {ctx.author}")  
+
+    elif xp == xpo:
+        embed.add_field(name="XP", value=f"{user} and {ctx.author} have same amount of XP")        
+
+    elif crypt > crypto:
+        embed.add_field(name="Crypto", value=f"{ctx.author} has more crypto than {user}")
+    
+    elif crypt < crypto:
+        embed.add_field(name="Crypto", value=f"{user} has more crypto than {ctx.author}")  
+
+    elif crypt == crypto:
+        embed.add_field(name="Crypto", value=f"{user} and {ctx.author} have same amount of crypto")     
+
+    await ctx.send(embed=embed) 
+
+@util.sub_command(description="Get tutorial of any economy command.")
+async def tutorial(ctx, command):
+    cmd = command.lower()
+    embed = disnake.Embed(color = random.choice(colors))
+    if cmd == 'bal':
+        embed.add_field(name=cmd, value="This command displays your account Nerd coin <:nerd_coin:992265892756979735> balance, geek coin balance, your current job")
+        await ctx.send(embed=embed, file=disnake.File('Screenshot 2023-04-24 065311.png'))
+
+    elif cmd == 'inv':
+        embed.add_field(name=cmd, value="This command is used to get your inventory. Your inventory can only hold upto 20 items. Not more than that.")
+        await ctx.send(embed=embed, file=disnake.File('inv.png'))
+    
+    elif cmd == 'shop':
+        embed.add_field(name=cmd, value="This command displayes the shop. You wil see price and item code in every item. To buy an item you can use /buy <item_code>. You need to write exact item code given in the shop menu.")
+        await ctx.send(embed=embed, file=disnake.File('shop.png'))
+    
+    elif cmd == 'buy':
+        embed.add_field(name=cmd, value="This command is used to buy items from the /shop. You need to view item code from the shop menu and use the exact item code to buy an item. Remmeber, you can only hold 20 items in your inventory.")
+        await ctx.send(embed=embed, file=disnake.File('buy.png'))
+
+    elif cmd == 'geek_coins':
+        embed.add_field(name=cmd, value="This is another important currency just like nerd coins but it's value is 2x of nerd coins. You need to buy an laptop in order to earn geek coins. There are two types of laptops in shop, macbook always has more possiblity of giving you geek coins every time you mine it.")
+        await ctx.send(embed=embed, file=disnake.File('geek_coins.png'))
+
+    elif cmd == 'redeem':
+        embed.add_field(name=cmd, value="After you are done mining /geek_coins you can redeem them. Type the amount of geek coins you wanna redeem and get nerd coins.") 
+        await ctx.send(embed=embed, file=disnake.File('redeem.png')) 
+
+    elif cmd == 'jobs':
+        embed.add_field(name=cmd, value="This command is used to get the jobboard for all available jobs that you can get. Some jobs require other jobs in order to get them and some jobs require **subject points**. Subject points are collected by learning and are used to get jobs.") 
+        await ctx.send(embed=embed, file=disnake.File('jobboard.png')) 
+
+    elif cmd == 'job':
+        embed.add_field(name=cmd, value="This command is used to get a job. You need to type exact name of the job from the jobboard. You can copy the name and paste it in the command. If you match enough requirements you can get the job and /work.") 
+        await ctx.send(embed=embed, file=disnake.File('job.png')) 
+
+    elif cmd == 'subjects':
+        embed.add_field(name=cmd, value="This command is used to get list of subjects for /jobs. You need some requirements to get a job which are subject points. You need to copy the subject code and use it in the command /learn. For example /learn m to learn maths.") 
+        await ctx.send(embed=embed, file=disnake.File('subjects.png')) 
+
+    elif cmd == 'learnpoints':
+        embed.add_field(name=cmd, value="This command is used to list all your learning points that you have earned by /learn.") 
+        await ctx.send(embed=embed, file=disnake.File('learnpoints.png')) 
+
+    elif cmd == 'global_top':
+        embed.add_field(name=cmd, value="This command is used to get globally richest people's leaderboard. The currency is only in nerd coins.") 
+        await ctx.send(embed=embed, file=disnake.File('top.png')) 
+
+    elif cmd == 'level':
+        embed.add_field(name=cmd, value="This command is used to get your level card.") 
+        await ctx.send(embed=embed, file=disnake.File('level.png')) 
+
+    elif cmd == 'software':
+        embed.add_field(name=cmd, value="With this command you can create some softwares if you have a computer and you can use them to earn money. Ransomware, spyware, malware require an IDE so buy it from the shop. You can use discord bot and website to earn money by selling data. Advertise to earn more data and money. Ransomware, spyware, malware are used to attack on other users and steal items and money from them.") 
+        await ctx.send(embed=embed, file=disnake.File('software.png')) 
+
+    elif cmd == 'assemble':
+        embed.add_field(name=cmd, value="This command is used to assemble an computer which is a really useful item. You can create softwares to earn money from it. A computer requires some basic items like mouse, keyboard, monitor, ram to assemble. You can buy any type of item to assemble it. You can use /computer to log in your computer and view your programs.") 
+        await ctx.send(embed=embed, file=disnake.File('assemble.png')) 
+
+    elif cmd == 'computer':
+        embed.add_field(name=cmd, value="This command is used to view your computer if you have an computer assembld.") 
+        await ctx.send(embed=embed, file=disnake.File('computer.png')) 
+
+    elif cmd == 'attack':
+        embed.add_field(name=cmd, value="This is a crazy command used to steal items and money from others. First you need a computer and required softwares only then you can attack other users. This command gives a lot of money.") 
+        await ctx.send(embed=embed, file=disnake.File('attack.png')) 
+
+    elif cmd == 'run':
+        embed.add_field(name=cmd, value="This command is used to run your discord bot and website if you have an computer. You can advertise your bot and website and then sell data to earn money.") 
+        await ctx.send(embed=embed, file=disnake.File('run.png')) 
+
+    elif cmd == 'daily':
+        embed.add_field(name=cmd, value="This command is used to earn daily nerd coins.") 
+        await ctx.send(embed=embed, file=disnake.File('daily.png')) 
+    
+    elif cmd == 'retire':
+        embed.add_field(name=cmd, value="You can resign your current job with this command.") 
+        await ctx.send(embed=embed, file=disnake.File('retire.png')) 
+
+    elif cmd == 'delete':
+        embed.add_field(name=cmd, value="Type the software name and you can delete a software from your computer.") 
+        await ctx.send(embed=embed, file=disnake.File('delete.png')) 
+    
+    elif cmd == 'loan':
+        embed.add_field(name=cmd, value="This command is used to get a loan from bank. Getting a loan is alright but you need to pay it in three days, if not payed than bank might take everything from you. pay loan using /pay. Check how much of it is left using /check_loan.") 
+        await ctx.send(embed=embed, file=disnake.File('loan.png')) 
+    
+    elif cmd == 'check_loan':
+        embed.add_field(name=cmd, value="This command is used to check how much of loan is left to pay.") 
+        await ctx.send(embed=embed, file=disnake.File('check_loan.png')) 
+
+    elif cmd == 'pay':
+        embed.add_field(name=cmd, value="You can pay your loan using this command.") 
+        await ctx.send(embed=embed, file=disnake.File('Screenshot 2023-04-24 065311.png')) 
+
+    elif cmd == 'laboratory':
+        embed.add_field(name=cmd, value="This is a command which gives you a lot of money but to start your laboratory you need one million nerd coins.") 
+        await ctx.send(embed=embed, file=disnake.File('laboratory.png'))
+
+    elif cmd == 'send':
+        embed.add_field(name=cmd, value="Send an specific amount of money to someone.") 
+        await ctx.send(embed=embed, file=disnake.File('send.png')) 
+
+    elif cmd == 'input_item':
+        embed.add_field(name=cmd, value="With this command you can input an item to the global market. You can input any item including robots, electronics, items from shop etc. This is a really good command and you can also see your items in the global /market and /buy_from_market from other people!") 
+        await ctx.send(embed=embed, file=disnake.File('input_item.png')) 
+
+    elif cmd == 'remove_item':
+        embed.add_field(name=cmd, value="This command is used to remove an item from the global market.") 
+        await ctx.send(embed=embed, file=disnake.File('remove_item.png')) 
+
+    elif cmd == 'stream':
+        embed.add_field(name=cmd, value="If you  have an computer, microphone, headphone you can stream every hour to earn money.") 
+        await ctx.send(embed=embed, file=disnake.File('stream.png')) 
+
+    elif cmd == 'work':
+        embed.add_field(name=cmd, value="If you have a job you can work and earn money with this command every day.") 
+        await ctx.send(embed=embed, file=disnake.File('work.png')) 
+
+    elif cmd == 'sell_all':
+        embed.add_field(name=cmd, value="With this command you can sell all those items which are bought from the shop. Electronics, robots cant be sold. It sells items until their value is not zero. If there are robots or items from /find then the command won't work.") 
+        await ctx.send(embed=embed, file=disnake.File('sell_all.png')) 
+    
+    elif cmd == 'call':
+        embed.add_field(name=cmd, value="A very useful command to get a random tip.") 
+        await ctx.send(embed=embed, file=disnake.File('call.png')) 
+
+    elif cmd == 'find':
+        embed.add_field(name=cmd, value="Find money and some items to /scrap in random places.") 
+        await ctx.send(embed=embed, file=disnake.File('find.png')) 
+
+    elif cmd == 'market':
+        embed.add_field(name=cmd, value="With this command you can have a look at gloal market. You can also /buy_from_market") 
+        await ctx.send(embed=embed, file=disnake.File('market.png')) 
+
+    elif cmd == 'buy_from_market':
+        embed.add_field(name=cmd, value="This command is used to buy an item from the market. To buy an item you need to type exact item name and the seller ID, item number in the list. Type item name without ' '") 
+        await ctx.send(embed=embed, file=disnake.File('buy_from_market.png')) 
+
+    elif cmd == 'gift':
+        embed.add_field(name=cmd, value="With this command you can gift any item to another user.") 
+        await ctx.send(embed=embed, file=disnake.File('gift.png')) 
+
+    elif cmd == 'weekly':
+        embed.add_field(name=cmd, value="Get your weekly money with this command.") 
+        await ctx.send(embed=embed, file=disnake.File('weekly.png')) 
+
+    elif cmd == 'monthly':
+        embed.add_field(name=cmd, value="Get your monthly money with this command.") 
+        await ctx.send(embed=embed, file=disnake.File('monthly.png')) 
+
+    elif cmd == 'rates':
+        embed.add_field(name=cmd, value="This command is used to get current crypto currency rates. You can then buy them using /buy_crypto. Copy the crypto code from the /rates and buy the amount of coins you want. Keep tracking crypto rates for the most expensive price and strike at the right moment and /redeem_crypto.") 
+        await ctx.send(embed=embed, file=disnake.File('rates.png')) 
+
+    elif cmd == 'buy_crypto':
+        embed.add_field(name=cmd, value="First get the crypto codes from /rates. Now copy the code of crypto currency and use this command to buy an specific amount of coins. You can them /redeem_crypto.") 
+        await ctx.send(embed=embed, file=disnake.File('buy_crypto.png')) 
+
+    elif cmd == 'redeem_crypto':
+        embed.add_field(name=cmd, value="This command is used to redeem an specific amount of crypto coin avaialble. You need to just write the correct crypto code and amount to redeem it into nerd coins.") 
+        await ctx.send(embed=embed, file=disnake.File('redeem_crypto.png')) 
+
+    elif cmd == 'crypto_bal':
+        embed.add_field(name=cmd, value="This command displays your crypto currency balance.") 
+        await ctx.send(embed=embed, file=disnake.File('crypto_bal.png')) 
+
+    elif cmd == 'disassemble':
+        embed.add_field(name=cmd, value="This command is used to disassemble your computer and get some items from that. Unfortunately, you will only get mouse, keyboard and a normal monitor from that.") 
+        await ctx.send(embed=embed, file=disnake.File('disassemble.png'))
+
+    elif cmd == 'sell':
+        embed.add_field(name=cmd, value="Write the correct item code and sell an item if it is in your inventory. As the item is second hand, price would be -1000.") 
+        await ctx.send(embed=embed, file=disnake.File('lsell.png')) 
+
+    elif cmd == 'start_mine':
+        embed.add_field(name=cmd, value="Start your mining career. You need 10 million nerd coins for that. After starting the career you need to /explore places and then /mine in those places.") 
+        await ctx.send(embed=embed, file=disnake.File('start_mine.png')) 
+
+    elif cmd == 'explore':
+        embed.add_field(name=cmd, value="This command is used to explore different places in order to /mine in those places. Every special place has their own special element to mine and collect.") 
+        await ctx.send(embed=embed, file=disnake.File('explore.png'))
+
+    elif cmd == 'explored':
+        embed.add_field(name=cmd, value="This command is used to list all the places which are explored.") 
+        await ctx.send(embed=embed, file=disnake.File('explored.png')) 
+
+    elif cmd == 'mine':
+        embed.add_field(name=cmd, value="You need to type exact place name from /explored and you can mine in that place. You can then /sell_element and also view your /elements.") 
+        await ctx.send(embed=embed, file=disnake.File('mine.png')) 
+
+    elif cmd == 'elements':
+        embed.add_field(name=cmd, value="This command is used to list all collected elements.") 
+        await ctx.send(embed=embed, file=disnake.File('elements.png')) 
+
+    elif cmd == 'sell_element':
+        embed.add_field(name=cmd, value="This command is used to sell the elements you have collected. Copy the exact name from /elements and sell them!") 
+        await ctx.send(embed=embed, file=disnake.File('sell_element.png')) 
+
+    elif cmd == 'tax':
+        embed.add_field(name=cmd, value="This command is used to check that how much of your tax is. This is only updated after 30 days. After 30 days, 20 percent of your balance would be your tax to pay. Pay tax using /pay_tax.") 
+        await ctx.send(embed=embed, file=disnake.File('tax.png')) 
+
+    elif cmd == 'pay_tax':
+        embed.add_field(name=cmd, value="This command is used to pay tax on 30th day. Always remember to pay your tax, Check your tax using /tax.") 
+        await ctx.send(embed=embed, file=disnake.File('pay_tax.png')) 
+
+    elif cmd == 'delete_account':
+        embed.add_field(name=cmd, value="Reset your balance, job, XP, geek coins.") 
+        await ctx.send(embed=embed, file=disnake.File('delete_account.png'))
+
+    elif cmd == 'season':
+        embed.add_field(name=cmd, value="Get updates and version information.") 
+        await ctx.send(embed=embed, file=disnake.File('season.png'))
+
+    elif cmd == 'scrap':
+        embed.add_field(name=cmd, value="Sell items collected from /find.") 
+        await ctx.send(embed=embed, file=disnake.File('scrap.png')) 
+
+    elif cmd == 'compare':
+        embed.add_field(name=cmd, value="Compare yourself with another user.") 
+        await ctx.send(embed=embed, file=disnake.File('compare.png')) 
+
+    elif cmd == 'global_xp':
+        embed.add_field(name=cmd, value="Get top XP leaderboard.") 
+        await ctx.send(embed=embed, file=disnake.File('top_xp.png')) 
+
+    elif cmd == 'local_xp':
+        embed.add_field(name=cmd, value="Get local XP leaderboard.") 
+        await ctx.send(embed=embed, file=disnake.File('local_xp.png')) 
+
+    elif cmd == 'local_money':
+        embed.add_field(name=cmd, value="Get local money leaderboard.") 
+        await ctx.send(embed=embed, file=disnake.File('local_money.png')) 
+
+    elif cmd == 'buy_robot':
+        embed.add_field(name=cmd, value="Buy a robot pet, use /robots to get robot shop. Robots do nothing for now. More about robots coming up in season 3.") 
+        await ctx.send(embed=embed, file=disnake.File('buy_robot.png')) 
+
+    elif cmd == 'robot':
+        embed.add_field(name=cmd, value="View your robot. More coming up in season 3.") 
+        await ctx.send(embed=embed, file=disnake.File('robot.png')) 
+
+    elif cmd == 'maintain':
+        embed.add_field(name=cmd, value="Maintain your robot.") 
+        await ctx.send(embed=embed, file=disnake.File('maintain.png'))
+
+    elif cmd == 'refuel':
+        embed.add_field(name=cmd, value="Refuel your robot.") 
+        await ctx.send(embed=embed, file=disnake.File('refuel.png'))  
+
+    elif cmd == 'robots':
+        embed.add_field(name=cmd, value="Get robots shop. use /buy_robot to buy one.") 
+        await ctx.send(embed=embed, file=disnake.File('robots.png')) 
 
     else:
-        await ctx.send("You already have a robot")
-    
-class Upgrade(disnake.ui.View):
-    def __init__(self, member: disnake.Member):
-        super().__init__(timeout=None)
+        await ctx.send("Not an valid command.")
 
-        self.member = member
-
-    @disnake.ui.button(label="Upgrade health", style=disnake.ButtonStyle.green)
-    async def h(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        with open('account.json', 'r', encoding='utf-8') as f:
-            file = json.load(f)
-        
-        with open('robot.json', 'r', encoding='utf-8') as f2:
-            file2 = json.load(f2)
-        
-
-        if "Titanium fighter system" not in file[str(interaction.user.id)]['Inventory']:
-            file2[str(interaction.user.id)]['Health'] += 50
-            file[str(interaction.user.id)]['Inventory'].remove('Titanium fighter system')
-            with open('robot.json', 'w') as f:
-                json.dump(f2, file2)
-
-            with open('account.json', 'w') as f:
-                json.dump(file, f)
-            
-            await interaction.response.send_message("Congrats! you have upgraded your robot and have gained 50+ health")
-        else:
-            await interaction.response.send_message("You need an Titanium fighter system for this upgrade")
-    
-
-    @disnake.ui.button(label="Upgrade armour", style=disnake.ButtonStyle.green)
-    async def h(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        with open('account.json', 'r', encoding='utf-8') as f:
-            file = json.load(f)
-        
-        with open('robot.json', 'r', encoding='utf-8') as f2:
-            file2 = json.load(f2)
-        
-        if "Exoskeleton armour plate" not in file[str(interaction.user.id)]['Inventory']:
-            file2[str(interaction.user.id)]['Armour'] += 50
-            file[str(interaction.user.id)]['Inventory'].remove('Exoskeleton armour plate')
-            with open('robot.json', 'w') as f:
-                json.dump(f2, file2)
-
-            with open('account.json', 'w') as f:
-                json.dump(file, f)
-
-            await interaction.response.send_message("Congrats! you have upgraded your robot and have gained 50+ armour")
-        else:
-            await interaction.response.send_message("You need an Exoskeleton armour plate for this upgrade")
-
-    @disnake.ui.button(label="Add gun", style=disnake.ButtonStyle.green)
-    async def h(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        with open('account.json', 'r', encoding='utf-8') as f:
-            file = json.load(f)
-        
-        with open('robot.json', 'r', encoding='utf-8') as f2:
-            file2 = json.load(f2)
-        
-
-        if "Mech gun" not in file[str(interaction.user.id)]['Inventory']:
-            file2[str(interaction.user.id)]['Gun'] += 1
-            file[str(interaction.user.id)]['Inventory'].remove('Mech gun')
-            with open('robot.json', 'w') as f:
-                json.dump(f2, file2)
-
-            with open('account.json', 'w') as f:
-                json.dump(file, f)
-
-            await interaction.response.send_message("Congrats! you have upgraded your robot and have added a gun to your robot")
-        else:
-            await interaction.response.send_message("You need an Mech gun for this upgrade")
-
-@_bot.slash_command(description="Upgrade your robot")
-async def upgrade(ctx):
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Upgrade robot command", value="You can use this command to add an upgrade to your robot. There are three types of upgrades, health upgrade, armour upgrade and gun upgrade. You need an titanium fighter system in order to upgrade health, for armour you need exoskeleton armour, for gun you need mech gun. All these items randomly appear in the server.")
-    await send_first_time_message(ctx, "upgrade", embed)   
-    
-    await ctx.send(view=Upgrade())
-    
-class Fighter:
-    def __init__(self, name, hp, armor):
-        self.name = name
-        self.hp = hp
-        self.max_hp = hp
-        self.armor = armor
-        self.moves = {
-            "Punch": 10,
-            "Kick": 20,
-            "Shoot": 30
-        }
-
-    def take_damage(self, damage):
-        damage -= self.armor
-        self.hp -= damage
-        if self.hp < 0:
-            self.hp = 0
-
-    def is_alive(self):
-        return self.hp > 0
-
-# credit card holds 10000 
-# antivirus bypasser
-# adventure command
-# more types of xp boost
-# more types of coin boost
-# more collectible operating system (not available on shop. based on XP too) 
-# more robot upgrades (some from shop)
-# achievements
-# robot maintenance system
-# tax evader 
-# a rare scenario of robot explosion, computer explosion
-# electronics repairing
-# more items in /find that can be used to create machines, to collect, to sell, to use, a sandbox system.
-# booster remover command
-# display badge on profile
-# remove badge from profile
-# view profile command (you or any)
-# slash command system for phone users (done)
-
-@_bot.slash_command(description="Get current season and updates")
+@economy.sub_command(description="Get current season and updates")
 async def season(ctx):
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Season 1", value="Bot is newly launched!")
+    embed.add_field(name="Season 2", value="Version 1.1")
+    embed.add_field(name="Fixed /attack", value="A new and better system for /attack")
+    embed.add_field(name="Robot", value="Robot pet system, more coming soon on season 3")
+    embed.add_field(name="Tutorial command", value="Very useful tutorial command to get brief information of any economy command.")
+    embed.add_field(name="Tax evader", value="One time use tax evader item now in shop")
+    embed.add_field(name="Comparison command", value="Compare yourself with others")
+    embed.add_field(name="/find", value="Fixed bugs /find and added /scrap to sell items collected from /find.")
+    embed.add_field(name="Antivirus", value="Fixed antivirus for limited time for three days")
+    embed.add_field(name="Leaderboards", value="Local and global XP and money leaderboards")
+    embed.add_field(name="Inventory", value="Limited inventory for 20 items")
+    embed.add_field(name="Fixed bugs", value="Fixed other minor bugs")
+    embed.add_field(name="Sections", value="All commands in different sections like engineering, computing etc.")
     embed.set_footer(text="The updates and seasons will be updated here.")
     await ctx.send(embed=embed)
 
-@_bot.slash_command(description="Vote for The Nerd to get prizes!")
+'''@_bot.slash_command(description="Vote for The Nerd to get prizes!")
 async def vote(ctx):
-    pass
+    pass'''
 
-@_bot.slash_command(description="Remove any booster")
+''''@_bot.slash_command(description="Remove any booster")
 async def remove_booster(ctx, booster_code):
-    pass
+    pass'''
 
-@_bot.slash_command(description="Get your achievements")
+'''@_bot.slash_command(description="Get your achievements")
 async def achievements(ctx):
-    pass
+    pass'''
 
-@_bot.slash_command(description="Repair your electronics item and robots")
+'''@_bot.slash_command(description="Repair your electronics item and robots")
 async def repair(ctx, item_code):
-    pass
+    pass'''
 
-@_bot.slash_command(description="Display an badge on your profile")
+''''@_bot.slash_command(description="Display an badge on your profile")
 async def badge(ctx, badge_code):
-    pass
+    pass'''
 
-@_bot.slash_command(description="Look at your or any other user's profile")
-async def profile(ctx, user: disnake.Member):
-    pass
+'''@_bot.slash_command(description="Look at your or any other user's profile")
+async def profile(ctx, user: None):
+    pass'''
 
-@_bot.slash_command(description="Maintain your robot")
-async def maintain(ctx):
-    pass
-
-@_bot.slash_command(description="Start an adventure")
+'''@_bot.slash_command(description="Start an adventure")
 async def adventure(ctx):
-    pass
+    pass'''
 
-@_bot.slash_command(description="Fight against another user's robot")
-async def fight(ctx, opponent: disnake.Member, money: int):
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Fight command", value="This command is used to fight with someone if you have a robot and your opponent has a robot too. According to upgrades your robot's health, armour, attack is effected. Robots fight automatically after starting the fight. You need to put some money on fight and whoever wins the fight gets that money.")
-    await send_first_time_message(ctx, "fight", embed)  
-    
-    with open('account.json', 'r', encoding='utf-8') as f1:
-        data = json.load(f1)
-
-    with open('robot.json', 'r', encoding='utf-8') as f:
-        robots = json.load(f)
-
-    if str(opponent.id) not in robots:
-        await ctx.send(f"{opponent.mention} does not have a robot.")
-        return
-    
-    with open('robot.json', 'r', encoding='utf-8') as f:
-        robots = json.load(f)
-
-    if str(ctx.author.id) not in robots:
-        await ctx.send("You need to create a robot first with /robot.")
-        return
-
-    user_robot = robots[str(ctx.author.id)]
-    opponent_robot = robots[str(opponent.id)]
-
-    user_attack = random.choice(["slash", "punch", "kick"])
-    opponent_attack = random.choice(["slash", "punch", "kick"])
-
-    if "Exoskeleton armour plate" in user_robot["Upgrades"]:
-        user_robot["Armour"] += 50
-    if "Mech gun" in user_robot["Upgrades"]:
-        user_attack = "shoot"
-    if "Titanium fighter system" in user_robot["Upgrades"]:
-        user_robot["Health"] += 50
-
-    if "Exoskeleton armour plate" in opponent_robot["Upgrades"]:
-        opponent_robot["Armour"] += 50
-    if "Mech gun" in opponent_robot["Upgrades"]:
-        opponent_attack = "shoot"
-    if "Titanium fighter system" in opponent_robot["Upgrades"]:
-        opponent_robot["Health"] += 50
-
-    user_damage = random.randint(10, 20)
-    opponent_damage = random.randint(10, 20)
-
-    if user_attack == "slash":
-        opponent_robot["Health"] -= user_damage
-    elif user_attack == "punch":
-        opponent_robot["Health"] -= user_damage // 2
-        opponent_robot["Armour"] -= user_damage // 2
-    elif user_attack == "kick":
-        opponent_robot["Health"] -= user_damage // 3
-        opponent_robot["Armour"] -= user_damage // 3 * 2
-    elif user_attack == "shoot":
-        opponent_robot["Health"] -= user_damage // 2
-
-    if opponent_attack == "slash":
-        user_robot["Health"] -= opponent_damage
-    elif opponent_attack == "punch":
-        user_robot["Health"] -= opponent_damage // 2
-        user_robot["Armour"] -= opponent_damage // 2
-    elif opponent_attack == "kick":
-        user_robot["Health"] -= opponent_damage // 3
-        user_robot["Armour"] -= opponent_damage // 3 * 2
-    elif opponent_attack == "shoot":
-        user_robot["Health"] -= opponent_damage // 2
-
-    winner = None
-    if user_robot["Health"] <= 0 and opponent_robot["Health"] <= 0:
-        winner = "tie"
-    elif user_robot["Health"] <= 0:
-        winner = opponent
-        data[str(opponent.id)]["Bank"] += money
-        data[str(ctx.author.id)]["Bank"] -= money
-    elif opponent_robot["Health"] <= 0:
-        winner = ctx.author
-        data[str(opponent.id)]["Bank"] -= money
-        data[str(ctx.author.id)]["Bank"] += money
-
-
-    with open('robot.json', 'w', encoding='utf-8') as f:
-        json.dump(robots, f)
-    
-    with open('account.json', 'w', encoding='utf-8') as f1:
-        json.dump(data, f1)
-
-
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(value=f"{winner} is the winner of this match!")
-    await ctx.send(embed=embed)
-
-
-import requests
 
 @fun.sub_command(description="Get a joke")
 async def joke(ctx):
@@ -1549,23 +1973,24 @@ async def mining(ctx):
     
     return True    
         
-@_bot.slash_command(description="Start the mining career")
+@miner.sub_command(description="Start the mining career")
 async def start_mine(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Start mining command", value="You can start mining career using this command. You just need to have 20 million nerd coins in order to start your minging career, and then your mining account will be opened. Mining is profitable business and can be used in building rockets to get into space adventure and also sell the mined elements to earn a large amount of money. After starting your mining career you need to use /explore command in order to explore places to mine. The next step is to use /explore.")
+    embed.add_field(name="Start mining command", value="You can start mining career using this command. You just need to have 20 million <:nerd_coin:992265892756979735> in order to start your minging career, and then your mining account will be opened. Mining is profitable business and can be used in building rockets to get into space adventure and also sell the mined elements to earn a large amount of money. After starting your mining career you need to use /explore command in order to explore places to mine. The next step is to use /explore.")
     await send_first_time_message(ctx, "start_mine", embed) 
 
     with open("account.json", 'r', encoding='utf-8') as file:
         data = json.load(file)
 
-    if data[str(ctx.user.id)]["Bank"] >= 20000000:
+    if data[str(ctx.user.id)]["Bank"] >= 10000000:
         await mining(ctx)
         await ctx.send("You have started your mining career!")
     else:
-        await ctx.send("You need at least 20 million Nerd coins")
+        await ctx.send("You need 10 million <:nerd_coin:992265892756979735>")
 
-@_bot.slash_command(description="Explore areas in order to find mining places")
+@miner.sub_command(description="Explore areas in order to find mining places")
+@commands.cooldown(1, 3600, commands.BucketType.user)
 async def explore(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -1616,7 +2041,15 @@ async def explore(ctx):
             else:
                 await ctx.send("Uh oh you re-explored a place you have already explored")
 
-@_bot.slash_command(description="Get the places you have explored.") 
+@explore.error
+async def explore_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        tim = datetime.timedelta(seconds = error.retry_after)
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.add_field(name='Command on cooldown', value=f"Wait for **{tim}** before running this command again")
+        await ctx.send(embed=embed) 
+
+@miner.sub_command(description="Get the places you have explored.") 
 async def explored(ctx):
     
     embed = disnake.Embed(color=random.choice(colors))
@@ -1631,7 +2064,8 @@ async def explored(ctx):
     embed.add_field(name=f"----------", value=iv)
     await ctx.send(embed=embed)
 
-@_bot.slash_command(description="Mine in an place")
+@miner.sub_command(description="Mine in an place")
+@commands.cooldown(1, 1800, commands.BucketType.user)
 async def mine(ctx, place_name):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -1654,7 +2088,7 @@ async def mine(ctx, place_name):
         with open('mining.json', 'w') as f:
             json.dump(data, f)
         
-        await ctx.send(f"You have successfully mined {element} in {place_name}! It sells for {price} nerd coins.")
+        await ctx.send(f"You have successfully mined {element} in {place_name}! It sells for {price} <:nerd_coin:992265892756979735>.")
     
     elif place_name in coords:
         elements = ["Iron", "Copper", "Sodium"]
@@ -1664,13 +2098,21 @@ async def mine(ctx, place_name):
         with open('mining.json', 'w') as f:
             json.dump(data, f)
         
-        await ctx.send(f"You have successfully mined {element} in {place_name}! It sells for a random price in range of 10k nerd coins.")
+        await ctx.send(f"You have successfully mined {element} in {place_name}! It sells for a random price in range of 10k <:nerd_coin:992265892756979735>.")
     
-@_bot.slash_command(description="Sell an element")
+@mine.error
+async def mine_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        tim = datetime.timedelta(seconds = error.retry_after)
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.add_field(name='Command on cooldown', value=f"Wait for **{tim}** before running this command again")
+        await ctx.send(embed=embed) 
+
+@miner.sub_command(description="Sell an element")
 async def sell_element(ctx, element_name: str):
 
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Sell elements command", value="You can sell your collected elements using this command, just remember to use the exact name of element (including capital letter). You can get list of your elements using /elements. Only copper, iron and sodium have a random price in range of 10k nerd coins. You can /explore places and then /mine in those places to collect elements.")
+    embed.add_field(name="Sell elements command", value="You can sell your collected elements using this command, just remember to use the exact name of element (including capital letter). You can get list of your elements using /elements. Only copper, iron and sodium have a random price in range of 10k <:nerd_coin:992265892756979735>. You can /explore places and then /mine in those places to collect elements.")
     await send_first_time_message(ctx, "sell_element", embed) 
 
     with open('account.json', 'r', encoding='utf-8') as file:
@@ -1681,84 +2123,84 @@ async def sell_element(ctx, element_name: str):
 
     if element_name == "Jade":
         data[str(ctx.author.id)]["Bank"] += 12000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 12k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 12k <:nerd_coin:992265892756979735>")
     
     elif element_name == "Crystal":
         data[str(ctx.author.id)]["Bank"] += 80000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 80k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 80k <:nerd_coin:992265892756979735>")
     
     elif element_name == "Emerald":
         data[str(ctx.author.id)]["Bank"] += 18000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 18k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 18k <:nerd_coin:992265892756979735>")
     
     elif element_name == "Silver":
         data[str(ctx.author.id)]["Bank"] += 50000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 50k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 50k <:nerd_coin:992265892756979735>")
     
     elif element_name == "Sapphire":
         data[str(ctx.author.id)]["Bank"] += 24000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 24k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 24k <:nerd_coin:992265892756979735>")
     
     elif element_name == "Diamond":
         data[str(ctx.author.id)]["Bank"] += 60000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 60k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 60k <:nerd_coin:992265892756979735>")
 
     elif element_name == "Ruby":
         data[str(ctx.author.id)]["Bank"] += 32000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 32k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 32k <:nerd_coin:992265892756979735>")
 
     elif element_name == "Topaz":
         data[str(ctx.author.id)]["Bank"] += 15000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 15k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 15k <:nerd_coin:992265892756979735>")
 
     elif element_name == "Gold":
         data[str(ctx.author.id)]["Bank"] += 45000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 45k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 45k <:nerd_coin:992265892756979735>")
 
     elif element_name == "Platinum":
         data[str(ctx.author.id)]["Bank"] += 70000
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for 70k nerd coins")
+        await ctx.send(f"You have sold {element_name} for 70k <:nerd_coin:992265892756979735>")
     
     elif element_name == "Copper":
         price = random.randrange(10000)
         data[str(ctx.author.id)]["Bank"] += price
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for {price} nerd coins")
+        await ctx.send(f"You have sold {element_name} for {price} <:nerd_coin:992265892756979735>")
 
     elif element_name == "Iron":
         price = random.randrange(10000)
         data[str(ctx.author.id)]["Bank"] += price
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for {price} nerd coins")
+        await ctx.send(f"You have sold {element_name} for {price} <:nerd_coin:992265892756979735>")
 
     elif element_name == "Sodium":
         price = random.randrange(10000)
         data[str(ctx.author.id)]["Bank"] += price
-        data2[str(ctx.author.id)]["elements"] -= element_name
+        data2[str(ctx.author.id)]["elements"].remove(element_name)
 
-        await ctx.send(f"You have sold {element_name} for {price} nerd coins")
+        await ctx.send(f"You have sold {element_name} for {price} <:nerd_coin:992265892756979735>")
     
     else:
         await ctx.send("That's not a valid item name, please use the exact item name from by using /elements command.")
@@ -1769,7 +2211,7 @@ async def sell_element(ctx, element_name: str):
     with open('mining.json', 'w', encoding='utf-8') as file2:
         json.dump(data2, file2)
 
-@_bot.slash_command(descripton="Get list of collected elements")
+@miner.sub_command(descripton="Get list of collected elements")
 async def elements(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -1784,9 +2226,7 @@ async def elements(ctx):
     embed.add_field(name=f"----------", value=iv)
     await ctx.send(embed=embed)
 
-
-
-@_bot.slash_command(description="Disassemble an computer and take out it's parts, you can then sell them")
+@computing.sub_command(description="Disassemble an computer and take out it's parts, you can then sell them")
 async def disassemble(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -1796,25 +2236,52 @@ async def disassemble(ctx):
     with open("account.json", 'r', encoding='utf-8') as file:
         data = json.load(file)
 
-    computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+    computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
 
     if any(computer in data[str(ctx.user.id)]['Inventory'] for computer in computers):
-        data[str(ctx.user.id)]["Inventory"].append("Membrane Keyboard ⌨️")
-        data[str(ctx.user.id)]["Inventory"].append("Monitor 🖥️")
-        data[str(ctx.user.id)]["Inventory"].append("10 gb ram 💾")
-        if "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾" in data[str(ctx.user.id)]['Inventory']: 
-            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾")
-        elif "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>" in data[str(ctx.user.id)]['Inventory']:
-            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>")
-        elif "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾" in data[str(ctx.user.id)]['Inventory']: 
-            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾")
-        elif "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>" in data[str(ctx.user.id)]['Inventory']:
-            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>")
+        if len(data[str(ctx.user.id)]["Inventory"]) < 17:
+            data[str(ctx.user.id)]["Inventory"].append("Membrane Keyboard ⌨️")
+            data[str(ctx.user.id)]["Inventory"].append("Monitor 🖥️")
+            data[str(ctx.user.id)]["Inventory"].append("10 gb ram 💾")
+        else:
+            await ctx.send("You need more space in your inventory.")
+
+        if "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾" in data[str(ctx.user.id)]['Inventory']: 
+            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾")
+        elif "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>" in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>")
+        elif "Computer🖱️<:programmershit:987628014722514984>⌨️💾" in data[str(ctx.user.id)]['Inventory']: 
+            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️<:programmershit:987628014722514984>⌨️💾")
+        elif "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>" in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>")
         elif "Computer🖱️🖥️⌨️💾" in data[str(ctx.user.id)]['Inventory']:
             data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️🖥️⌨️💾")
-        elif "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>" in data[str(ctx.user.id)]['Inventory']:
-            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>")
-
+        elif 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>')
+        elif 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾')
+        elif 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>')
+        elif 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾')
+        elif 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>')
+        elif 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>')
+        elif 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾')
+        elif 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾')
+        elif 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>')
+        elif "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>" in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>")
+        elif "Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾" in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove("Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾")
+        elif 'Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>')
+        elif 'Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾' in data[str(ctx.user.id)]['Inventory']:
+            data[str(ctx.user.id)]["Inventory"].remove('Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾')
 
         with open("account.json", 'w') as file:
             json.dump(data, file)
@@ -1823,11 +2290,11 @@ async def disassemble(ctx):
     else:
         await ctx.send("You don't have an computer how are you supposed to disassemble an void?")
 
-@_bot.slash_command(description="Sell an item from your inventory")
+@economy.sub_command(description="Sell an item from your inventory")
 async def sell(ctx, item_code: str):
 
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Selling command", value="You can sell your items using this command. When selling your item, it's value would 5000 nerd coins decreased as it is an second hand item.")
+    embed.add_field(name="Selling command", value="You can sell your items using this command. When selling your item, it's value would 5000 <:nerd_coin:992265892756979735> decreased as it is an second hand item.")
     await send_first_time_message(ctx, "sell", embed) 
 
     with open("account.json", 'r', encoding='utf-8') as file:
@@ -1840,19 +2307,19 @@ async def sell(ctx, item_code: str):
         if item in data[str(ctx.user.id)]["Inventory"]:
             if item_code == data2[item]['code']:
                 data[str(ctx.user.id)]["Inventory"].remove(item)
-                p = data2[item]['price'] - 5000
+                p = data2[item]['price'] - 1000
                 data[str(ctx.user.id)]["Bank"] += p
                 
                 with open("account.json", 'w') as file:
                     json.dump(data, file)
 
-                await ctx.send(f"You have sold your item for {data2[item]['price'] - 5000} Nerd coins")
+                await ctx.send(f"You have sold your item for {data2[item]['price'] - 5000} <:nerd_coin:992265892756979735>")
             else:
                 pass
         else:
             pass
 
-@_bot.slash_command(description="Get rates of crypto currency")
+@crypto.sub_command(description="Get rates of crypto currency")
 async def rates(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Rates command", value="This is rates command, this command gives the price of buyable-sellable crypto currencies in this bot. The price frequently changes according to the real time data. This command can also be used to know the codes of crypto currency which you can use while buying crypto using /buy_crypto <code>")
@@ -1898,7 +2365,7 @@ async def crypt(ctx):
     with open('crypto.json', 'w') as f:
         json.dump(data, f)
 
-@_bot.slash_command(description="Buy an crypto coin")
+@crypto.sub_command(description="Buy an crypto coin")
 async def buy_crypto(ctx, crypto_code: str):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -2078,13 +2545,13 @@ async def buy_crypto(ctx, crypto_code: str):
     else:
         await ctx.send("Invalid code, please use /rates to see rates and check the code written write to the name, use it.")
 
-@_bot.slash_command(description="Redeem your crypto coins")
+@crypto.sub_command(description="Redeem your crypto coins")
 async def redeem_crypto(ctx, crypto_code: str, amount: int):
 
     if amount > 0:
 
         embed = disnake.Embed(color=random.choice(colors))
-        embed.add_field(name="Redeem crypto command", value="You can redeem your crypto currencies into nerd coins using this command, input the crypto currency's code you want to redeem and amount of crypto you wanna redeem. Remember, the amount should exist in your balance and that crypto too.")
+        embed.add_field(name="Redeem crypto command", value="You can redeem your crypto currencies into <:nerd_coin:992265892756979735> using this command, input the crypto currency's code you want to redeem and amount of crypto you wanna redeem. Remember, the amount should exist in your balance and that crypto too.")
         await send_first_time_message(ctx, "redeem_crypto", embed)  
 
         await crypt(ctx)
@@ -2100,7 +2567,7 @@ async def redeem_crypto(ctx, crypto_code: str, amount: int):
         if data[str(ctx.user.id)][crypto_code] >= amount:
             data[str(ctx.user.id)][crypto_code] -= amount
             data2[str(ctx.user.id)]["Bank"] += price[crypto_code.upper()]['INR']
-            await ctx.send(f"You sold one crypto for {price[crypto_code.upper()]['INR']} Nerd coins")
+            await ctx.send(f"You sold one crypto for {price[crypto_code.upper()]['INR']} <:nerd_coin:992265892756979735>")
 
             with open("crypto.json", 'w') as file:
                 json.dump(data, file)
@@ -2113,7 +2580,7 @@ async def redeem_crypto(ctx, crypto_code: str, amount: int):
         
     await ctx.send("That's an invalid amount")
 
-@_bot.slash_command(description='Get your crypto balance')
+@crypto.sub_command(description='Get your crypto balance')
 async def crypto_bal(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -2227,9 +2694,10 @@ class Attack(disnake.ui.View):
         self.member = member
 
     @disnake.ui.button(label="Ransomware", style=disnake.ButtonStyle.red)
+    @commands.cooldown(1, 3600, commands.BucketType.user)
     async def ransomware(self, button: disnake.ui.Button, interaction: disnake.Interaction):
 
-        computers = ['Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
         with open('account.json', 'r', encoding='utf-8') as f:
             file = json.load(f)
         
@@ -2244,6 +2712,7 @@ class Attack(disnake.ui.View):
                 inv = file[str(interaction.user.id)]['Inventory']
                 inv2 = file[str(self.member.id)]['Inventory']
                 c = random.choice(possiblities)
+                
                 if c == "pc_locked":
                     if geek_coins_amt != 0:
                         file[str(interaction.user.id)]['Crypto'] += geek_coins_amt
@@ -2251,11 +2720,15 @@ class Attack(disnake.ui.View):
                         embed = disnake.Embed(color=random.choice(colors))
                         embed.add_field(name="Ransomware worked and you have gained", value=f"{geek_coins_amt} Crypto")
                         await interaction.response.send_message(embed=embed)
+                        embed1 = disnake.Embed(color=random.choice(colors))
+                        embed1.add_field(name="Alert", value=f"{interaction.user} attacked on you with ransomware.")
+                        self.member.send(embed=embed1)
                         with open('account.json', 'w') as f:
                             json.dump(file, f)
+                        
                     else:
                         embed = disnake.Embed(color=random.choice(colors))
-                        embed.add_field(name="Failed", value="Victim doesnt have any geek_coins")
+                        embed.add_field(name="Failed", value="Victim doesnt have any geek coins")
                         await interaction.response.send_message(embed=embed)
 
                 elif c == "pc_locked_not":
@@ -2267,15 +2740,21 @@ class Attack(disnake.ui.View):
                     embed = disnake.Embed(color=random.choice(colors))
                     embed.add_field(name="Failed", value="Victim had antivirus")
                     await interaction.response.send_message(embed=embed)
+                    embed1 = disnake.Embed(color=random.choice(colors))
+                    embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack on you with ransomware.")
+                    self.member.send(embed=embed1)
 
                 elif c == 'reverse_shelled':
                     if "Antivirus <:blurple_shield:1001104190875107429>" in inv:
                         embed = disnake.Embed(color=random.choice(colors))
-                        embed.add_field(name="Failed", value="The victim reverse shelled on your but glad you had antivirus")
+                        embed.add_field(name="Failed", value="The victim reverse shelled on you but glad you had antivirus")
                         await interaction.response.send_message(embed=embed)
+                        embed1 = disnake.Embed(color=random.choice(colors))
+                        embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack on you with ransomware.")
+                        self.member.send(embed=embed1)
                     else:
                         embed = disnake.Embed(color=random.choice(colors))
-                        embed.add_field(name="Failed", value="victim wasn't a victim, now you are a victim, he reverse shelled on you, you paid him 5000 <:nerd_coin:992265892756979735>")
+                        embed.add_field(name="Failed", value="victim wasn't a victim, now you are a victim, they reverse shelled on you, you paid them 5000 <:nerd_coin:992265892756979735>")
                         await interaction.response.send_message(embed=embed)
                         file[str(interaction.user.id)]['Bank'] -= 5000
                         with open('account.json', 'w') as f:
@@ -2289,14 +2768,20 @@ class Attack(disnake.ui.View):
             embed = disnake.Embed(color=random.choice(colors))
             embed.add_field(name="Failed", value="You think you are gonna use an software without an computer? make one with /assemble if you have enough items")
             await interaction.response.send_message(embed=embed)
+
+        f[str(interaction.user.id)]["Programs"].remove("Ransomware")
+
+        with open("login.json", 'w', encoding='utf-8') as r:
+            json.dump(f, r)
             
-    
+
     @disnake.ui.button(label="Spyware", style=disnake.ButtonStyle.red)
+    @commands.cooldown(1, 3600, commands.BucketType.user)
     async def spyware(self, button: disnake.ui.Button, interaction: disnake.Interaction):
         with open('account.json', 'r', encoding='utf-8') as f:
             data2 = json.load(f)
         
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
 
         if any(computer in data2[str(interaction.user.id)]['Inventory'] for computer in computers):
             if "Coin Booster <:DigitalTwo:1003623866272329748>" in data2[str(interaction.user.id)]["Inventory"]:
@@ -2319,19 +2804,38 @@ class Attack(disnake.ui.View):
                                 embed = disnake.Embed(color=random.choice(colors))
                                 embed.add_field(name="Sucess, You gain", value=f"{amt * 2} <:nerd_coin:992265892756979735>'")
                                 await interaction.response.send_message(embed=embed)
+
+                                embed1 = disnake.Embed(color=random.choice(colors))
+                                embed1.add_field(name="Alert", value=f"{interaction.user} has attacked you with spyware.")
+                                self.member.send(embed=embed1)
                             else:
                                 embed = disnake.Embed(color=random.choice(colors))
                                 embed.add_field(name="Failed", value='Victim has no money')
                                 await interaction.response.send_message(embed=embed)
 
+                                embed1 = disnake.Embed(color=random.choice(colors))
+                                embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
+                                self.member.send(embed=embed1)
+
                         else:
                             embed = disnake.Embed(color=random.choice(colors))
                             embed.add_field(name="Failed", value="You got none of victim data")
                             await interaction.response.send_message(embed=embed)
+
+                            
+                            embed1 = disnake.Embed(color=random.choice(colors))
+                            embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
+                            self.member.send(embed=embed1)
+
                     else:
                         embed = disnake.Embed(color=random.choice(colors))
                         embed.add_field(name="Failed", value="Victim had an antivirus")
                         await interaction.response.send_message(embed=embed)
+
+                        
+                        embed1 = disnake.Embed(color=random.choice(colors))
+                        embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
+                        self.member.send(embed=embed1)
                 else:
                     embed = disnake.Embed(color=random.choice(colors))
                     embed.add_field(name="Failed", value="You don't have an spyware, create it using /software")
@@ -2356,30 +2860,56 @@ class Attack(disnake.ui.View):
                                 embed = disnake.Embed(color=random.choice(colors))
                                 embed.add_field(name="Sucess, You gain", value=f"{amt} <:nerd_coin:992265892756979735>'")
                                 await interaction.response.send_message(embed=embed)
+
+                                
+                                embed1 = disnake.Embed(color=random.choice(colors))
+                                embed1.add_field(name="Alert", value=f"{interaction.user} has attacked you with spyware.")
+                                self.member.send(embed=embed1)
                             else:
                                 embed = disnake.Embed(color=random.choice(colors))
                                 embed.add_field(name="Failed", value='Victim has no money')
                                 await interaction.response.send_message(embed=embed)
 
+                                
+                                embed1 = disnake.Embed(color=random.choice(colors))
+                                embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
+                                self.member.send(embed=embed1)
+
                         else:
                             embed = disnake.Embed(color=random.choice(colors))
                             embed.add_field(name="Failed", value="You got none of victim data")
                             await interaction.response.send_message(embed=embed)
+
+                            
+                            embed1 = disnake.Embed(color=random.choice(colors))
+                            embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
+                            self.member.send(embed=embed1)
                     else:
                         embed = disnake.Embed(color=random.choice(colors))
                         embed.add_field(name="Failed", value="Victim had an antivirus")
                         await interaction.response.send_message(embed=embed)
+
+                        
+                        embed1 = disnake.Embed(color=random.choice(colors))
+                        embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
+                        self.member.send(embed=embed1)
                 else:
                     embed = disnake.Embed(color=random.choice(colors))
                     embed.add_field(name="Failed", value="You don't have an spyware, create it using /software")
                     interaction.response.send_message(embed=embed)
         else:
             await interaction.response.send_message("You don't have a computer, assemble one, make an program then run it")
-                
+
+        f[str(interaction.user.id)]["Programs"].remove("Spyware")
+
+        with open("login.json", 'w', encoding='utf-8') as r:
+            json.dump(f, r)            
     
+
     @disnake.ui.button(label="Malware", style=disnake.ButtonStyle.red)
+    @commands.cooldown(1, 3600, commands.BucketType.user)
     async def malware(self, button: disnake.ui.Button, interaction: disnake.Interaction): 
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
         with open('account.json', 'r', encoding='utf-8') as f:
             file = json.load(f)
         
@@ -2392,6 +2922,11 @@ class Attack(disnake.ui.View):
                     embed = disnake.Embed(color=random.choice(colors))
                     embed.add_field(name="Failed", value="Victim has an antivirus")
                     await interaction.response.send_message(embed=embed)
+
+                    
+                    embed1 = disnake.Embed(color=random.choice(colors))
+                    embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with malware.")
+                    self.member.send(embed=embed1)
                 
                 else:
 
@@ -2403,6 +2938,11 @@ class Attack(disnake.ui.View):
                         embed = disnake.Embed(color=random.choice(colors))
                         embed.add_field(name="Success, your malware brought you", value=cc)
                         await interaction.response.send_message(embed=embed)
+
+                        embed1 = disnake.Embed(color=random.choice(colors))
+                        embed1.add_field(name="Alert", value=f"{interaction.user} attacked you with malware.")
+                        self.member.send(embed=embed1)
+
                         with open('account.json', 'w') as f:
                             json.dump(file, f)
                 
@@ -2414,6 +2954,11 @@ class Attack(disnake.ui.View):
             embed = disnake.Embed(color=random.choice(colors))
             embed.add_field(name="Failed", value="You don't have a computer, assemble one, make an program then run it")
             await interaction.response.send_message(embed=embed)
+        
+        f[str(interaction.user.id)]["Programs"].remove("Malware")
+
+        with open("login.json", 'w', encoding='utf-8') as r:
+            json.dump(f, r)
 
 class Software(disnake.ui.View):
     def __init__(self):
@@ -2421,68 +2966,79 @@ class Software(disnake.ui.View):
 
     @disnake.ui.button(label="Ransomware", style=disnake.ButtonStyle.blurple)
     async def ransomware(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
         with open('account.json', 'r', encoding='utf-8') as f:
             file = json.load(f) 
         
-        if any(computer in file[str(interaction.user.id)]["Inventory"] for computer in computers):
-            await interaction.response.send_message("You have made an Ransomware, it is now in your programs")
-            with open('login.json', 'r', encoding='utf-8') as login:
-                d = json.load(login)
+        if "IDE <:VSCode:1100328300292882473>" in file[str(interaction.user.id)]["Inventory"]:
+            if any(computer in file[str(interaction.user.id)]["Inventory"] for computer in computers):
+                await interaction.response.send_message("You have made an Ransomware, it is now in your programs")
+                with open('login.json', 'r', encoding='utf-8') as login:
+                    d = json.load(login)
             
-            d[str(interaction.user.id)]["Programs"].append("Ransomware")
-            with open('login.json', 'w') as login:
-                json.dump(d, login)
+                d[str(interaction.user.id)]["Programs"].append("Ransomware")
+                file[str(interaction.user.id)]["Inventory"].remove("IDE <:VSCode:1100328300292882473>")
+                with open('login.json', 'w') as login:
+                    json.dump(d, login)
+            else:
+                embed = disnake.Embed(color=random.choice(colors))
+                embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
+                await interaction.response.send_message(embed=embed)
         else:
-            embed = disnake.Embed(color=random.choice(colors))
-            embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message("You need an IDE in order to create this software.")
     
     @disnake.ui.button(label="Spyware", style=disnake.ButtonStyle.blurple)
     async def spyware(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
         with open('account.json', 'r', encoding='utf-8') as f:
             file = json.load(f)
-        
-        if any(computer in file[str(interaction.user.id)]['Inventory'] for computer in computers):
-            embed = disnake.Embed(color=random.choice(colors))
-            embed.add_field(name="Success", value="You have made an Spyware, it is now in your programs")
-            await interaction.response.send_message(embed=embed)
-            with open('login.json', 'r', encoding='utf-8') as login:
-                d = json.load(login)
+        if "IDE <:VSCode:1100328300292882473>" in file[str(interaction.user.id)]["Inventory"]:
+            if any(computer in file[str(interaction.user.id)]['Inventory'] for computer in computers):
+                embed = disnake.Embed(color=random.choice(colors))
+                embed.add_field(name="Success", value="You have made an Spyware, it is now in your programs")
+                await interaction.response.send_message(embed=embed)
+                with open('login.json', 'r', encoding='utf-8') as login:
+                    d = json.load(login)
             
-            d[str(interaction.user.id)]["Programs"].append("Spyware")
-            with open('login.json', 'w') as login:
-                json.dump(d, login)
+                d[str(interaction.user.id)]["Programs"].append("Spyware")
+                file[str(interaction.user.id)]["Inventory"].remove("IDE <:VSCode:1100328300292882473>")
+                with open('login.json', 'w') as login:
+                    json.dump(d, login)
+            else:
+                embed = disnake.Embed(color=random.choice(colors))
+                embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
+                await interaction.response.send_message(embed=embed)
         else:
-            embed = disnake.Embed(color=random.choice(colors))
-            embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message("You need an IDE in order to create this software.")
     
     @disnake.ui.button(label="Malware", style=disnake.ButtonStyle.blurple)
     async def malware(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
         with open('account.json', 'r', encoding='utf-8') as f:
             file = json.load(f)
         
-        if any(computer in file[str(interaction.user.id)]['Inventory'] for computer in computers):
-            embed = disnake.Embed(color=random.choice(colors))
-            embed.add_field(name="Success", value="You have made an Malware, it is now in your programs")
-            await interaction.response.send_message(embed=embed)
-            with open('login.json', 'r', encoding='utf-8') as login:
-                d = json.load(login)
+        if "IDE <:VSCode:1100328300292882473>" in file[str(interaction.user.id)]["Inventory"]:
+            if any(computer in file[str(interaction.user.id)]['Inventory'] for computer in computers):
+                embed = disnake.Embed(color=random.choice(colors))
+                embed.add_field(name="Success", value="You have made an Malware, it is now in your programs")
+                await interaction.response.send_message(embed=embed)
+                with open('login.json', 'r', encoding='utf-8') as login:
+                    d = json.load(login)
             
-            d[str(interaction.user.id)]["Programs"].append("Malware")
-            with open('login.json', 'w') as login:
-                json.dump(d, login)
+                d[str(interaction.user.id)]["Programs"].append("Malware")
+                file[str(interaction.user.id)]["Inventory"].remove("IDE <:VSCode:1100328300292882473>")
+                with open('login.json', 'w') as login:
+                    json.dump(d, login)
+            else:
+                embed = disnake.Embed(color=random.choice(colors))
+                embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
+                await interaction.response.send_message(embed=embed)
         else:
-            embed = disnake.Embed(color=random.choice(colors))
-            embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message("You need an IDE in order to create this software.")
     
     @disnake.ui.button(label="Discord bot", style=disnake.ButtonStyle.blurple)
     async def disordbot(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
         with open('account.json', 'r', encoding='utf-8') as f:
             file = json.load(f)
         
@@ -2502,33 +3058,10 @@ class Software(disnake.ui.View):
             embed = disnake.Embed(color=random.choice(colors))
             embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
             await interaction.response.send_message(embed=embed)
-
-    @disnake.ui.button(label="App", style=disnake.ButtonStyle.blurple)
-    async def app(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
-        with open('account.json', 'r', encoding='utf-8') as f:
-            file = json.load(f)
-        
-        if any(computer in file[str(interaction.user.id)]['Inventory'] for computer in computers):
-            embed = disnake.Embed(color=random.choice(colors))
-            embed.add_field(name="Success", value="You have made an App, it is now in your programs")
-            await interaction.response.send_message(embed=embed)
-            with open('login.json', 'r', encoding='utf-8') as login:
-                d = json.load(login)
-            
-            await app(interaction)
-
-            d[str(interaction.user.id)]["Programs"].append("App")
-            with open('login.json', 'w') as login:
-                json.dump(d, login)
-        else:
-            embed = disnake.Embed(color=random.choice(colors))
-            embed.add_field(name="Failed", value="You don't have a computer, assemble one.")
-            await interaction.response.send_message(embed=embed)
     
     @disnake.ui.button(label="Website", style=disnake.ButtonStyle.blurple)
     async def web(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
         with open('account.json', 'r', encoding='utf-8') as f:
             file = json.load(f)
         
@@ -2581,21 +3114,6 @@ async def website(user):
     
     return True
 
-async def app(user):
-    with open('app.json', 'r', encoding='utf-8') as file:
-        data = json.load(file)  
-
-    if str(user.id) in data:
-        return False
-    else:
-        data[str(user.id)] = {}
-        data[str(user.id)]['Downloads'] = 1          
-    
-    with open('app.json', 'w') as f:
-        json.dump(data, f)
-    
-    return True
-
 class Web(disnake.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
@@ -2618,17 +3136,18 @@ class Web(disnake.ui.View):
             with open("web.json", 'w') as file2:
                 json.dump(data2, file2)
 
-            await interaction.response.send_message("You advertised your bot, number of people who have signed in have increased")
+            await interaction.response.send_message("You advertised your website, number of people who have signed in have increased")
         
         else:
             await interaction.response.send_message("You need to have at least 10000 <:nerd_coin:992265892756979735> to advertise")
     
-    @disnake.ui.button(label="Sell email datas", style=disnake.ButtonStyle.blurple)
+    @disnake.ui.button(label="Sell email data", style=disnake.ButtonStyle.blurple)
     async def sell(self, button: disnake.ui.Button, interaction: disnake.Interaction):
         with open('web.json') as file2:
             data2 = json.load(file2)
         
         amt = data2[str(interaction.user.id)]["Signed in people"] * 20
+        data2[str(interaction.user.id)]["Signed in people"] * 0
 
         with open("account.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -2637,6 +3156,9 @@ class Web(disnake.ui.View):
 
         with open("account.json", 'w') as file:
             json.dump(data, file)
+
+        with open("web.json", 'w') as file2:
+            json.dump(data2, file2)
         
         await interaction.response.send_message(f"You have sold all of email data you had for {amt} <:nerd_coin:992265892756979735>")
     
@@ -2646,64 +3168,6 @@ class Web(disnake.ui.View):
             drik = json.load(frik)
         
         drik[str(interaction.user.id)]["Programs"].remove("Website")
-        
-        with open('login.json', 'w') as frik:
-            json.dump(drik, frik)
-        
-        await interaction.response.send_message("You have deleted your website")    
-
-class App(disnake.ui.View):
-    def __init__(self):
-        super().__init__(timeout=None)
-    
-    @disnake.ui.button(label="Advertise", style=disnake.ButtonStyle.blurple)
-    async def ad(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        with open("account.json", 'r', encoding='utf-8') as file:
-            data = json.load(file)
-        
-        if data[str(interaction.user.id)]["Bank"] >= 1000:
-            with open('app.json') as file2:
-                data2 = json.load(file2)
-            
-            data2[str(interaction.user.id)]["Downloads"] += random.randrange(50)
-            data[str(interaction.user.id)]["Bank"] -= 1000
-
-            with open("account.json", 'w') as file:
-                json.dump(data, file)
-
-            with open("app.json", 'w') as file2:
-                json.dump(data2, file2)
-
-            await interaction.response.send_message("You advertised your bot, your downloads have increased")
-        
-        else: 
-            await interaction.response.send_message("You need to have at least 1000 <:nerd_coin:992265892756979735> to advertise")
-    
-    @disnake.ui.button(label="Show ads", style=disnake.ButtonStyle.blurple)
-    async def show(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        with open('app.json') as file2:
-            data2 = json.load(file2)
-
-        if data2[str(interaction.user.id)]["Downloads"] >= 1000:
-            with open("account.json", 'r', encoding='utf-8') as file:
-                data = json.load(file)
-            
-            data[str(interaction.user.id)]["Bank"] += 10000
-            
-            with open("account.json", 'w') as file:
-                json.dump(data, file)
-            
-            await interaction.response.send_message("You have shown ads in your app and have earned 10000 <:nerd_coin:992265892756979735>!")
-
-        else:
-            await interaction.response.send_message("You need at least 1000 downloads to show ads")
-
-    @disnake.ui.button(label="Delete website", style=disnake.ButtonStyle.blurple)
-    async def deletee(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        with open('login.json', 'r', encoding='utf-8') as frik:
-            drik = json.load(frik)
-        
-        drik[str(interaction.user.id)]["Programs"].remove("App")
         
         with open('login.json', 'w') as frik:
             json.dump(drik, frik)
@@ -2779,7 +3243,7 @@ class Dbot(disnake.ui.View):
         
         await interaction.response.send_message("You have deleted your Discord bot")
 
-@_bot.slash_command(description="Delete an program from your computer")
+@computing.sub_command(description="Delete an program from your computer")
 async def delete(ctx, program_name):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -3047,7 +3511,7 @@ class Run(disnake.ui.View):
  
     @disnake.ui.button(label="Discord bot", style=disnake.ButtonStyle.blurple)
     async def dc(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
         with open('account.json', 'r', encoding='utf-8') as f:
             file = json.load(f)
         
@@ -3080,7 +3544,7 @@ class Run(disnake.ui.View):
     
     @disnake.ui.button(label="Website", style=disnake.ButtonStyle.blurple)
     async def webbo(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        computers = ["Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>💾", "Computer🖱️🖥️⌨️<:AMD_Radeon_RX_6900_XT_GPU:987622463431122954><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555>💾", "Computer🖱️🖥️⌨️<:Nvidia_3090_GPU:987623191159660555><:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", "Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>"]
+        computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
         with open('account.json', 'r', encoding='utf-8') as f:
             file = json.load(f)
         
@@ -3106,12 +3570,22 @@ class Run(disnake.ui.View):
             embed.add_field(name='Running failed', value="You don't have a computer")
             await interaction.response.send_message(embed=embed)
 
-@_bot.slash_command(description='With this command you can run your Discord bot, app and website if you have it in your computer')
+@computing.sub_command(description='With this command you can run your Discord bot, app and website if you have it in your computer')
+@commands.cooldown(1, 900, commands.BucketType.user)
 async def run(ctx):
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Run program command", value="If you have built softwares in your computer you can use them using this command. All types of software options are available in the button menu but only those buttons will work which softwares exist in your computer. You can use this to earn nerd coins.")
+    embed.add_field(name="Run program command", value="If you have built softwares in your computer you can use them using this command. All types of software options are available in the button menu but only those buttons will work which softwares exist in your computer. You can use this to earn <:nerd_coin:992265892756979735>.")
     await send_first_time_message(ctx, "run", embed)  
     await ctx.send("Program selection", view=Run())
+
+
+@run.error
+async def run_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        tim = datetime.timedelta(seconds = error.retry_after)
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.add_field(name='Command on cooldown', value=f"Wait for **{tim}** before running this command again")
+        await ctx.send(embed=embed) 
 
 @_bot.event
 async def coin_boost(message):
@@ -3124,10 +3598,10 @@ async def coin_boost(message):
         data[str(message.author.id)]["Inventory"].remove("Coin Booster <:DigitalTwo:1003623866272329748>")
         with open('account.json', 'w') as file:
             json.dump(data, file)
+        await message.author.send("Your coin booster has expired")
     else:
         pass
 
-@_bot.event
 async def xp_boost(message):
     await open_account(message)
     with open('account.json', 'r', encoding='utf-8') as file:
@@ -3138,51 +3612,39 @@ async def xp_boost(message):
         data[str(message.author.id)]["Inventory"].remove("AI Software <:galaxy_brain:1003621546050474034>")
         with open('account.json', 'w') as file:
             json.dump(data, file)
+        await message.author.send("Your XP booster has expired")
     else:
         pass
 
-@_bot.event
-async def xp_boost(message):
-    await open_account(message)
-    with open('account.json', 'r', encoding='utf-8') as file:
-        data = json.load(file)
-    
-    if "AI Software <:galaxy_brain:1003621546050474034>" in data[str(message.author.id)]["Inventory"]:
-        await asyncio.sleep(7200)  
-        data[str(message.author.id)]["Inventory"].remove("AI Software <:galaxy_brain:1003621546050474034>")
-        with open('account.json', 'w') as file:
-            json.dump(data, file)
-    else:
-        pass
 
-@_bot.slash_command(description="Make softwares which will be added")
+@computing.sub_command(description="Make softwares which will be added")
 async def software(ctx):
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Software creation command", value="You can create softwares using this command which can be used to earn nerd coins or steal nerd coins from someone.")
-    await send_first_time_message(ctx, "software", embed)  
+    with open('account.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
     
-    await ctx.send(view=Software())
+    if "IDE <:VSCode:1100328300292882473>" in data[str(ctx.author.id)]["Inventory"]:
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.add_field(name="Software creation command", value="You can create softwares using this command which can be used to earn <:nerd_coin:992265892756979735> or steal <:nerd_coin:992265892756979735> from someone.")
+        await send_first_time_message(ctx, "software", embed)  
+    
+        await ctx.send(view=Software())
+    else:
+        await ctx.send("You don't have an IDE")
 
-@_bot.slash_command(description="Use your spyware, ransomware and malware to gain items and earn money")
-@commands.cooldown(1, 60 , commands.BucketType.user)
+@computing.sub_command(description="Use your spyware, ransomware and malware to gain items and earn money")
 async def attack(ctx, member: disnake.Member):
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Attack command", value="You can use this command to use different types of offensive softwares in your computer including malware, spyware or ransomware. These can be used on someone else's bank account and steal nerd coins from them or steal items from them. Remember, this is just a game not a real process.")
-    await send_first_time_message(ctx, "attack", embed)  
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.add_field(name="Attack command", value="You can use this command to use different types of offensive softwares in your computer including malware, spyware or ransomware. These can be used on someone else's bank account and steal <:nerd_coin:992265892756979735> from them or steal items from them. Remember, this is just a game not a real process.")
+        await send_first_time_message(ctx, "attack", embed)  
     
-    await ctx.send(view=Attack(member=member))
+        await ctx.send(view=Attack(member=member))
 
-@attack.error
-async def attack_error(ctx, error):
-    if isinstance(error, commands.CommandOnCooldown):
-        tim = datetime.timedelta(seconds = error.retry_after)
-        await ctx.send(f"Wait for **{tim}** before running this command again") 
 
-@_bot.slash_command(description="Assemble your computer!")
+@computing.sub_command(description="Assemble your computer!")
 async def assemble(ctx):
     await log_in(ctx)
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Assemble computer command", value="A very useful command to create your computer, assemble it. If you have required items in your inventory. You need any type of keyboard, monitor, mouse, RAM in order to assemble your computer. A computer can be very useful in earning nerd coins. Please keep exploring commands to know more uses.")
+    embed.add_field(name="Assemble computer command", value="A very useful command to create your computer, assemble it. If you have required items in your inventory. You need any type of keyboard, monitor, mouse, RAM in order to assemble your computer. A computer can be very useful in earning <:nerd_coin:992265892756979735>. Please keep exploring commands to know more uses.")
     await send_first_time_message(ctx, "assemble", embed)  
 
     await open_account(ctx)
@@ -3192,33 +3654,219 @@ async def assemble(ctx):
     inv = f[str(ctx.user.id)]["Inventory"]
     
     keys = ['Membrane Keyboard ⌨️', "Mehcanical Keyboard <:RGBKeyboard:986490410849423441>", "Mehcanical Gaming Keyboard <:gamer_keyboard:987622731614945330>"]
-    monitor = ["Wide Montior <:gaming_keyboard:987619238204305438>", "Ultra Wide Montior with Ipad <:programmershit:987628014722514984>", "Monitor 🖥️"]
+    monitor = ["Wide Monitor <:gaming_keyboard:987619238204305438>", "Ultra Wide Monitor with Ipad <:programmershit:987628014722514984>", "Monitor 🖥️"]
+    computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
      
     embed = disnake.Embed(color=random.choice(colors))
-    if 'Mouse 🖱️' in inv:
-        if any(k in inv for k in keys):
-            if any(m in inv for m in monitor):
-                if "10 gb ram 💾" in inv:
-                        inv.append("Computer🖱️🖥️⌨️💾")
-                elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
-                        inv.append("Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>")
+
+    if len(inv) < 20:
+     if any(comp not in inv for comp in computers):
+        if 'Mouse 🖱️' in inv:
+            if 'Membrane Keyboard ⌨️' in inv:
+                if "Wide Montior <:gaming_keyboard:987619238204305438>" in inv:
+                    if "10 gb ram 💾" in inv:
+                        inv.append("Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾")
+                        inv.remove("Mouse 🖱️")
+                        inv.remove("Wide Montior <:gaming_keyboard:987619238204305438>")
+                        inv.remove("Membrane Keyboard ⌨️")
+                        inv.remove("10 gb ram 💾")
+                        await ctx.send("You have successfully assembled your computer!")
+                
+                    elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
+                        inv.append("Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>")
+                        inv.remove("Mouse 🖱️")
+                        inv.remove("Wide Montior <:gaming_keyboard:987619238204305438>")
+                        inv.remove("Membrane Keyboard ⌨️")
+                        inv.remove("16 gb ram <:DiscordFloppy:987628788256997377>")
+                        await ctx.send("You have successfully assembled your computer!")
+                    else:
+                        embed.add_field(name="Error occured", value="You don't have any ram")
+                        await ctx.send(embed=embed)
+            
+                elif "Ultra Wide Montior with Ipad <:programmershit:987628014722514984>" in inv:
+                    if "10 gb ram 💾" in inv:
+                        inv.append("Computer🖱️<:programmershit:987628014722514984>⌨️💾") 
+                        inv.remove("Mouse 🖱️")
+                        inv.remove("Ultra Wide Montior with Ipad <:programmershit:987628014722514984>")
+                        inv.remove("Membrane Keyboard ⌨️")
+                        inv.remove("10 gb ram 💾")
+                        await ctx.send("You have successfully assembled your computer!")
+                
+                    elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
+                        inv.append("Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>")
+                        inv.remove("Mouse 🖱️")
+                        inv.remove("Ultra Wide Montior with Ipad <:programmershit:987628014722514984>")
+                        inv.remove("Membrane Keyboard ⌨️")
+                        inv.remove("16 gb ram <:DiscordFloppy:987628788256997377>")
+                        await ctx.send("You have successfully assembled your computer!")
+                    else:
+                        embed.add_field(name="Error occured", value="You don't have any ram")
+                        await ctx.send(embed=embed)                
+
+                elif "Monitor 🖥️" in inv:
+                    if "10 gb ram 💾" in inv:
+                        inv.append("Computer🖱️🖥️⌨️💾") 
+                        inv.remove("Monitor 🖥️")
+                        inv.remove("Membrane Keyboard ⌨️")
+                        inv.remove("10 gb ram 💾")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
+                        inv.append("Computer🖱️🖥️⌨️<:Discord  Floppy:987628788256997377>")
+                        inv.remove("Monitor 🖥️")
+                        inv.remove("Membrane Keyboard ⌨️")
+                        inv.remove("16 gb ram <:DiscordFloppy:987628788256997377>")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    else:
+                        embed.add_field(name="Error occured", value="You don't have any ram")
+                        await ctx.send(embed=embed)                
+            
                 else:
-                    embed.add_field(name="Error occured", value="You don't have any ram")
+                    embed.add_field(name="Error occured", value="You don't have any monitor")
+                    await ctx.send(embed=embed)
+
+            elif 'Mehcanical Keyboard <:RGBKeyboard:986490410849423441>' in inv:
+                if "Wide Montior <:gaming_keyboard:987619238204305438>" in inv:
+                    if "10 gb ram 💾" in inv:
+                        inv.append("Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾") 
+                        inv.remove("Wide Montior <:gaming_keyboard:987619238204305438>")
+                        inv.remove("Mehcanical Keyboard <:RGBKeyboard:986490410849423441>") 
+                        inv.remove("10 gb ram 💾")
+                        inv.remove("Mouse 🖱️") 
+                        await ctx.send("You have successfully assembled your computer!")
+
+                    elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
+                        inv.append("Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>")
+                        inv.remove("Wide Montior <:gaming_keyboard:987619238204305438>")
+                        inv.remove("Mehcanical Keyboard <:RGBKeyboard:986490410849423441>")
+                        inv.remove("16 gb ram <:DiscordFloppy:987628788256997377>")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+
+                    else:
+                        embed.add_field(name="Error occured", value="You don't have any ram")
+                        await ctx.send(embed=embed)
+            
+                elif "Ultra Wide Montior with Ipad <:programmershit:987628014722514984>" in inv:
+                    if "10 gb ram 💾" in inv:
+                        inv.append("Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾")
+                        inv.remove("Ultra Wide Montior with Ipad <:programmershit:987628014722514984>")
+                        inv.remove("Mehcanical Keyboard <:RGBKeyboard:986490410849423441>")
+                        inv.remove("10 gb ram 💾")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
+                        inv.append("Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>")
+                        inv.remove("Ultra Wide Montior with Ipad <:programmershit:987628014722514984>")
+                        inv.remove("Mehcanical Keyboard <:RGBKeyboard:986490410849423441>")
+                        inv.remove("16 gb ram <:DiscordFloppy:987628788256997377>")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    else:
+                        embed.add_field(name="Error occured", value="You don't have any ram")
+                        await ctx.send(embed=embed)                
+
+                elif "Monitor 🖥️" in inv:
+                    if "10 gb ram 💾" in inv:
+                        inv.append("Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾")
+                        inv.remove("Monitor 🖥️")
+                        inv.remove("Mehcanical Keyboard <:RGBKeyboard:986490410849423441>")
+                        inv.remove("10 gb ram 💾")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
+                        inv.append("Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>")
+                        inv.remove("Monitor 🖥️")
+                        inv.remove("Mehcanical Keyboard <:RGBKeyboard:986490410849423441>")
+                        inv.remove("16 gb ram <:DiscordFloppy:987628788256997377>")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    else:
+                        embed.add_field(name="Error occured", value="You don't have any ram")
+                        await ctx.send(embed=embed)                
+                    
+            elif 'Mehcanical Gaming Keyboard <:gamer_keyboard:987622731614945330>' in inv: 
+                if "Wide Montior <:gaming_keyboard:987619238204305438>" in inv:
+                    if "10 gb ram 💾" in inv:
+                        inv.append("Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾")
+                        inv.remove("Wide Montior <:gaming_keyboard:987619238204305438>")
+                        inv.remove("Mehcanical Gaming Keyboard <:gamer_keyboard:987622731614945330>")
+                        inv.remove("10 gb ram 💾")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
+                        inv.append("Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>")
+                        inv.remove("Wide Montior <:gaming_keyboard:987619238204305438>")
+                        inv.remove("Mehcanical Gaming Keyboard <:gamer_keyboard:987622731614945330>")
+                        inv.remove("16 gb ram <:DiscordFloppy:987628788256997377>")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    else: 
+                        embed.add_field(name="Error occured", value="You don't have any ram")
+                        await ctx.send(embed=embed)
+            
+                elif "Ultra Wide Montior with Ipad <:programmershit:987628014722514984>" in inv:
+                    if "10 gb ram 💾" in inv:
+                        inv.append("Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾") 
+                        inv.remove("Ultra Wide Montior with Ipad <:programmershit:987628014722514984>")
+                        inv.remove("Mehcanical Gaming Keyboard <:gamer_keyboard:987622731614945330>")
+                        inv.remove("10 gb ram 💾")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
+                        inv.append("Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>")
+                        inv.remove("Ultra Wide Montior with Ipad <:programmershit:987628014722514984>")
+                        inv.remove("Mehcanical Gaming Keyboard <:gamer_keyboard:987622731614945330>")
+                        inv.remove("16 gb ram <:DiscordFloppy:987628788256997377>")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    else:
+                        embed.add_field(name="Error occured", value="You don't have any ram")
+                        await ctx.send(embed=embed)                
+
+                elif "Monitor 🖥️" in inv:
+                    if "10 gb ram 💾" in inv:
+                        inv.append("Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾") 
+                        inv.remove("Monitor 🖥️")
+                        inv.remove("Mehcanical Gaming Keyboard <:gamer_keyboard:987622731614945330>")
+                        inv.remove("10 gb ram 💾")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    elif "16 gb ram <:DiscordFloppy:987628788256997377>" in inv:
+                        inv.append("Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>")
+                        inv.remove("Monitor 🖥️")
+                        inv.remove("Mehcanical Gaming Keyboard <:gamer_keyboard:987622731614945330>")
+                        inv.remove("16 gb ram <:DiscordFloppy:987628788256997377>")
+                        inv.remove("Mouse 🖱️")
+                        await ctx.send("You have successfully assembled your computer!")
+                    else:
+                        embed.add_field(name="Error occured", value="You don't have any ram")
+                        await ctx.send(embed=embed)                
+            
+                else:
+                    embed.add_field(name="Error occured", value="You don't have any monitor")
                     await ctx.send(embed=embed)
             else:
-                embed.add_field(name="Error occured", value="You don't have any monitor")
+                embed.add_field(name="Error occured", value="You don't have any keyboard")
                 await ctx.send(embed=embed)
         else:
-            embed.add_field(name="Error occured", value="You don't have any keyboard")
+            embed.add_field(name="Error occured", value="You don't have mouse")
             await ctx.send(embed=embed)
+     else:
+    
+        
+        await ctx.send("You can't assemble more than one computer.")
+
     else:
-        embed.add_field(name="Error occured", value="You don't have mouse")
-        await ctx.send(embed=embed)
-   
+    
+        await ctx.send("You don't have enough space in your inventory")
+    
     with open('account.json', 'w') as data:
         json.dump(f, data)
+
  
-@_bot.slash_command(description="Log in to your computer and see your programs and os")
+@computing.sub_command(description="Log in to your computer and see your programs and os")
 async def computer(ctx):
     await log_in(ctx.author)
     embed = disnake.Embed(color=random.choice(colors))
@@ -3271,11 +3919,11 @@ async def magic8ball(ctx, *, message:str):
             em.description = 'Error code **{e.code}**: {e.error}'
             return await ctx.send(embed=em)
 
-@_bot.slash_command(description='Earn some money')
+@economy.sub_command(description='Earn some money')
 @commands.cooldown(1, 86400, commands.BucketType.user)
 async def daily(ctx):
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Daily nerd coins command", value="You can use this command to get daily nerd coins, you will get nerd coins in range of 1k daily.")
+    embed.add_field(name="Daily <:nerd_coin:992265892756979735> command", value="You can use this command to get daily <:nerd_coin:992265892756979735>, you will get <:nerd_coin:992265892756979735> in range of 1k daily.")
     await send_first_time_message(ctx, "daily", embed)  
     await open_account(ctx)
     with open("account.json", 'r', encoding='utf-8') as file:
@@ -3291,12 +3939,12 @@ async def daily(ctx):
     with open('account.json', 'w') as file:
         json.dump(data, file)
 
-@_bot.slash_command(description='Earn some money')
+@economy.sub_command(description='Earn some money')
 @commands.cooldown(1, 604800, commands.BucketType.user)
 async def weekly(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Weekly nerd coins command", value="You can use this command to get weekly nerd coins, you will get nerd coins in range of 5k weekly.")
+    embed.add_field(name="Weekly <:nerd_coin:992265892756979735> command", value="You can use this command to get weekly <:nerd_coin:992265892756979735>, you will get <:nerd_coin:992265892756979735> in range of 5k weekly.")
     await send_first_time_message(ctx, "weekly", embed)  
 
     await open_account(ctx)
@@ -3313,12 +3961,12 @@ async def weekly(ctx):
     with open('account.json', 'w') as file:
         json.dump(data, file)
 
-@_bot.slash_command(description='Earn some money')
+@economy.sub_command(description='Earn some money')
 @commands.cooldown(1, 2592000, commands.BucketType.user)
 async def monthly(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Monthly nerd coins command", value="You can use this command to get monthly nerd coins, you will get nerd coins in range of 10k monthly.")
+    embed.add_field(name="Monthly <:nerd_coin:992265892756979735> command", value="You can use this command to get monthly <:nerd_coin:992265892756979735>, you will get <:nerd_coin:992265892756979735> in range of 10k monthly.")
     await send_first_time_message(ctx, "monthly", embed)  
 
     await open_account(ctx)
@@ -3521,7 +4169,7 @@ async def serverinfo(ctx):
         em.set_footer(text='Created - %s' % time)        
         await ctx.send(embed=em)
 
-@_bot.slash_command(description="Get an job")
+@working.sub_command(description="Get a job")
 async def job(ctx, jobname):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Getting job command", value="This command can be used to get a job, you need to use /jobs to get list of all the jobs and then copy the job you want to get, to get a job you need to have enough subject points requirements. To study you need to use /learn command and if your requirements match you can get a job. Having a job just gives you daily money, to earn money, after getting a job you need to use /work.")
@@ -3579,7 +4227,7 @@ async def job(ctx, jobname):
     else:
         await ctx.send("You don't have enough physics points")
 
-@_bot.slash_command(description="Leave your current job")
+@working.sub_command(description="Leave your current job")
 async def retire(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Retiring job command", value="This command can be used to retire from your current job, after that you can get a new job.")
@@ -3597,7 +4245,7 @@ async def retire(ctx):
         with open('account.json', 'w') as file:
             json.dump(data, file)
 
-@_bot.slash_command(description="Do some work in your job")
+@working.sub_command(description="Do some work in your job")
 @commands.cooldown(1, 86400, commands.BucketType.user)
 async def work(ctx):
     embed = disnake.Embed(color=random.choice(colors))
@@ -3623,8 +4271,9 @@ async def work(ctx):
 
             with open('account.json', 'w') as file:
                 json.dump(data, file)
-    
-            await ctx.send(f"You have earned {new} <:nerd_coin:992265892756979735>")
+
+            embed = disnake.Embed(name="Job complete", value=f"You have earned {new} <:nerd_coin:992265892756979735>")
+            await ctx.send(embed=embed)
 
         else:
             await ctx.send("You don't have a job") 
@@ -3641,7 +4290,8 @@ async def work(ctx):
             with open('account.json', 'w') as file:
                 json.dump(data, file)
     
-            await ctx.send(f"You have earned {sal} <:nerd_coin:992265892756979735>")
+            embed = disnake.Embed(name="Job complete", value=f"You have earned {sal} <:nerd_coin:992265892756979735>")
+            await ctx.send(embed=embed)
 
         else:
             await ctx.send("You don't have a job") 
@@ -3652,11 +4302,11 @@ async def work_error(ctx, error):
         tim = datetime.timedelta(seconds = error.retry_after)
         await ctx.send(f"Wait for **{tim}** seconds before running this command again") 
  
-@_bot.slash_command(description="Check your balance")
+@economy.sub_command(description="Check your balance")
 async def bal(ctx):
     await open_account(ctx)
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Balance command", value="This command displays your account nerd coin balance, geek coin balance and your current job.")
+    embed.add_field(name="Balance command", value="This command displays your account <:nerd_coin:992265892756979735> balance, geek coin balance and your current job.")
     await send_first_time_message(ctx, "bal", embed)  
 
     await open_account(ctx)
@@ -3708,7 +4358,7 @@ async def hug(ctx, member: disnake.Member):
         pass
 
 
-@_bot.slash_command(description="See the job board")
+@working.sub_command(description="See the job board")
 async def jobs(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -3726,12 +4376,12 @@ async def jobs(ctx):
 
     await ctx.send(embed=embed)
 
-@_bot.slash_command(description="Mine geek_coins currency if you have an laptop")
-@commands.cooldown(1, 7200, commands.BucketType.user)
+@geek.sub_command(description="Mine geek_coins currency if you have an laptop")
+@commands.cooldown(1, 60, commands.BucketType.user)
 async def geek_coins(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Geek coin earning command", value="This command can be used to earn *Geek Coins*, another specialized coin which can be earned if you have a laptop. The expensive the laptop is the more geek coins you earn. You can redeem geek coins into nerd coins using /redeem. The cooldown is of 2 hours.")
+    embed.add_field(name="Geek coin earning command", value="This command can be used to earn *Geek Coins*, another specialized coin which can be earned if you have a laptop. The expensive the laptop is the more geek coins you earn. You can redeem geek coins into <:nerd_coin:992265892756979735> using /redeem. The cooldown is of 2 hours.")
     await send_first_time_message(ctx, "geek_coins", embed)  
 
     try:
@@ -3775,11 +4425,11 @@ async def geek_coins_error(ctx, error):
             tim = datetime.timedelta(seconds = error.retry_after)
             await ctx.send(f"Wait for **{tim}** before running this command again") 
 
-@_bot.slash_command(description="Redeem an amount of geek coins currency you have")
+@geek.sub_command(description="Redeem an amount of geek coins currency you have")
 async def redeem(ctx, amount: int):
 
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Redeem nerd coins command", value="This command is used to convert geek coins into nerd coins. You can earn geek coins using /geek_coins command if you have a laptop.")
+    embed.add_field(name="Redeem <:nerd_coin:992265892756979735> command", value="This command is used to convert geek coins into <:nerd_coin:992265892756979735>. You can earn geek coins using /geek_coins command if you have a laptop.")
     await send_first_time_message(ctx, "redeem", embed)  
 
 
@@ -3802,10 +4452,10 @@ async def redeem(ctx, amount: int):
         with open('account.json', 'w') as file:
             json.dump(data, file)
 
-@_bot.slash_command(description="Open the shop")
+@shopping.sub_command(description="Open the shop")
 async def shop(ctx):
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Shop command", value="This commmand returns list of items available you can buy, the payment is only in nerd coins. You can buy an item using /buy, just remember to copy the item code you want to buy and paste it into the /buy command.")
+    embed.add_field(name="Shop command", value="This commmand returns list of items available you can buy, the payment is only in <:nerd_coin:992265892756979735>. You can buy an item using /buy, just remember to copy the item code you want to buy and paste it into the /buy command.")
     await send_first_time_message(ctx, "shop", embed)  
     
     with open('shop.json', 'r', encoding='utf-8') as file:
@@ -3818,7 +4468,7 @@ async def shop(ctx):
 
     await ctx.send(embed=embed)
 
-@_bot.slash_command(description="Buy an item from the shop")
+@shopping.sub_command(description="Buy an item from the shop")
 async def buy(ctx, code):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -3848,7 +4498,10 @@ async def buy(ctx, code):
                     inv = data[str(ctx.user.id)]['Inventory']
                     data[str(ctx.user.id)]['Bank'] -= items[item]['price']
 
-                    inv.append(item)
+                    if len(data[str(ctx.user.id)]['Inventory']) < 20:
+                        inv.append(item)
+                    else:
+                        await ctx.send("You don't have enough place in your inventory. Sell some items.")
 
                     with open('account.json', 'w') as file:
                         json.dump(data, file)
@@ -3895,7 +4548,7 @@ async def win10_installed(ctx):
     else:
         pass
 
-@_bot.slash_command(description="Check your inventory")
+@economy.sub_command(description="Check your inventory")
 async def inv(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Inventory command", value="This command displays your inventory. It wil display all the items you have bought and your computers, bought machines, collective items.")
@@ -3909,7 +4562,7 @@ async def inv(ctx):
     embed.add_field(name=f"----------", value=iv)
     await ctx.send(embed=embed)
 
-@_bot.slash_command(description="See what subjects to learn")
+@learning.sub_command(description="See what subjects to learn")
 async def subjects(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -3949,10 +4602,8 @@ async def learning_points(user):
     
     return True
 
-
-
-@_bot.slash_command(description="Learn an subject")
-@commands.cooldown(1, 3600, commands.BucketType.user)
+@learning.sub_command(description="Learn an subject")
+@commands.cooldown(1, 1800, commands.BucketType.user)
 async def learn(ctx, subject):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -4023,8 +4674,8 @@ async def learn_error(ctx, error):
             tim = datetime.timedelta(seconds = error.retry_after)
             await ctx.send(f"Wait for **{tim}** before running this command again") 
 
-@_bot.slash_command(description="Get top richest people")
-async def top(ctx):
+@leaderboard.sub_command(description="Get top richest people")
+async def global_top(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Top 10 leaderboard command", value="This command can be used to get top 10 *Global* Leaderboard.")
@@ -4060,7 +4711,7 @@ async def top(ctx):
     await ctx.send(embed=embed)
 
 
-@_bot.slash_command(description="Check how much learning points you got in every subject")
+@learning.sub_command(description="Check how much learning points you got in every subject")
 async def learnpoints(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -4068,6 +4719,7 @@ async def learnpoints(ctx):
     await send_first_time_message(ctx, "learnpoints", embed)  
 
     await learning_points(ctx)
+   
     with open('learning_points.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
 
@@ -4086,11 +4738,11 @@ async def learnpoints(ctx):
 
     await ctx.send(embed=embed)
 
-@_bot.slash_command(description="See your level card")
+@economy.sub_command(description="See your level card")
 async def level(ctx):
 
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Level card command", value="This command tells your level, the more you chat in the server this bot is in, the more XP you gain. Your XP is always safely stored so even if you leave the server or be in another server or bot is kicked, your XP will not go. Same thing is with all the currencies (nerd coin and geek coin), crypto currencies, inventory and learning points. To boost your XP you can buy XP booster in /shop.")
+    embed.add_field(name="Level card command", value="This command tells your level, the more you chat in the server this bot is in, the more XP you gain. Your XP is always safely stored so even if you leave the server or be in another server or bot is kicked, your XP will not go. Same thing is with all the currencies (<:nerd_coin:992265892756979735> and geek coin), crypto currencies, inventory and learning points. To boost your XP you can buy XP booster in /shop.")
     await send_first_time_message(ctx, "level", embed)  
 
     userr = ctx.user
@@ -4124,7 +4776,7 @@ async def level(ctx):
 
     background.paste(profile.image, (30, 30))
 
-    background.rectangle((30, 220), width=650, height=40, fill="#fff", radius=20)
+    background.rectangle((30, 220), width=650, height=40, fill="#ff9933", radius=20)
     background.bar(
         (30, 220),
         max_width=650,
@@ -4197,7 +4849,6 @@ async def lvl(message):
                     with open("account.json", "w") as f:
                         json.dump(data, f)
             
-
         else:
             if str(message.author.id) in data:
                 xp = data[str(message.author.id)]['XP']
@@ -4371,8 +5022,6 @@ async def compliment(ctx):
     embed.add_field(name='Compliment', value=random.choice(lines))
     await ctx.send(embed=embed)
 
-
-
 async def loan_payment(user):
     with open('loan.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
@@ -4386,7 +5035,11 @@ async def loan_payment(user):
         json.dump(data, f)
     
     return True
-@_bot.event
+
+async def loan_alert(ctx):
+    await asyncio.sleep(172800)
+    await ctx.author.send("Do not forget to pay your loan in 24 hours.")
+
 async def loan_payment_process(ctx):
     with open('loan.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
@@ -4404,22 +5057,29 @@ async def loan_payment_process(ctx):
             file2[str(ctx.user.id)]["Crypto"] *= 0
             with open("account.json", 'w') as data2:
                 json.dump(file2, data2)
+            await ctx.author.send("Your geek coins are taken to pay loan.")
         else:
             if len(file2[str(ctx.user.id)]["Inventory"]) != 0:
                 file2[str(ctx.user.id)]["Inventory"].clear()
                 with open("account.json", 'w') as data2:
                     json.dump(file2, data2)
+                
+                await ctx.author.send("Your inventory is cleared to pay loan.")
             else:
-                if file2[str(ctx.user.id)]["XP"] >= 500:
-                    file2[str(ctx.user.id)]["XP"] -= 500
+                if file2[str(ctx.user.id)]["XP"] >= 100:
+                    file2[str(ctx.user.id)]["XP"] -= 100
                     with open("account.json", 'w') as data2:
                         json.dump(file2, data2)
+                    
+                    await ctx.author.send("Your XP are -100 to pay loan.")
                 else:
                     file2[str(ctx.user.id)]["XP"] *= 0
                     with open("account.json", 'w') as data2:
                         json.dump(file2, data2)
+                    
+                    await ctx.author.send("Your XP is cleared in order to pay loan.")
                 
-@_bot.slash_command(description="Pay amount for your loan")
+@loaning.sub_command(description="Pay amount for your loan")
 async def pay(ctx, amount: int):
 
     embed = disnake.Embed(color=random.choice(colors))
@@ -4469,11 +5129,11 @@ async def dadjokes(ctx):
     embed.add_field(name='Dad joke', value=random.choice(lines))
     await ctx.send(embed=embed)
 
-@_bot.slash_command(description="Check how much of your loan is left")
-async def lend(ctx):
+@loaning.sub_command(description="Check how much of your loan is left")
+async def check_loan(ctx):
     embed = disnake.Embed(color=random.choice(colors))
     embed.add_field(name="Loan amount command", value="You can use this command to know how much loan is left to pay. Pay loan by using /pay.")
-    await send_first_time_message(ctx, "lend", embed)  
+    await send_first_time_message(ctx, "check_loan", embed)  
     with open("loan.json", 'r', encoding='utf-8') as file:
         data = json.load(file)
     
@@ -4481,10 +5141,10 @@ async def lend(ctx):
     embed.add_field(name='------', value=data[str(ctx.user.id)]["Loan"])
     await ctx.send(embed=embed)
 
-@_bot.slash_command(description="Take loan from bank")
+@loaning.sub_command(description="Take loan from bank")
 async def loan(ctx, amount: int):
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Loaning command", value="You can get a loan using this command. To get a loan you need to have at least 10000 nerd coins and you can't get a loan less than 100000 nerd coins. Loan must be taken in 0s, for example 1000000/100000000/10000000. You can pay your loan using /pay. If you do not pay your loan in 3 days, your items will be taken by the nerd bank, if your items worth the value of loan then your loan will be payed but if still the loan will not be paid then all your crypto currencies will be taken. The deadline of paying any amount of loan is three days. You must pay it, or your inventory, crypto currencies, geek coins will be taken by the nerd bank. Between the process when the nerd bank is taking everything from you, you can't pay your loan.")
+    embed.add_field(name="Loaning command", value="You can get a loan using this command. To get a loan you need to have at least 10000 <:nerd_coin:992265892756979735> and you can't get a loan less than 100000 <:nerd_coin:992265892756979735>. Loan must be taken in 0s, for example 1000000/100000000/10000000. You can pay your loan using /pay. If you do not pay your loan in 3 days, your items will be taken by the nerd bank, if your items worth the value of loan then your loan will be payed but if still the loan will not be paid then all your crypto currencies will be taken. The deadline of paying any amount of loan is three days. You must pay it, or your inventory, crypto currencies, geek coins will be taken by the nerd bank. Between the process when the nerd bank is taking everything from you, you can't pay your loan.")
     await send_first_time_message(ctx, "loan", embed)  
     
     with open('account.json', 'r', encoding='utf-8') as file:
@@ -4699,7 +5359,7 @@ class Labs(disnake.ui.View):
 @_bot.slash_command(description='Start your own laboratory')
 async def laboratory(ctx):
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Laboratory business command", value="You can use this command to start a lab business. Researching in lab and you can earn money very easily. To start this career you need to have 1 crore nerd coins. This is a very profitable business and a quick way to earn money.")
+    embed.add_field(name="Laboratory business command", value="You can use this command to start a lab business. Researching in lab and you can earn money very easily. To start this career you need to have 1 crore <:nerd_coin:992265892756979735>. This is a very profitable business and a quick way to earn money.")
     await send_first_time_message(ctx, "laboratory", embed)  
 
     with open("account.json", 'r', encoding='utf-8') as file:
@@ -4852,11 +5512,11 @@ class SendConfirmView(disnake.ui.View):
         embed.add_field(name="Money Declined", value=f"{self.receiver.mention} has declined your transaction of {self.money}.")
         await self.ctx.send(embed=embed, view=None)
 
-@_bot.slash_command(description="Send money to someone")
+@economy.sub_command(description="Send money to someone")
 async def send(ctx, member: disnake.Member, amount: int):
 
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Money sharing command", value="This command can be used to share money to someone, to get money in the reciever's account, they must accept the money. If they decline it. money will stay in sender's account. Once the reciever has accepted the nerd coins, sender can't have them back.")
+    embed.add_field(name="Money sharing command", value="This command can be used to share money to someone, to get money in the reciever's account, they must accept the money. If they decline it. money will stay in sender's account. Once the reciever has accepted the <:nerd_coin:992265892756979735>, sender can't have them back.")
     await send_first_time_message(ctx, "send", embed)  
 
     with open("account.json", 'r', encoding='utf-8') as file:
@@ -4878,7 +5538,6 @@ async def run_tas(ctx):
 async def on_message(message):
     with open('spam.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
-
 
     await spem(message)
     if message.guild.id in data:
@@ -4926,7 +5585,10 @@ async def on_message(message):
                         await loan_payment(message.author)
                         await loan_payment_process(message.author)
                         await learning_points(message.author)
-                        await tax_payment_process(message)       
+                        await tax_alert(message)
+                        await tax_payment_process(message)
+                        await loan_alert(message)
+                        await antivirus_expire(message)       
         else:   
             if not message.author.bot:
                 await rep(message.author)
@@ -4944,7 +5606,11 @@ async def on_message(message):
                 await loan_payment(message.author)
                 await loan_payment_process(message.author)
                 await learning_points(message.author)
+                await tax_alert(message)
                 await tax_payment_process(message)
+                await antivirus_expire(message)
+                await loan_alert(message)
+                await markett(message.author)
             else:
                 pass
     
@@ -4965,7 +5631,11 @@ async def on_message(message):
                 await loan_payment(message.author)
                 await loan_payment_process(message.author)
                 await learning_points(message.author)
+                await tax_alert(message)
                 await tax_payment_process(message)
+                await antivirus_expire(message)
+                await loan_alert(message)
+                await markett(message.author)
 
 
     await _bot.process_commands(message)
