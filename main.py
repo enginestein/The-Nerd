@@ -127,7 +127,7 @@ async def log_reaction(reaction, user, type):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
     
-    if data[str(reaction.message.guild.id)]['msg_id'] != [:
+    if data[str(reaction.message.guild.id)]['msg_id'][0] is not None:
         message_log_id = data[str(reaction.message.guild.id)]['msg_id'][0]
     else:
         pass
@@ -2694,8 +2694,8 @@ class Attack(disnake.ui.View):
     async def ransomware(self, button: disnake.ui.Button, interaction: disnake.Interaction):
 
         computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
-        with open('account.json', 'r', encoding='utf-8') as f:
-            file = json.load(f)
+        with open('account.json', 'r', encoding='utf-8') as data:
+            file = json.load(data)
         
         if any(computer in file[str(interaction.user.id)]["Inventory"] for computer in computers):
             with open("login.json", 'r', encoding='utf-8') as r:
@@ -2720,8 +2720,8 @@ class Attack(disnake.ui.View):
                         embed1 = disnake.Embed(color=random.choice(colors))
                         embed1.add_field(name="Alert", value=f"{interaction.user} attacked on you with ransomware.")
                         await self.member.send(embed=embed1)
-                        with open('account.json', 'w') as f:
-                            json.dump(file, f)
+                        with open('account.json', 'w') as data:
+                            json.dump(file, data)
                         
                     else:
                         embed = disnake.Embed(color=random.choice(colors))
@@ -2756,8 +2756,8 @@ class Attack(disnake.ui.View):
                         embed.add_field(name="Failed", value="victim wasn't a victim, now you are a victim, they reverse shelled on you, you paid them 5000 <:nerd_coin:992265892756979735>")
                         await interaction.response.send_message(embed=embed)
                         file[str(interaction.user.id)]['Bank'] -= 5000
-                        with open('account.json', 'w') as f:
-                            json.dump(file, f)
+                        with open('account.json', 'w') as data:
+                            json.dump(file, data)
                 else:
                     interaction.reponse.send_message("Victim has no geek coins")
             
@@ -2772,8 +2772,9 @@ class Attack(disnake.ui.View):
 
         f[str(interaction.user.id)]["Programs"].remove("Ransomware")
 
-        with open('account.json', 'w') as f:
-            json.dump(file, f)
+        with open('account.json', 'w') as data:
+            json.dump(file, data)
+        
         with open("login.json", 'w', encoding='utf-8') as r:
             json.dump(f, r)
             
@@ -2781,8 +2782,8 @@ class Attack(disnake.ui.View):
     @disnake.ui.button(label="Spyware", style=disnake.ButtonStyle.red)
     @commands.cooldown(1, 3600, commands.BucketType.user)
     async def spyware(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-        with open('account.json', 'r', encoding='utf-8') as f:
-            data2 = json.load(f)
+        with open('account.json', 'r', encoding='utf-8') as data1:
+            data2 = json.load(data1)
         
         computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
 
@@ -2802,8 +2803,8 @@ class Attack(disnake.ui.View):
                                 data2[str(interaction.user.id)]['Bank'] += (amt * 2)
                                 
                                 data2[str(self.member.id)]["Bank"] -= amt
-                                with open('account.json', 'w') as f:
-                                    json.dump(data2, f)
+                                with open('account.json', 'w') as data1:
+                                    json.dump(data2, data1)
                                 
 
                                 embed = disnake.Embed(color=random.choice(colors))
@@ -2861,8 +2862,8 @@ class Attack(disnake.ui.View):
                             if data2[str(self.member.id)]["Bank"] != 0:
                                 data2[str(interaction.user.id)]['Bank'] += amt
                                 data2[str(self.member.id)]["Bank"] -= amt
-                                with open('account.json', 'w') as f:
-                                    json.dump(data2, f)
+                                with open('account.json', 'w') as data1:
+                                    json.dump(data2, data1)
                                 
                                 embed = disnake.Embed(color=random.choice(colors))
                                 embed.add_field(name="Sucess, You gain", value=f"{amt} <:nerd_coin:992265892756979735>'")
@@ -2910,8 +2911,8 @@ class Attack(disnake.ui.View):
 
         f[str(interaction.user.id)]["Programs"].remove("Spyware")
 
-        with open('account.json', 'w') as f:
-            json.dump(data2, f)
+        with open('account.json', 'w') as data1:
+                                    json.dump(data2, data1)
 
         with open("login.json", 'w', encoding='utf-8') as r:
             json.dump(f, r)            
@@ -2921,8 +2922,8 @@ class Attack(disnake.ui.View):
     @commands.cooldown(1, 3600, commands.BucketType.user)
     async def malware(self, button: disnake.ui.Button, interaction: disnake.Interaction): 
         computers = ["Computer🖱️<:gaming_keyboard:987619238204305438>⌨️💾", "Computer🖱️<:gaming_keyboard:987619238204305438>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️<:programmershit:987628014722514984>⌨️💾", "Computer🖱️:programmershit:987628014722514984>⌨️<:DiscordFloppy:987628788256997377>", "Computer🖱️🖥️⌨️💾", 'Computer🖱️🖥️⌨️<:DiscordFloppy:987628788256997377>', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️<:programmershit:987628014722514984><:RGBKeyboard:986490410849423441>💾', 'Computer🖱️:programmershit:987628014722514984><:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441><:DiscordFloppy:987628788256997377>', 'Computer🖱️🖥️<:RGBKeyboard:986490410849423441>💾','Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330>💾', 'Computer🖱️<:gaming_keyboard:987619238204305438><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>','Computer🖱️<:programmershit:987628014722514984><:gamer_keyboard:987622731614945330>💾','Computer🖱️:programmershit:987628014722514984><:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>',"Computer🖱️🖥️<:gamer_keyboard:987622731614945330>💾", "Computer🖱️🖥️<:gamer_keyboard:987622731614945330><:DiscordFloppy:987628788256997377>"]
-        with open('account.json', 'r', encoding='utf-8') as f:
-            file = json.load(f)
+        with open('account.json', 'r', encoding='utf-8') as f1:
+            file = json.load(f1)
         
         if any(computer in file[str(interaction.user.id)]["Inventory"] for computer in computers):
             with open("login.json", 'r', encoding='utf-8') as r:
@@ -2954,8 +2955,8 @@ class Attack(disnake.ui.View):
                         embed1.add_field(name="Alert", value=f"{interaction.user} attacked you with malware.")
                         await self.member.send(embed=embed1)
 
-                        with open('account.json', 'w') as f:
-                            json.dump(file, f)
+                        with open('account.json', 'w') as f1:
+                            json.dump(file, f1)
                 
                     else:
                         embed = disnake.Embed(color=random.choice(colors))
