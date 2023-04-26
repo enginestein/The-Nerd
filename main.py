@@ -1297,16 +1297,6 @@ async def refuel(ctx):
     else:
         await ctx.send("You don't have a robot")
 
-async def antivirus_expire(ctx):
-    asyncio.sleep(259200)
-    with open('account.json', 'r', encoding='utf-8') as file:
-        data = json.load(file)
-    
-    data[str(ctx.author.id)]["Inventory"].remove("Antivirus <:blurple_shield:1001104190875107429>")
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Antivirus expired", value="Your antivirus has expired")
-    await ctx.send(embed=embed)
-
 
 # fix attack command 🗸
 # alerts 🗸
@@ -2739,7 +2729,8 @@ class Attack(disnake.ui.View):
 
                  elif "Antivirus <:blurple_shield:1001104190875107429>" in inv2:
                     embed = disnake.Embed(color=random.choice(colors))
-                    embed.add_field(name="Failed", value="Victim had antivirus")
+                    embed.add_field(name="Failed", value="Victim had an antivirus")
+                    file[str(self.member.id)]['Inventory'].remove("Antivirus <:blurple_shield:1001104190875107429>")
                     await interaction.response.send_message(embed=embed)
                     embed1 = disnake.Embed(color=random.choice(colors))
                     embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack on you with ransomware.")
@@ -2749,6 +2740,7 @@ class Attack(disnake.ui.View):
                     if "Antivirus <:blurple_shield:1001104190875107429>" in inv:
                         embed = disnake.Embed(color=random.choice(colors))
                         embed.add_field(name="Failed", value="The victim reverse shelled on you but glad you had antivirus")
+                        file[str(interaction.user.id)]['Inventory'].remove("Antivirus <:blurple_shield:1001104190875107429>")
                         await interaction.response.send_message(embed=embed)
                         embed1 = disnake.Embed(color=random.choice(colors))
                         embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack on you with ransomware.")
@@ -2800,10 +2792,12 @@ class Attack(disnake.ui.View):
 
                             if data2[str(self.member.id)]["Bank"] != 0:
                                 data2[str(interaction.user.id)]['Bank'] += (amt * 2)
+                                
                                 data2[str(self.member.id)]["Bank"] -= amt
                                 with open('account.json', 'w') as f:
                                     json.dump(data2, f)
                                 
+
                                 embed = disnake.Embed(color=random.choice(colors))
                                 embed.add_field(name="Sucess, You gain", value=f"{amt * 2} <:nerd_coin:992265892756979735>'")
                                 await interaction.response.send_message(embed=embed)
@@ -2834,6 +2828,8 @@ class Attack(disnake.ui.View):
                         embed = disnake.Embed(color=random.choice(colors))
                         embed.add_field(name="Failed", value="Victim had an antivirus")
                         await interaction.response.send_message(embed=embed)
+
+                        data2[str(self.member.id)]['Inventory'].remove("Antivirus <:blurple_shield:1001104190875107429>")
 
                         
                         embed1 = disnake.Embed(color=random.choice(colors))
@@ -2892,6 +2888,7 @@ class Attack(disnake.ui.View):
                         embed.add_field(name="Failed", value="Victim had an antivirus")
                         await interaction.response.send_message(embed=embed)
 
+                        data2[str(self.member.id)]['Inventory'].remove("Antivirus <:blurple_shield:1001104190875107429>")
                         
                         embed1 = disnake.Embed(color=random.choice(colors))
                         embed1.add_field(name="Alert", value=f"{interaction.user} tried to attack you with spyware.")
@@ -5050,8 +5047,14 @@ async def loan_payment(user):
     return True
 
 async def loan_alert(ctx):
-    await asyncio.sleep(172800)
-    await ctx.author.send("Do not forget to pay your loan in 24 hours.")
+    with open('loan.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    
+    if data[str(ctx.id)]['Loan'] != 0:
+        await asyncio.sleep(172800)
+        await ctx.author.send("Do not forget to pay your loan in 24 hours.")
+    else:
+        pass
 
 async def loan_payment_process(ctx):
     with open('loan.json', 'r', encoding='utf-8') as file:
@@ -5600,8 +5603,7 @@ async def on_message(message):
                         await learning_points(message.author)
                         await tax_alert(message)
                         await tax_payment_process(message)
-                        await loan_alert(message)
-                        await antivirus_expire(message)       
+                        await loan_alert(message)   
         else:   
             if not message.author.bot:
                 await rep(message.author)
@@ -5621,7 +5623,6 @@ async def on_message(message):
                 await learning_points(message.author)
                 await tax_alert(message)
                 await tax_payment_process(message)
-                await antivirus_expire(message)
                 await loan_alert(message)
                 await markett(message.author)
             else:
@@ -5646,7 +5647,6 @@ async def on_message(message):
                 await learning_points(message.author)
                 await tax_alert(message)
                 await tax_payment_process(message)
-                await antivirus_expire(message)
                 await loan_alert(message)
                 await markett(message.author)
 
