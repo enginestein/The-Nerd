@@ -251,22 +251,28 @@ async def on_member_join(member):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
     
-    channel = _bot.get_channel(int(data[str(member.guild.id)]['hello_byebye'][0]))
-    message = data[str(member.guild.id)]['hbm'][0]
+    if data[str(member.guild.id)]['hello_byebye'] != []:
+        channel = _bot.get_channel(int(data[str(member.guild.id)]['hello_byebye'][0]))
+        message = data[str(member.guild.id)]['hbm'][0]
     
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name=message, value=member.mention)
-    await channel.send(embed=embed)
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.add_field(name=message, value=member.mention)
+        await channel.send(embed=embed)
+    else:
+        pass
 
 @_bot.event
 async def on_member_remove(member):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
     
-    channel = _bot.get_channel(int(data[str(member.guild.id)]['hello_byebye'][0]))
-    embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="One of our members have left", value=member.mention)
-    await channel.send(embed=embed)
+    if data[str(member.guild.id)]['hello_byebye'] != []:
+        channel = _bot.get_channel(int(data[str(member.guild.id)]['hello_byebye'][0]))
+        embed = disnake.Embed(color=random.choice(colors))
+        embed.add_field(name="One of our members have left", value=member.mention)
+        await channel.send(embed=embed)
+    else:
+        pass
 
 @mod.sub_command(description="Set up the logs")
 @commands.has_permissions(administrator=True)
@@ -311,7 +317,7 @@ async def log_message(message, type, before=None, attachments_old=None):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
 
-    if data[str(message.guild.id)]['msg_id']is not None:
+    if data[str(message.guild.id)]['msg_id'] != []:
         message_log_id = data[str(message.guild.id)]['msg_id'][0]
     else:
         pass
