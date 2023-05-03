@@ -127,7 +127,7 @@ async def log_reaction(reaction, user, type):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
     
-    if data[str(reaction.message.guild.id)]['msg_id'][0] is not None:
+    if data[str(reaction.message.guild.id)]['msg_id'] != []:
         message_log_id = data[str(reaction.message.guild.id)]['msg_id'][0]
     else:
         pass
@@ -319,42 +319,43 @@ async def log_message(message, type, before=None, attachments_old=None):
 
     if data[str(message.guild.id)]['msg_id'] != []:
         message_log_id = data[str(message.guild.id)]['msg_id'][0]
+        if message.author.id == _bot.user.id:
+            return 0
+
+        if message.guild is None:
+            return 0
+
+        bot_user = ""
+        if message.author.bot:
+            bot_user = " (bot)"
+
+        try:
+            attachments = ""
+            count = 1
+            for a in message.attachments:
+                attachments += f"\n[attachment{count}]({a.url})"
+                count += 1
+        except Exception:
+            attachments = ""
+
+        description = ""
+        if type == 'Edited':
+            color = changed_color
+            description = f"Before:\n{before.content}{attachments_old}\n\nAfter:\n"
+        elif type == 'Deleted':
+            color = deleted_color
+        elif type == 'Sent':
+            color = sent_color
+
+        embed = disnake.Embed(title=f"{message.author}{bot_user}",description=f"{description}{message.content}{attachments}\n"f"[jump to message]({message.jump_url})",color=color)
+        embed.set_footer(text=f"Author ID: {message.author.id}\nMessage ID: {message.id}")
+        embed.set_thumbnail(url=message.author.avatar.url)
+        embed.set_author(name=f"Message {type} in #{message.channel}", icon_url=_bot.user.avatar.url)
+        await send_to_log(_bot, embed, channel_id=message_log_id)
     else:
         pass
 
-    if message.author.id == _bot.user.id:
-        return 0
-
-    if message.guild is None:
-        return 0
-
-    bot_user = ""
-    if message.author.bot:
-        bot_user = " (bot)"
-
-    try:
-        attachments = ""
-        count = 1
-        for a in message.attachments:
-            attachments += f"\n[attachment{count}]({a.url})"
-            count += 1
-    except Exception:
-        attachments = ""
-
-    description = ""
-    if type == 'Edited':
-        color = changed_color
-        description = f"Before:\n{before.content}{attachments_old}\n\nAfter:\n"
-    elif type == 'Deleted':
-        color = deleted_color
-    elif type == 'Sent':
-        color = sent_color
-
-    embed = disnake.Embed(title=f"{message.author}{bot_user}",description=f"{description}{message.content}{attachments}\n"f"[jump to message]({message.jump_url})",color=color)
-    embed.set_footer(text=f"Author ID: {message.author.id}\nMessage ID: {message.id}")
-    embed.set_thumbnail(url=message.author.avatar.url)
-    embed.set_author(name=f"Message {type} in #{message.channel}", icon_url=_bot.user.avatar.url)
-    await send_to_log(_bot, embed, channel_id=message_log_id)
+    
 
 @_bot.event
 async def on_message_edit(before, message):
@@ -4791,7 +4792,7 @@ async def level(ctx):
     profile = Editor(profile).resize((150, 150)).circle_image()
     
     poppins = Font.poppins(size=40)
-    poppins_small = Font.poppins(size=30)
+    poppins_small = Font.poppins(size=30)	
 
     ima = Editor("zBLACK.png")
     background.blend(image=ima, alpha=.5, on_top=False)
@@ -5568,7 +5569,7 @@ async def on_message(message):
         data = json.load(file)  
 
     await spem(message)
-    if message.guild.id in data:
+    if type(message.guild) != None and message.guild.id in data:
         if 1 in data[str(message.guild.id)]['Spam']:
 
                 global author_msg_counts

@@ -133,14 +133,14 @@
 
     "Tax Evader <:pound_with_wings_v2:1100047030467973230>": {
         "price": 20000,
-        "code": "kali",
-        "description": "Faster than windows 10, more storage, more fast"
+        "code": "te",
+        "description": "You can evade one month tax with this"
     },
 
     "Antivirus Bypasser <:taxevader:1100046708982947993>": {
         "price": 30000,
-        "code": "kali",
-        "description": "Faster than windows 10, more storage, more fast"
+        "code": "atb",
+        "description": "You can bypass antivirus with this"
     },
 
 
