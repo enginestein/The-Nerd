@@ -11,6 +11,9 @@ from disnake.ext import commands
 import disnake
 import cryptocompare
 import requests
+import qrcode
+from io import BytesIO
+import io
 
 dictionary_check = True
 timer_check = True 
@@ -35,6 +38,10 @@ colors = [1752220, 1146986, 3066993, 2067276, 3447003, 2123412, 10181046, 741953
 
 @_bot.slash_command()
 async def economy(ctx):
+    pass
+
+@_bot.slash_command()
+async def cybersec(ctx):
     pass
 
 @_bot.slash_command()
@@ -1808,13 +1815,15 @@ async def joke(ctx):
 
 
 @util.sub_command(description="Get bot's current latency")
-async def ping(ctx):
+async def latency(ctx):
     embed = disnake.Embed(color=random.choice(colors))
-    embed.add_field(name="Ping command", value="When the bot is running slow you can use this command to monitor latency of the bot and use it at the right time.")
-    await send_first_time_message(ctx, "ping", embed)    
+    embed.add_field(name="Latency command", value="When the bot is running slow you can use this command to monitor latency of the bot and use it at the right time.")
+    await send_first_time_message(ctx, "latency", embed)    
 
-    latency = _bot.latency * 1000  
-    await ctx.send(f'Pong! Latency: {latency:.2f}ms')
+    latency = _bot.latency * 1000 
+    embed = disnake.Embed(color=random.choice(colors)) 
+    embed.add_field(name="Latency", value=f"{latency:.2f}ms")
+    await ctx.send(embed=embed)
 
 @fun.sub_command(description="Get a cat image")
 async def cat(ctx):
@@ -4786,41 +4795,12 @@ async def level(ctx):
     if percentage < 1:
       percentage = 0
     
-    background = Editor(f"zIMAGE.png")
-    profile = await load_image_async(str(userr.avatar.url))
 
-    profile = Editor(profile).resize((150, 150)).circle_image()
-    
-    poppins = Font.poppins(size=40)
-    poppins_small = Font.poppins(size=30)	
 
-    ima = Editor("zBLACK.png")
-    background.blend(image=ima, alpha=.5, on_top=False)
-
-    background.paste(profile.image, (30, 30))
-
-    background.rectangle((30, 220), width=650, height=40, fill="#ff9933", radius=20)
-    background.bar(
-        (30, 220),
-        max_width=650,
-        height=40,
-        percentage=percentage,
-        fill="#ff9933",
-        radius=20,
-    )
-    background.text((200, 40), str(userr.name), font=poppins, color="#ff9933")
-
-    background.rectangle((200, 100), width=350, height=2, fill="#ff9933")
-    background.text(
-        (200, 130),
-        f"Level : {lvl}"
-        + f" XP : {xp} / {(lvl+1) * 100}",
-        font=poppins_small,
-        color=random.choice(colors)
-    )
-
-    card = disnake.File(fp=background.image_bytes, filename="zCARD.png")
-    await ctx.send(file=card)
+    embed = disnake.Embed(color=random.choice(colors))
+    embed.add_field(name=f"{ctx.author}'s Level", value=lvl) 
+    embed.add_field(name=f"{ctx.author}'s XP", value=f" {xp} / {(lvl+1) * 100}")
+    await ctx.send(embed=embed)
 
 async def xp(ctx, amt):
     await open_account(ctx)
@@ -4889,7 +4869,7 @@ async def lvl(message):
                     with open('setup.json', 'r', encoding='utf-8') as file2:
                         data2 = json.load(file2)
                     
-                    if data2[str(message.guild.id)]['level'] != []:
+                    if data2[str(message.guild.id)]['level'] != [] and data2[str(message.guild.id)]['levelm'] != []:
                         channel = _bot.get_channel(int(data2[str(message.guild.id)]['level'][0]))
                         await channel.send(f"{message.author.mention} {data2[str(message.guild.id)]['levelm'][0]} [{new_level}]")
                     
@@ -5562,95 +5542,19 @@ async def run_tas(ctx):
     await asyncio.sleep(2592000)
     await tex(ctx)
 
-
 @_bot.event
 async def on_message(message):
-    with open('spam.json', 'r', encoding='utf-8') as file:
-        data = json.load(file)  
-
-    await spem(message)
-    if type(message.guild) != None and message.guild.id in data:
-        if 1 in data[str(message.guild.id)]['Spam']:
-
-                global author_msg_counts
-
-                author_id = message.author.id
-                curr_time = datetime.datetime.now().timestamp() * 1000
-
-                if not author_msg_times.get(author_id, False):
-                    author_msg_times[author_id] = []
-
-                author_msg_times[author_id].append(curr_time)
-                expr_time = curr_time - time_window_milliseconds
-                expired_msgs = [
-                    msg_time for msg_time in author_msg_times[author_id]
-                    if msg_time < expr_time
-                ]
-
-                for msg_time in expired_msgs:
-                    author_msg_times[author_id].remove(msg_time)
-
-                if len(author_msg_times[author_id]) > max_msg_per_window:
-                    color = disnake.Color(value=random.choice(colors))
-                    em = disnake.Embed(color=color, title=f"WARNING: by The Nerd from **{message.guild.name}**.",   description="You need to stop spamming")
-
-                    await message.author.send(embed=em)
+        with open('spam.json', 'r', encoding='utf-8') as file:
+            data = json.load(file)  
                 
-                else:
-                    if not message.author.bot:
-                        await rep(message.author)
-                        await open_account(message.author)
-                        await setups(message)
-                        await taxes(message)
-                        await run_tas(message)	
-                        await markett(message.author)
-                        await open_account(message.author)
-                        await xp(message.author, 5)
-                        await lvl(message)
-                        await coin_boost(message)
-                        await xp_boost(message)
-                        await kali_installed(message.author)
-                        await win10_installed(message.author)
-                        await loan_payment(message.author)
-                        await loan_payment_process(message.author)
-                        await learning_points(message.author)
-                        await tax_alert(message)
-                        await tax_payment_process(message)
-                        await loan_alert(message)   
-        else:   
-            if not message.author.bot:
-                await rep(message.author)
-                await open_account(message.author)
+        if not message.author.bot:
                 await setups(message)
-                await taxes(message)
-                await run_tas(message)
-                await crypt(message.author)
                 await xp(message.author, 5)
                 await lvl(message)
-                await coin_boost(message)
-                await xp_boost(message)
-                await kali_installed(message.author)
-                await win10_installed(message.author)
-                await loan_payment(message.author)
-                await loan_payment_process(message.author)
-                await learning_points(message.author)
-                await tax_alert(message)
-                await tax_payment_process(message)
-                await loan_alert(message)
-                await markett(message.author)
-            else:
-                pass
-    
-    else:   
-            if not message.author.bot:
-                await setups(message)
-                await rep(message)
                 await open_account(message.author)
                 await taxes(message)
                 await run_tas(message)
                 await crypt(message.author)
-                await xp(message, 5)
-                await lvl(message)
                 await coin_boost(message)
                 await xp_boost(message)
                 await kali_installed(message.author)
@@ -5662,8 +5566,10 @@ async def on_message(message):
                 await tax_payment_process(message)
                 await loan_alert(message)
                 await markett(message.author)
+                await rep(message)
+        else:
+                pass
 
-
-    await _bot.process_commands(message)
+        await _bot.process_commands(message)
 
 _bot.run("MTA5NTM0ODc3Mjg4NTc2MjE3OQ.GZ24Xq.PPeSWXgu7b2UOw29wfwyWzVNW6u4_KebYhtkkc")      
