@@ -172,11 +172,18 @@ async def log_reaction(reaction, user, type):
 
 @_bot.event
 async def on_reaction_add(reaction, user):
-    await log_reaction(reaction, user, type='Sent')
+    try:
+
+        await log_reaction(reaction, user, type='Sent')
+    except:
+        pass
 
 @_bot.event
 async def on_reaction_remove(reaction, user):
-    await log_reaction(reaction, user, type='Deleted')
+    try:
+        await log_reaction(reaction, user, type='Deleted')
+    except:
+        pass
 
 async def setups(user):
     with open('setup.json', 'r', encoding='utf-8') as file:
@@ -381,7 +388,10 @@ async def on_message_edit(before, message):
 
 @_bot.event
 async def on_message_delete(message):
-        await log_message(message, type='Deleted')
+        try:
+            await log_message(message, type='Deleted')
+        except:
+            pass
 
 @_bot.event
 async def on_ready(): 
@@ -4874,7 +4884,7 @@ async def lvl(message):
                         await channel.send(f"{message.author.mention} {data2[str(message.guild.id)]['levelm'][0]} [{new_level}]")
                     
                     else:
-                        await message.reply(f"{message.author.mention} You leveled up to {new_level}")
+                        await message.author.send(f"{message.author.mention} You leveled up to {new_level}")
                     
 
                     data[str(message.author.id)]['Level']=new_level
