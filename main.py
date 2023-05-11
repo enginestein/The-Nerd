@@ -6,14 +6,10 @@ import aiohttp
 import asyncio
 import datetime
 import traceback
-from easy_pil import Editor, load_image_async, Font
 from disnake.ext import commands
 import disnake
 import cryptocompare
 import requests
-import qrcode
-from io import BytesIO
-import io
 
 dictionary_check = True
 timer_check = True 
@@ -103,6 +99,12 @@ async def marketing(ctx):
 @_bot.slash_command()
 async def crypto(ctx):
     pass
+
+@_bot.event
+async def on_slash_command_error(ctx: disnake.ApplicationCommandInteraction, error: Exception) -> None:
+    if isinstance(error, commands.errors.MissingPermissions):
+        await ctx.response.send_message("I don't have permissions to run this command.")
+    
 
 async def send_first_time_message(ctx: disnake.ApplicationCommandInteraction, command_name: str, embed: disnake.Embed) -> bool:
     user_id = str(ctx.author.id)
@@ -265,13 +267,16 @@ async def on_member_join(member):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
     
-    if data[str(member.guild.id)]['hello_byebye'] != []:
-        channel = _bot.get_channel(int(data[str(member.guild.id)]['hello_byebye'][0]))
-        message = data[str(member.guild.id)]['hbm'][0]
+    if str(member.guild.id) in data:
+        if data[str(member.guild.id)]['hello_byebye'] != []:
+            channel = _bot.get_channel(int(data[str(member.guild.id)]['hello_byebye'][0]))
+            message = data[str(member.guild.id)]['hbm'][0]
     
-        embed = disnake.Embed(color=random.choice(colors))
-        embed.add_field(name=message, value=member.mention)
-        await channel.send(embed=embed)
+            embed = disnake.Embed(color=random.choice(colors))
+            embed.add_field(name=message, value=member.mention)
+            await channel.send(embed=embed)
+        else:
+            pass
     else:
         pass
 
@@ -279,12 +284,15 @@ async def on_member_join(member):
 async def on_member_remove(member):
     with open('setup.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
-    
-    if data[str(member.guild.id)]['hello_byebye'] != []:
-        channel = _bot.get_channel(int(data[str(member.guild.id)]['hello_byebye'][0]))
-        embed = disnake.Embed(color=random.choice(colors))
-        embed.add_field(name="One of our members have left", value=member.mention)
-        await channel.send(embed=embed)
+
+    if str(member.guild.id) in data:
+        if data[str(member.guild.id)]['hello_byebye'] != []:
+            channel = _bot.get_channel(int(data[str(member.guild.id)]['hello_byebye'][0]))
+            embed = disnake.Embed(color=random.choice(colors))
+            embed.add_field(name="One of our members have left", value=member.mention)
+            await channel.send(embed=embed)
+        else:
+            pass
     else:
         pass
 
@@ -2361,22 +2369,22 @@ async def crypt(ctx):
     with open('crypto.json', 'r', encoding='utf-8') as file:
         data = json.load(file)  
 
-    if str(ctx.id) in data:
+    if str(ctx.author.id) in data:
         return False
     else:
-        data[str(ctx.id)] = {}
-        data[str(ctx.id)]['btc'] = 0
-        data[str(ctx.id)]['ada'] = 0
-        data[str(ctx.id)]['dot'] = 0
-        data[str(ctx.id)]['rvn'] = 0
-        data[str(ctx.id)]['doge'] = 0
-        data[str(ctx.id)]['uni'] = 0
-        data[str(ctx.id)]['sol'] = 0
-        data[str(ctx.id)]['avax'] = 0
-        data[str(ctx.id)]['xrp'] = 0
-        data[str(ctx.id)]['bnb'] = 0
-        data[str(ctx.id)]['ltc'] = 0
-        data[str(ctx.id)]['matic'] = 0
+        data[str(ctx.author.id)] = {}
+        data[str(ctx.author.id)]['btc'] = 0
+        data[str(ctx.author.id)]['ada'] = 0
+        data[str(ctx.author.id)]['dot'] = 0
+        data[str(ctx.author.id)]['rvn'] = 0
+        data[str(ctx.author.id)]['doge'] = 0
+        data[str(ctx.author.id)]['uni'] = 0
+        data[str(ctx.author.id)]['sol'] = 0
+        data[str(ctx.author.id)]['avax'] = 0
+        data[str(ctx.author.id)]['xrp'] = 0
+        data[str(ctx.author.id)]['bnb'] = 0
+        data[str(ctx.author.id)]['ltc'] = 0
+        data[str(ctx.author.id)]['matic'] = 0
     
     with open('crypto.json', 'w') as f:
         json.dump(data, f)
@@ -2607,22 +2615,27 @@ async def crypto_bal(ctx):
     with open("crypto.json", 'r', encoding='utf-8') as file:
         data = json.load(file)
     
-    embed = disnake.Embed(color=random.choice(colors))
- 
-    embed.add_field(name="Bitcoin", value=data[str(ctx.user.id)]['btc'])
-    embed.add_field(name="Cordana", value=data[str(ctx.user.id)]['ada'])
-    embed.add_field(name="Polkadot", value=data[str(ctx.user.id)]['dot'])
-    embed.add_field(name="Ravencoin", value=data[str(ctx.user.id)]['rvn'])
-    embed.add_field(name="Dogecoin", value=data[str(ctx.user.id)]['doge'])
-    embed.add_field(name="Uniswap", value=data[str(ctx.user.id)]['uni'])
-    embed.add_field(name="Solana", value=data[str(ctx.user.id)]['sol'])
-    embed.add_field(name="Avalanche", value=data[str(ctx.user.id)]['avax'])
-    embed.add_field(name="XRP", value=data[str(ctx.user.id)]['xrp'])
-    embed.add_field(name="Binance coin", value=data[str(ctx.user.id)]['bnb'])
-    embed.add_field(name="LTC", value=data[str(ctx.user.id)]['ltc'])
-    embed.add_field(name="Polygon", value=data[str(ctx.user.id)]['matic'])    
+    if str(ctx.author.id) in data:
 
-    await ctx.send(embed=embed)
+        embed = disnake.Embed(color=random.choice(colors))
+ 
+        embed.add_field(name="Bitcoin", value=data[str(ctx.author.id)]['btc'])
+        embed.add_field(name="Cordana", value=data[str(ctx.author.id)]['ada'])
+        embed.add_field(name="Polkadot", value=data[str(ctx.author.id)]['dot'])
+        embed.add_field(name="Ravencoin", value=data[str(ctx.author.id)]['rvn'])
+        embed.add_field(name="Dogecoin", value=data[str(ctx.author.id)]['doge'])
+        embed.add_field(name="Uniswap", value=data[str(ctx.author.id)]['uni'])
+        embed.add_field(name="Solana", value=data[str(ctx.author.id)]['sol'])
+        embed.add_field(name="Avalanche", value=data[str(ctx.author.id)]['avax'])
+        embed.add_field(name="XRP", value=data[str(ctx.author.id)]['xrp'])
+        embed.add_field(name="Binance coin", value=data[str(ctx.author.id)]['bnb'])
+        embed.add_field(name="LTC", value=data[str(ctx.author.id)]['ltc'])
+        embed.add_field(name="Polygon", value=data[str(ctx.authorr.id)]['matic'])    
+
+        await ctx.send(embed=embed)
+    
+    else:
+        await ctx.send("For some reason, you don't have your crypto account open, contact the support or /report the error.")
 
 @_bot.slash_command(description='Get help for commands')
 async def help(ctx):
@@ -5558,6 +5571,7 @@ async def on_message(message):
             data = json.load(file)  
                 
         if not message.author.bot:
+            try:
                 await setups(message)
                 await xp(message.author, 5)
                 await lvl(message)
@@ -5577,6 +5591,8 @@ async def on_message(message):
                 await loan_alert(message)
                 await markett(message.author)
                 await rep(message)
+            except:
+                pass
         else:
                 pass
 
