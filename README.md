@@ -78,7 +78,7 @@ async def on_message(message):
 
 **Join our server**: https://discord.gg/HqY4BWmgS9
 
-**The Nerd's website**: https://enginestein.github.io/thenerd/
+**The Nerd's website**: https://aryapraneil.github.io/thenerd/
 
 **Vote The Nerd**: https://discordbotlist.com/bots/the-nerd/upvote | https://top.gg/bot/1095348772885762179/vote 
 
