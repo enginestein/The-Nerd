@@ -73,6 +73,7 @@ async def on_message(message):
         await bot.process_commands(message)  
 
 ```
+When using thenerd framework in your bots, the footer of credits will be there. If you want to remove it, E-mail at **aryapraneil@gmail.com**.
 
 **Add The Nerd and view all of it's command**: https://discord.com/api/oauth2/authorize?client_id=1095348772885762179&permissions=70368744177655&scope=bot
 
