@@ -1,0 +1,280 @@
+{
+  "Indie Game Dev": {
+    "salary": 2000,
+    "description": "Work as an game developer who makes games without any big team, alone.",
+    "Computer science points": 10,
+    "Physics points": 5,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Web Developer": {
+    "salary": 3000,
+    "description": "Work as an web developer.",
+    "Computer science points": 20,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Game Dev At Valve": {
+    "salary": 5000,
+    "description": "Work as a game developer at a Valve.",
+    "Computer science points": 20,
+    "Physics points": 10,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Full Stack Developer": {
+    "salary": 7000,
+    "description": "Work as an Full Stack Developer in an big company.",
+    "Computer science points": 30,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Software Developer": {
+    "salary": 8000,
+    "description": "Make amazing softwares.",
+    "Computer science points": 25,
+    "Physics points": 10,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Biomedic": {
+    "salary": 9000,
+    "description": "Medicines.",
+    "required XP": 2000,
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 20,
+    "Chemistry points": 5,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Robotics Engineer": {
+    "salary": 10000,
+    "description": "Work as an engineer in the famous robotics company.",
+    "Computer science points": 40,
+    "Physics points": 10,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 10,
+    "Required jobs": []
+  },
+
+  "Ethical Hacker": {
+    "salary": 11000,
+    "description": "Live an thrilling life.",
+    "Computer science points": 45,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Professional Cryptologist": {
+    "salary": 15000,
+    "description": "Get in an very dense and complex thing, cryptography.",
+    "Computer science points": 50,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Theoretical Physicist": {
+    "salary": 20000,
+    "description": "Work as an Theoretical Physicist in an government laboratory.",
+    "Computer science points": 0,
+    "Physics points": 30,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 20,
+    "Required jobs": []
+  },
+
+  "Mutagenesist": {
+    "salary": 24000,
+    "description": "Work as an Mutagenesist, researching on mutants.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 30,
+    "Chemistry points": 10,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Zoologist": {
+    "salary": 25000,
+    "description": "Work as an Zoologist, finding new species.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 40,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Chemist": {
+    "salary": 30000,
+    "description": "Don't forget the periodic table.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 20,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Mathematician": {
+    "salary": 35000,
+    "description": "Follow path of Newton, Ramanujan, Euclid etc.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 40,
+    "Required jobs": []
+  },
+
+  "Nuclear Scientist": {
+    "salary": 40000,
+    "description": "Work as a Nuclear Scientist, in research of nuclear and radiation.",
+    "Computer science points": 0,
+    "Physics points": 30,
+    "Biology points": 0,
+    "Chemistry points": 10,
+    "Maths points": 20,
+    "Required jobs": []
+  },
+
+  "Pyrologist": {
+    "salary": 45000,
+    "description": "Work as an scientist who studies fire and heat.",
+    "Computer science points": 0,
+    "Physics points": 30,
+    "Biology points": 0,
+    "Chemistry points": 30,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Entomologist": {
+    "salary": 55000,
+    "description": "Study the insects.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 50,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Biochemist": {
+    "salary": 60000,
+    "description": "Get your hands in the field of Biochemistry.",
+    "required XP": 25000,
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 40,
+    "Chemistry points": 30,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  
+  "Biotechnologist": {
+    "salary": 70000,
+    "description": "Combine robotics and biology.",
+    "required XP": 30000,
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": ["Biochemist"]
+    
+  },
+
+  "Microbiologist": {
+    "salary": 75000,
+    "description": "Study the lives which are really tiny.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": ["Mutagenesist"]
+  },
+
+  "Meteorologist": {
+    "salary": 80000,
+    "description": "Study the meteors.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": ["Pyrologist"]
+  },
+
+  "Forensic": {
+    "salary": 85000,
+    "description": "Work in an forensic lab...cool?",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": ["Microbiologist"]
+  },
+
+  "Astronaut": {
+    "salary": 90000,
+    "description": "Imagine about the real Astronauts?",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": ["Meteorologist"]
+  },
+
+  "Rocket Scientist": {
+    "salary": 95000,
+    "description": "Hard study isn't it?",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": ["Austronaut"]
+  },
+
+  "Professional Computer Scientist": {
+    "salary": 100000,
+    "description": "An professional computer scientist who knows everything about computer science.",
+    "Computer science points": 100,
+    "Physics points": 10,
+    "Biology points": 5,
+    "Chemistry points": 5,
+    "Maths points": 50,
+    "Required jobs": []
+  }
+}

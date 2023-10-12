@@ -1,0 +1,159 @@
+{
+    "Laptop 💻": {
+        "price": 50000,
+        "code": "l",
+        "description": "An basic laptop"
+    },
+
+    "Mouse 🖱️": {
+        "price": 10000,
+        "code": "mo",
+        "description": "An mouse to make your work easier"
+    },
+
+    "Membrane Keyboard ⌨️": {
+        "price": 8000,
+        "code": "mk",
+        "description": "An very normal membrane keyboard"
+    },
+    
+    "Monitor 🖥️": {
+        "price": 20000,
+        "code": "m",
+        "description": "An decent monitor"
+    },
+
+    "Headphones 🎧": {
+        "price": 5000,
+        "code": "h",
+        "description": "An headphone"
+    },
+
+    "Microphone 🎙️": {
+        "price": 15000,
+        "code": "mi",
+        "description": "An microphone to speak"
+    },
+
+    "Smartphone 📱": {
+        "price": 30000,
+        "code": "sp",
+        "description": "An normal smartphone"
+    },
+
+    "10 gb ram 💾": {
+        "price": 5000,
+        "code": "gig10",
+        "description": "10 gb ram to speed up your machine"
+    },
+
+    "16 gb ram <:DiscordFloppy:987628788256997377>": {
+        "price": 10000,
+        "code": "gig16",
+        "description": "16 gb ram to speed up your machine"
+    },
+    
+    "Iphone X <:IphoneX:987624956353462312>": {
+        "price": 40000,
+        "code": "ix",
+        "description": "Cool phone, but expensive"
+    },
+    
+    "MacBook <:MacBook:987624574202044447>": {
+        "price": 100000,
+        "code": "mb",
+        "description": "A good laptop for programming"
+    },
+    
+    "AMD RX 6900 GPU <:AMD_Radeon_RX_6900_XT_GPU:987622463431122954>": {
+        "price": 200000,
+        "code": "6900",
+        "description": "An very expensive graphic card"
+    },
+
+    "NVIDIA 3090 GPU <:Nvidia_3090_GPU:987623191159660555>": {
+        "price": 400000,
+        "code": "3090",
+        "description": "An very expensive graphic card, and better then the previous one"
+    },
+
+    "Mechanical Keyboard <:RGBKeyboard:986490410849423441>": {
+        "price": 20000,
+        "code": "mkl",
+        "description": "An fast, efficient, smooth mechanical keyboard"
+    },
+
+    "Mechanical Gaming Keyboard <:gamer_keyboard:987622731614945330>": {
+        "price": 50000,
+        "code": "mgk",
+        "description": "The best keyboard"
+    },
+
+    "Wide Montior <:gaming_keyboard:987619238204305438>": {
+        "price": 40000,
+        "code": "wm",
+        "description": "An wider montior to increase work experience"
+    },
+
+    "Ultra Wide Montior with Ipad <:programmershit:987628014722514984>": {
+        "price": 300000,
+        "code": "wmi",
+        "description": "Best monitor with a amazing Ipad"
+    },
+
+    "Antivirus <:blurple_shield:1001104190875107429>": {
+        "price": 10000,
+        "code": "at",
+        "description": "Buy this to protect yourself from reverse shells"
+    },
+
+    "AI Software <:galaxy_brain:1003621546050474034>": {
+        "price": 9000,
+        "code": "ai",
+        "description": "Use this as an XP gainer, expires in 2 hours"
+    },
+
+    "Coin Booster <:DigitalTwo:1003623866272329748>": {
+        "price": 15000,
+        "code": "cb",
+        "description": "Buy this booster to get more coins than usual"
+    },
+
+    "Windows 10 <:windows_10:1003626037713842228>": {
+        "price": 15000,
+        "code": "win10",
+        "description": "An faster operating system to get more storage and fast performance"
+    },
+
+    "Kali linux <:kali:1003630422560886905>": {
+        "price": 17000,
+        "code": "kali",
+        "description": "Faster than windows 10, more storage, more fast"
+    },
+
+    "Tax Evader <:pound_with_wings_v2:1100047030467973230>": {
+        "price": 20000,
+        "code": "te",
+        "description": "You can evade one month tax with this"
+    },
+
+    "Antivirus Bypasser <:taxevader:1100046708982947993>": {
+        "price": 30000,
+        "code": "atb",
+        "description": "You can bypass antivirus with this"
+    },
+
+
+    "Fuel ⛽": {
+        "price": 30000,
+        "code": "fuel",
+        "description": "Fuel for robot"
+    },
+
+
+    "IDE <:VSCode:1100328300292882473>": {
+        "price": 10000,
+        "code": "ide",
+        "description": "You need this to create some softwares"
+    }
+} 

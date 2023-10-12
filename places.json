@@ -1,0 +1,42 @@
+{
+    "Jade City": {
+        "element": "Jade",
+        "price": 12000
+    },
+    "Crystal Cove": {
+        "element": "Crystal",
+        "price": 8000
+    },
+    "Emerald Hills": {
+        "element": "Emerald",
+        "price": 18000
+    },
+    "Silver Peak": {
+        "element": "Silver",
+        "price": 5000
+    },
+    "Diamond Valley": {
+        "element": "Diamond",
+        "price": 60000
+    },
+    "Sapphire Springs": {
+        "element": "Sapphire",
+        "price": 24000
+    },
+    "Ruby Ridge": {
+        "element": "Ruby",
+        "price": 32000
+    },
+    "Topaz Terrace": {
+        "element": "Topaz",
+        "price": 15000
+    },
+    "Gold Town": {
+        "element": "Gold",
+        "price": 4500
+    },
+    "Platinum Plateau": {
+        "element": "Platinum",
+        "price": 70000
+    }
+}

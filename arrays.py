@@ -1,0 +1,56 @@
+
+burns = [
+    "Hey Dude thats not good to roast someone you are rickrolled!",
+    "I see why do you want to roast the guy!",
+    "I am not gonna roast anyone.",
+    "Rather than roasting type !fact and get some cool facts.",
+    "Djkistra is an computer scientist and mathematician who found pathfinding algorithm.",
+    "You are supposed to be polite.",
+    "What if I roast YOU?",
+    "So you were gonna roast the guy? CHECKMATE!",
+    "https://tenor.com/view/rickroll-roll-rick-never-gonna-give-you-up-never-gonna-gif-22954713",
+    "I am not in mood to roast anyone, i am studying Assembly.",
+    "Go read some Science books!",
+    "The hell i am not gonna roast anyone.",
+    "Rather than roasting the guy you can play tic tac toe with him.",
+    "NO",
+    "Computer is very beautiful.",
+    "Wanna eat an burger?",
+    "Haha no roasting.",
+    "!hug the guy, it would be better?",
+    "Backfire on you.",
+    "Do you like hurting people?",
+    "You need an Nvidia rtx 999999 if you want to roast this guy.",
+    "Gordon Freeman.",
+    "Do you study or not?",
+    "What are you doing?",]
+
+hug_links = [
+    "https://tenor.com/view/warm-hug-gif-10592083",
+    "https://tenor.com/view/cat-hug-dog-annoyed-puppy-gif-15579685",
+    "https://tenor.com/view/cat-hug-back-hug-notice-me-attention-to-me-gif-14227401",
+    "https://tenor.com/view/milk-and-mocha-hugs-bear-couple-love-cute-gif-12498539",
+    "https://tenor.com/view/hug-anime-gif-7552075",
+    "https://tenor.com/view/hug-anime-love-gif-7324587",
+    "https://tenor.com/view/cuddle-hug-comfort-cute-sweet-gif-16300139",
+    "https://tenor.com/view/anime-cheeks-hugs-gif-14106856",
+    "https://tenor.com/view/hug-cry-sad-anime-tackle-gif-5634582",
+    "https://tenor.com/view/anime-hug-sweet-love-gif-14246498",
+    "https://tenor.com/view/anime-hug-hug-hugs-anime-girl-anime-girl-hug-gif-16787485",
+    "https://tenor.com/view/sakura-quest-anime-animes-hug-hugging-gif-14721541"
+    "https://tenor.com/view/running-hug-embrace-imiss-you-good-to-see-you-again-gif-15965620",
+    "https://tenor.com/view/snoopy-hug-love-hugs-woodstuck-gif-11557800",
+    "https://tenor.com/view/baby-pooh-disney-winnie-the-pooh-piglet-hearts-gif-11070433",
+    "https://tenor.com/view/my-life-ilove-my-best-friend-bff-hugs-lilo-and-stitch-gif-15915447"
+            ]
+
+cat_pics = ["https://tenor.com/view/cat-waiting-gif-5701246",
+            "https://tenor.com/view/peachcat-peach-and-goma-eat-noodle-bowl-ramen-gif-14819436",
+            "https://tenor.com/view/kitten-cats-cutie-cute-morning-gif-13147092",
+            "https://tenor.com/view/cat-hugging-cats-cuddle-gif-8123182",
+            "https://tenor.com/view/love-kittens-cute-cats-cute-kittens-kitten-cuddles-gif-13033361",
+            "https://tenor.com/view/hug-peachcat-cat-cute-gif-13985247",
+            "https://tenor.com/view/luv-you-cute-kitten-cat-cats-kittens-gif-13071893",
+            "https://tenor.com/view/hug-hugs-and-love-gif-23912006",
+            "https://tenor.com/view/hugs-sending-virtual-hugs-loading-gif-8158818",
+            "https://tenor.com/view/leatylrs-friends-gif-24216492s"]
