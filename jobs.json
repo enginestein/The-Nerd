@@ -1,0 +1,185 @@
+{
+  "Indie Game Developer": {
+    "salary": 2000,
+    "description": "Work as a game developer who creates games independently, without a large team.",
+    "Computer science points": 10,
+    "Physics points": 5,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Web Developer": {
+    "salary": 3000,
+    "description": "Work as a web developer, creating applications and services for the internet.",
+    "Computer science points": 20,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Game Developer": {
+    "salary": 5000,
+    "description": "Work as a game developer.",
+    "Computer science points": 20,
+    "Physics points": 10,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Full Stack Developer": {
+    "salary": 7000,
+    "description": "Work as a full stack developer in a large-scale company, handling both front-end and back-end development.",
+    "Computer science points": 30,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Software Developer": {
+    "salary": 8000,
+    "description": "Design and develop innovative software applications to solve complex problems.",
+    "Computer science points": 25,
+    "Physics points": 10,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Biomedical Scientist": {
+    "salary": 9000,
+    "description": "Contribute to the field of medicine through research and development of pharmaceuticals and medical technologies.",
+    "required XP": 2000,
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 20,
+    "Chemistry points": 5,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Robotics Engineer": {
+    "salary": 10000,
+    "description": "Engineer advanced robotic systems for various industries and applications.",
+    "Computer science points": 40,
+    "Physics points": 10,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 10,
+    "Required jobs": []
+  },
+  "Ethical Hacker": {
+    "salary": 11000,
+    "description": "Safeguard digital systems by identifying and resolving security vulnerabilities through ethical hacking techniques.",
+    "Computer science points": 45,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Professional Cryptologist": {
+    "salary": 15000,
+    "description": "Specialize in the complex field of cryptography, securing sensitive information through advanced encryption techniques.",
+    "Computer science points": 50,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Theoretical Physicist": {
+    "salary": 20000,
+    "description": "Engage in theoretical research to understand the fundamental laws of the universe, often in government laboratories.",
+    "Computer science points": 0,
+    "Physics points": 30,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 20,
+    "Required jobs": []
+  },
+  "Mutagenesis Researcher": {
+    "salary": 24000,
+    "description": "Conduct research on genetic mutations and their implications, aiming to advance knowledge in genetics.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 30,
+    "Chemistry points": 10,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Zoologist": {
+    "salary": 25000,
+    "description": "Explore and study various animal species to understand their behavior, physiology, and ecological roles.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 40,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+
+  "Urban Planner": {
+    "salary": 30000,
+    "description": "Now this job is some badass one, at least I think that it is.",
+    "Computer science points": 20,
+    "Physics points": 20,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 20,
+    "Required jobs": []
+  },
+
+  "Chemist": {
+    "salary": 30000,
+    "description": "Conduct research and experiments in chemistry, focusing on the composition, structure, and properties of substances.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 20,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Mathematician": {
+    "salary": 35000,
+    "description": "Explore the depths of mathematical theory and its applications in various fields, following in the footsteps of pioneers like Newton, Ramanujan, and Euclid.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 0,
+    "Chemistry points": 0,
+    "Maths points": 40,
+    "Required jobs": []
+  },
+  "Nuclear Scientist": {
+    "salary": 40000,
+    "description": "Research nuclear physics and radiation, contributing to advancements in energy, medicine, and national security.",
+    "Computer science points": 0,
+    "Physics points": 30,
+    "Biology points": 0,
+    "Chemistry points": 10,
+    "Maths points": 20,
+    "Required jobs": []
+  },
+  "Pyrologist": {
+    "salary": 45000,
+    "description": "Investigate the science of fire and heat, studying combustion processes and their applications.",
+    "Computer science points": 0,
+    "Physics points": 30,
+    "Biology points": 0,
+    "Chemistry points": 30,
+    "Maths points": 0,
+    "Required jobs": []
+  },
+  "Entomologist": {
+    "salary": 55000,
+    "description": "Study the diverse world of insects, exploring their anatomy, behavior, and ecological interactions.",
+    "Computer science points": 0,
+    "Physics points": 0,
+    "Biology points": 50,
+    "Chemistry points": 0,
+    "Maths points": 0,
+    "Required jobs": []
+  }
+}

@@ -1,0 +1,557 @@
+{
+    "Biomedical Imaging Scientist": {
+        "salary": 185000,
+        "description": "Develop and improve imaging techniques, such as MRI, CT, and PET scans, to visualize and diagnose medical conditions and track treatment progress.",
+        "Computer science points": 30,
+        "Physics points": 40,
+        "Biology points": 20,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Quantum Biologist": {
+        "salary": 195000,
+        "description": "Explore the role of quantum mechanics in biological systems, investigating phenomena such as quantum coherence in photosynthesis and quantum biology in sensory processes.",
+        "Computer science points": 30,
+        "Physics points": 50,
+        "Biology points": 40,
+        "Chemistry points": 20,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Agricultural Scientist": {
+        "salary": 160000,
+        "description": "Research and develop techniques to improve agricultural productivity, sustainability, and food security, addressing challenges such as climate change and resource scarcity.",
+        "Computer science points": 10,
+        "Physics points": 10,
+        "Biology points": 40,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Synthetic Biologist": {
+        "salary": 200000,
+        "description": "Design and engineer biological systems and organisms with novel functions, leveraging principles from biology, engineering, and computer science.",
+        "Computer science points": 40,
+        "Physics points": 10,
+        "Biology points": 40,
+        "Chemistry points": 20,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Astrodynamics Engineer": {
+        "salary": 210000,
+        "description": "Develop mathematical models and algorithms to predict and control the motion of spacecraft and satellites in space, enabling precise navigation and mission planning.",
+        "Computer science points": 30,
+        "Physics points": 50,
+        "Biology points": 5,
+        "Chemistry points": 10,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Nuclear Engineer": {
+        "salary": 220000,
+        "description": "Design and operate nuclear power plants, nuclear reactors, and radiation systems for applications in energy production, medicine, and industry.",
+        "Computer science points": 20,
+        "Physics points": 40,
+        "Biology points": 5,
+        "Chemistry points": 20,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Biological Engineer": {
+        "salary": 230000,
+        "description": "Apply engineering principles to design and manipulate biological systems, creating new products, processes, and technologies for healthcare, agriculture, and industry.",
+        "Computer science points": 30,
+        "Physics points": 20,
+        "Biology points": 40,
+        "Chemistry points": 20,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Geoscientist": {
+        "salary": 185000,
+        "description": "Study the Earth's processes, materials, and history, investigating phenomena such as earthquakes, volcanoes, and climate change to understand our planet's evolution.",
+        "Computer science points": 10,
+        "Physics points": 20,
+        "Biology points": 5,
+        "Chemistry points": 20,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Tissue Engineer": {
+        "salary": 240000,
+        "description": "Design and grow artificial tissues and organs for transplantation and regenerative medicine applications, using a combination of engineering and biological principles.",
+        "Computer science points": 20,
+        "Physics points": 20,
+        "Biology points": 40,
+        "Chemistry points": 20,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Environmental Biologist": {
+        "salary": 170000,
+        "description": "Study the impact of human activities on the environment, assessing pollution, biodiversity loss, and ecosystem health to develop conservation and management strategies.",
+        "Computer science points": 10,
+        "Physics points": 10,
+        "Biology points": 40,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Neural Engineer": {
+        "salary": 190000,
+        "description": "Design and develop devices and techniques to interface with the nervous system, such as neural implants and brain-computer interfaces, to restore lost functions and treat neurological disorders.",
+        "Computer science points": 30,
+        "Physics points": 10,
+        "Biology points": 30,
+        "Chemistry points": 10,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Particle Physicist": {
+        "salary": 200000,
+        "description": "Study the fundamental particles and forces of the universe, conducting experiments at particle accelerators and observatories to explore the nature of matter and energy.",
+        "Computer science points": 20,
+        "Physics points": 50,
+        "Biology points": 5,
+        "Chemistry points": 10,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Climate Scientist": {
+        "salary": 210000,
+        "description": "Investigate climate patterns, trends, and variability, using models and observations to understand the drivers of climate change and assess its impacts on the environment and society.",
+        "Computer science points": 20,
+        "Physics points": 20,
+        "Biology points": 10,
+        "Chemistry points": 10,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Biomedical Device Engineer": {
+        "salary": 220000,
+        "description": "Design and develop medical devices and instruments, such as pacemakers, prosthetics, and diagnostic tools, to improve patient care and healthcare outcomes.",
+        "Computer science points": 30,
+        "Physics points": 20,
+        "Biology points": 20,
+        "Chemistry points": 10,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Cancer Research Scientist": {
+        "salary": 230000,
+        "description": "Conduct research to understand the biology of cancer, identify therapeutic targets, and develop new treatments and interventions to improve patient survival and quality of life.",
+        "Computer science points": 20,
+        "Physics points": 10,
+        "Biology points": 40,
+        "Chemistry points": 20,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Ecotoxicologist": {
+        "salary": 240000,
+        "description": "Study the effects of toxic substances on ecosystems and organisms, assessing risks to human health and the environment and developing strategies for pollution control and remediation.",
+        "Computer science points": 10,
+        "Physics points": 10,
+        "Biology points": 40,
+        "Chemistry points": 20,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Biophotonics Scientist": {
+        "salary": 250000,
+        "description": "Develop and apply optical techniques and technologies to study biological systems, such as imaging cellular processes and probing molecular interactions, for biomedical and biotechnological applications.",
+        "Computer science points": 30,
+        "Physics points": 40,
+        "Biology points": 20,
+        "Chemistry points": 20,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Astrophysical Engineer": {
+        "salary": 260000,
+        "description": "Design and build instruments and systems for astronomical observations and space missions, contributing to our understanding of the cosmos and the search for extraterrestrial life.",
+        "Computer science points": 30,
+        "Physics points": 50,
+        "Biology points": 5,
+        "Chemistry points": 10,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Bioinformatics Engineer": {
+        "salary": 270000,
+        "description": "Develop computational tools and algorithms to analyze biological data, such as DNA sequences and protein structures, to uncover patterns and relationships for biomedical research and applications.",
+        "Computer science points": 40,
+        "Physics points": 10,
+        "Biology points": 30,
+        "Chemistry points": 20,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+    
+      "Immunologist": {
+        "salary": 155000,
+        "description": "Study the immune system and its responses to pathogens and diseases, developing vaccines, immunotherapies, and treatments to combat infections and disorders.",
+        "Computer science points": 10,
+        "Physics points": 5,
+        "Biology points": 40,
+        "Chemistry points": 20,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Oceanographer": {
+        "salary": 150000,
+        "description": "Explore the oceans and their physical, chemical, and biological characteristics, investigating ocean currents, marine life, and the impact of human activities.",
+        "Computer science points": 10,
+        "Physics points": 20,
+        "Biology points": 30,
+        "Chemistry points": 20,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Biomedical Informatics Specialist": {
+        "salary": 160000,
+        "description": "Develop and apply computational tools and methods to analyze biomedical data, facilitating medical research, diagnosis, and treatment.",
+        "Computer science points": 40,
+        "Physics points": 5,
+        "Biology points": 30,
+        "Chemistry points": 10,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Astrobiologist": {
+        "salary": 170000,
+        "description": "Study the origin, evolution, and distribution of life in the universe, exploring environments beyond Earth that could support life.",
+        "Computer science points": 30,
+        "Physics points": 30,
+        "Biology points": 40,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Biomedical Ethicist": {
+        "salary": 180000,
+        "description": "Address ethical issues in biomedical research and healthcare, ensuring that medical practices and policies align with moral principles and societal values.",
+        "Computer science points": 10,
+        "Physics points": 5,
+        "Biology points": 30,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Regenerative Medicine Scientist": {
+        "salary": 190000,
+        "description": "Develop therapies to repair or replace damaged tissues and organs, leveraging stem cells, tissue engineering, and other innovative approaches.",
+        "Computer science points": 20,
+        "Physics points": 20,
+        "Biology points": 40,
+        "Chemistry points": 20,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Photonics Engineer": {
+        "salary": 175000,
+        "description": "Design and develop devices and systems that manipulate photons, such as lasers and fiber optics, for applications in communications, healthcare, and sensing.",
+        "Computer science points": 20,
+        "Physics points": 40,
+        "Biology points": 5,
+        "Chemistry points": 20,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+
+      "Pharmaceutical Scientist": {
+        "salary": 130000,
+        "description": "Conduct research and development to discover and formulate new drugs and therapies, contributing to advancements in healthcare.",
+        "Computer science points": 10,
+        "Physics points": 5,
+        "Biology points": 30,
+        "Chemistry points": 40,
+        "Maths points": 20,
+        "Required jobs": []
+      },
+      "Geologist": {
+        "salary": 100000,
+        "description": "Study the Earth's structure, composition, and processes, investigating geological phenomena and resources.",
+        "Computer science points": 10,
+        "Physics points": 20,
+        "Biology points": 5,
+        "Chemistry points": 20,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Ecologist": {
+        "salary": 95000,
+        "description": "Research ecosystems and their interactions, focusing on conservation, biodiversity, and ecosystem management.",
+        "Computer science points": 10,
+        "Physics points": 5,
+        "Biology points": 30,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Renewable Energy Engineer": {
+        "salary": 120000,
+        "description": "Design and develop renewable energy systems, such as solar, wind, and hydroelectric power plants, to mitigate climate change and promote sustainable energy production.",
+        "Computer science points": 20,
+        "Physics points": 30,
+        "Biology points": 5,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Cognitive Scientist": {
+        "salary": 115000,
+        "description": "Investigate the nature of the mind and intelligence, exploring how cognition emerges from neural processes and external stimuli.",
+        "Computer science points": 20,
+        "Physics points": 5,
+        "Biology points": 20,
+        "Chemistry points": 5,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Biomedical Engineer": {
+        "salary": 125000,
+        "description": "Apply engineering principles to develop medical devices, prosthetics, and healthcare technologies, enhancing diagnosis, treatment, and rehabilitation.",
+        "Computer science points": 20,
+        "Physics points": 20,
+        "Biology points": 20,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Bioinformatics Scientist": {
+        "salary": 135000,
+        "description": "Apply computational techniques to analyze and interpret biological data, such as genomic sequences, to gain insights into biological processes and diseases.",
+        "Computer science points": 40,
+        "Physics points": 5,
+        "Biology points": 30,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Nanotechnologist": {
+        "salary": 140000,
+        "description": "Research and develop materials and devices at the nanoscale, leveraging unique properties for applications in electronics, medicine, and engineering.",
+        "Computer science points": 30,
+        "Physics points": 40,
+        "Biology points": 10,
+        "Chemistry points": 30,
+        "Maths points": 20,
+        "Required jobs": []
+      },
+      "Space Scientist": {
+        "salary": 160000,
+        "description": "Investigate phenomena occurring in space, such as cosmic rays, black holes, and the formation of galaxies, to expand our understanding of the universe.",
+        "Computer science points": 20,
+        "Physics points": 50,
+        "Biology points": 5,
+        "Chemistry points": 10,
+        "Maths points": 40,
+        "Required jobs": []
+      },
+      "Biomechanical Engineer": {
+        "salary": 145000,
+        "description": "Apply principles of mechanics to study the structure and function of biological systems, designing devices and therapies to enhance human health and performance.",
+        "Computer science points": 20,
+        "Physics points": 30,
+        "Biology points": 20,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Geneticist": {
+        "salary": 110000,
+        "description": "Investigate the genetic makeup of organisms, exploring inheritance patterns, genetic disorders, and evolutionary processes.",
+        "Computer science points": 10,
+        "Physics points": 0,
+        "Biology points": 40,
+        "Chemistry points": 20,
+        "Maths points": 20,
+        "Required jobs": []
+      },
+      "Environmental Engineer": {
+        "salary": 105000,
+        "description": "Apply engineering principles to develop solutions for environmental problems, such as pollution control, waste management, and sustainable resource utilization.",
+        "Computer science points": 20,
+        "Physics points": 20,
+        "Biology points": 10,
+        "Chemistry points": 10,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Astrophysicist": {
+        "salary": 180000,
+        "description": "Explore the mysteries of the cosmos, studying celestial objects, phenomena, and the fundamental laws of physics governing the universe.",
+        "Computer science points": 0,
+        "Physics points": 50,
+        "Biology points": 0,
+        "Chemistry points": 0,
+        "Maths points": 50,
+        "Required jobs": []
+      },
+      "Data Scientist": {
+        "salary": 120000,
+        "description": "Analyze and interpret complex data to inform decision-making processes and solve real-world problems across various industries.",
+        "Computer science points": 40,
+        "Physics points": 10,
+        "Biology points": 0,
+        "Chemistry points": 0,
+        "Maths points": 30,
+        "Required jobs": []
+      },
+      "Environmental Scientist": {
+        "salary": 90000,
+        "description": "Study the environment and its interactions with organisms, focusing on conservation, pollution mitigation, and sustainable resource management.",
+        "Computer science points": 10,
+        "Physics points": 10,
+        "Biology points": 30,
+        "Chemistry points": 10,
+        "Maths points": 20,
+        "Required jobs": []
+      },
+      "Materials Scientist": {
+        "salary": 110000,
+        "description": "Research and develop new materials with specific properties, contributing to advancements in technology, medicine, and manufacturing.",
+        "Computer science points": 20,
+        "Physics points": 20,
+        "Biology points": 5,
+        "Chemistry points": 30,
+        "Maths points": 20,
+        "Required jobs": []
+      },
+      "Neuroscientist": {
+        "salary": 140000,
+        "description": "Investigate the structure and function of the brain and nervous system, seeking to understand cognition, behavior, and neurological disorders.",
+        "Computer science points": 10,
+        "Physics points": 5,
+        "Biology points": 40,
+        "Chemistry points": 10,
+        "Maths points": 20,
+        "Required jobs": []
+      },
+      "Marine Biologist": {
+        "salary": 95000,
+        "description": "Study marine organisms and ecosystems, researching their behavior, physiology, and interactions with the environment.",
+        "Computer science points": 0,
+        "Physics points": 0,
+        "Biology points": 40,
+        "Chemistry points": 10,
+        "Maths points": 20,
+        "Required jobs": []
+      },
+
+      "Planetary Scientist": {
+        "salary": 200000,
+        "description": "Next level astronaut.",
+        "Computer science points": 20,
+        "Physics points": 20,
+        "Biology points": 120,
+        "Chemistry points": 100,
+        "Maths points": 20,
+        "Required jobs": []
+      },
+      "Aerospace Engineer": {
+        "salary": 200000,
+        "description": "Not embarking in the space missions, but creating the things which are required in a space mission.",
+        "Computer science points": 100,
+        "Physics points": 100,
+        "Biology points": 5,
+        "Chemistry points": 5,
+        "Maths points": 70,
+        "Required jobs": []
+      },
+      "Quantum Computing Researcher": {
+        "salary": 100000,
+        "description": "Work on a quantum computer, the holy research, the revolution of technology.",
+        "Computer science points": 50,
+        "Physics points": 100,
+        "Biology points": 5,
+        "Chemistry points": 5,
+        "Maths points": 50,
+        "Required jobs": ["Theoretical Physicist"]
+      },
+      "Electrical Scientist": {
+        "salary": 100000,
+        "description": "Electricity - I find it fascinating.",
+        "Computer science points": 50,
+        "Physics points": 100,
+        "Biology points": 5,
+        "Chemistry points": 5,
+        "Maths points": 50,
+        "Required jobs": ["Theoretical Physicist"]
+      },
+      "Rocket Scientist": {
+        "salary": 95000,
+        "description": "Engineer spacecraft and propulsion systems, contributing to the advancement of space exploration and technology.",
+        "Computer science points": 0,
+        "Physics points": 0,
+        "Biology points": 0,
+        "Chemistry points": 0,
+        "Maths points": 0,
+        "Required jobs": ["Astronaut"]
+      },
+      "Meteorologist": {
+        "salary": 80000,
+        "description": "Analyze and forecast weather patterns, contributing to our understanding of climate dynamics and natural disasters.",
+        "Computer science points": 0,
+        "Physics points": 0,
+        "Biology points": 0,
+        "Chemistry points": 0,
+        "Maths points": 0,
+        "Required jobs": ["Pyrologist"]
+      },
+      "Forensic Scientist": {
+        "salary": 85000,
+        "description": "Apply scientific principles to solve crimes, analyzing evidence and providing expert testimony in legal proceedings.",
+        "Computer science points": 0,
+        "Physics points": 0,
+        "Biology points": 0,
+        "Chemistry points": 0,
+        "Maths points": 0,
+        "Required jobs": ["Microbiologist"]
+      },
+      "Astronaut": {
+        "salary": 90000,
+        "description": "Embark on space missions, conducting scientific research and exploration beyond Earth's atmosphere.",
+        "Computer science points": 0,
+        "Physics points": 0,
+        "Biology points": 0,
+        "Chemistry points": 0,
+        "Maths points": 0,
+        "Required jobs": ["Meteorologist"]
+      },
+      "Biochemist": {
+        "salary": 60000,
+        "description": "Dive into the intricate field of biochemistry, investigating the chemical processes within living organisms.",
+        "required XP": 25000,
+        "Computer science points": 0,
+        "Physics points": 0,
+        "Biology points": 40,
+        "Chemistry points": 30,
+        "Maths points": 0,
+        "Required jobs": []
+      },
+      "Biotechnologist": {
+        "salary": 70000,
+        "description": "Merge principles of biology and robotics to pioneer innovative solutions in healthcare, agriculture, and industry.",
+        "required XP": 30000,
+        "Computer science points": 0,
+        "Physics points": 0,
+        "Biology points": 0,
+        "Chemistry points": 0,
+        "Maths points": 0,
+        "Required jobs": ["Biochemist"]
+      },
+      "Microbiologist": {
+        "salary": 75000,
+        "description": "Explore the microscopic world of bacteria, viruses, and other microorganisms, conducting research to advance healthcare and biotechnology.",
+        "Computer science points": 0,
+        "Physics points": 0,
+        "Biology points": 0,
+        "Chemistry points": 0,
+        "Maths points": 0,
+        "Required jobs": ["Mutagenesis Researcher"]
+      }
+}
