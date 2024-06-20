@@ -1,0 +1,31 @@
+{
+    "Defected Robot <:Odnoklassniki_Robot:1100365926928482334>": {
+        "price": 10000,
+        "code": "dr",
+        "description": "A useless robot."
+    },
+    
+    "Calculator Robot <:bad_robot:1100365885325181060>": {
+        "price": 20000,
+        "code": "cr",
+        "description": "This robot can do basic maths."
+    },
+
+    "Chlora <:chlora:1100365836805484604>": {
+        "price": 50000,
+        "code": "cl",
+        "description": "A smart robot."
+    },
+
+    "Robopup <:robowan_robot_puppy:1100365906279936010>": {
+        "price": 60000,
+        "code": "rp",
+        "description": "A playful robot."
+    },
+
+    "Madbot <:MadSmashROB:1100365782107574303>": {
+        "price": 80000,
+        "code": "ma",
+        "description": "A really aggressive robot."
+    }
+} 
